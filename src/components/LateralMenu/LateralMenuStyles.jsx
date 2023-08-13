@@ -2,12 +2,13 @@ import React from 'react';
 import { styled } from 'styled-components';
 
 const LateralMenuContainer = styled.section`
-  width: 20%;
+  width: 40%;
   background-image: linear-gradient(to top, #e5f1e3, #e5effa, #ffffff);
   box-shadow: 0px 0px 12px #00000053;
   height: 100%;
- 
+  display: flex;
   min-height: 100vh;
+  position: fixed;
 
   div:nth-child(1){
     width: 100%;
@@ -17,18 +18,18 @@ const LateralMenuContainer = styled.section`
     
     gap: 20px;
 
-    @media (max-width: 780px) {
+    @media (max-width: 768px) {
       width: 70%;
       margin-inline: auto;
     }
   }
 
-  @media (max-width: 1080px) {
-    width: 30%;
+  @media (max-width: 920px) {
+    width: 70%;
   }
 
-  @media (max-width: 780px) {
-    width: 70%;
+  @media (max-width: 620px) {
+    width: 100%;
   }
 `
 
@@ -82,9 +83,29 @@ const HelpButtons = styled.div`
   }
 `
 
+const CloseButton = styled.button`
+  height: 100%;
+  width: 10%;
+  background-color: white;
+
+  &:hover{
+    background-color: #0066ff;
+    color: white;
+  }
+
+  svg{
+    font-size: 32px;   
+  }
+
+  @media (min-width: 1080px) {
+    width: 10%;
+  }
+`
+
 
 export {
   LateralMenuContainer,
   InviteButton,
-  HelpButtons
+  HelpButtons,
+  CloseButton
 }

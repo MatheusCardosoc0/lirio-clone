@@ -1,11 +1,18 @@
 import React from 'react';
-import { HelpButtons, InviteButton, LateralMenuContainer } from './LateralMenuStyles';
-import { LogoContainer } from '../styles/Global';
+import { CloseButton, HelpButtons, InviteButton, LateralMenuContainer } from './LateralMenuStyles';
+import { LogoContainer } from '../../styles/Global';
 import Logo from '../../assets/Logo.png'
 import { RiMoneyDollarCircleFill } from 'react-icons/ri'
 import { FaUserFriends, FaBook } from 'react-icons/fa'
+import { FaArrowLeft } from 'react-icons/fa'
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleMenu } from '../../redux/actions/menuActions';
 
 const LateralMenu = () => {
+
+    const dispatch = useDispatch()
+    const menuState = useSelector(state => state.menu.isOpen)
+
     return (
         <LateralMenuContainer>
             <div>
@@ -25,6 +32,12 @@ const LateralMenu = () => {
                     </button>
                 </HelpButtons>
             </div>
+
+            <CloseButton
+                onClick={() => dispatch(toggleMenu())}
+            >
+                <FaArrowLeft />
+            </CloseButton>
         </LateralMenuContainer>
     );
 }
