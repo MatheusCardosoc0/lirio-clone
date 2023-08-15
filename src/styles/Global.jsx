@@ -7,12 +7,19 @@ const LogoContainer = styled.img`
     margin-inline: auto;
 
     @media (min-width: 768px){
-        width: 60%;
-        height: 60%;
+        width: 40%;
+        height: 40%;
     }
+`
+
+const MainContainer = styled.main`
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
 `
 
 
 export {
-    LogoContainer
+    LogoContainer,
+    MainContainer
 }

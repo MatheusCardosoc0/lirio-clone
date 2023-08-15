@@ -9,7 +9,7 @@ const OpenButton = styled.button`
   border-radius: 100%;
   background-color: #5e9cf8;
   padding: 12px;
-  box-shadow: 1px 1px 1px black;
+  box-shadow: 1px 1px 8px #00000068;
   color: white;
 
   svg{

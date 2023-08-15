@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import LateralMenu from './components/LateralMenu';
-import { CloseButton } from './components/LateralMenu/LateralMenuStyles';
 import { OpenButton } from './styles/buttons';
 import { FaArrowRight } from 'react-icons/fa'
 import { toggleMenu } from './redux/actions/menuActions';
-
+import Header from './components/Header';
+import { MainContainer } from './styles/Global';
 
 
 function App() {
@@ -13,7 +13,8 @@ function App() {
   const dispatch = useDispatch()
 
   return (
-    <div className="App">
+    <MainContainer>
+      <Header />
       {menuState && <LateralMenu />}
       {!menuState && (
         <OpenButton
@@ -22,7 +23,7 @@ function App() {
           <FaArrowRight />
         </OpenButton>
       )}
-    </div>
+    </MainContainer>
   );
 }
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { styled } from 'styled-components';
 
 const LateralMenuContainer = styled.section`
@@ -43,13 +42,23 @@ const InviteButton = styled.button`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: bold;
 
   svg{
     width: 70px;
     height: 70px;
   }
+
+  @media (max-width: 768px) {
+      padding: 10px;
+      font-size: 1.6rem;
+
+      svg{
+        width: 48px;
+        height: 48px;
+      }
+    }
 `
 
 const HelpButtons = styled.div`
@@ -73,12 +82,22 @@ const HelpButtons = styled.div`
     align-items: center;
     justify-items: center;
     gap: 6px;
-    font-size: 1rem;
+    font-size: 1.8rem;
     border-radius: 8px;
 
     svg{
       width: 32px;
       height: 32px;
+    }
+
+    @media (max-width: 768px) {
+      padding: 10px;
+      font-size: 1.6rem;
+
+      svg{
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 `
