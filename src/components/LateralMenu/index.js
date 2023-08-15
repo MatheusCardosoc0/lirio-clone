@@ -11,7 +11,6 @@ import { toggleMenu } from '../../redux/actions/menuActions';
 const LateralMenu = () => {
 
     const dispatch = useDispatch()
-    const menuState = useSelector(state => state.menu.isOpen)
 
     return (
         <LateralMenuContainer>
