@@ -5,6 +5,8 @@ import { FaArrowRight } from 'react-icons/fa'
 import { toggleMenu } from './redux/actions/menuActions';
 import Header from './components/Header';
 import { MainContainer } from './styles/Global';
+import Container from './components/Container';
+import { Outlet } from 'react-router-dom';
 
 
 function App() {
@@ -23,6 +25,9 @@ function App() {
           <FaArrowRight />
         </OpenButton>
       )}
+      <Container>
+        <Outlet />
+      </Container>
     </MainContainer>
   );
 }

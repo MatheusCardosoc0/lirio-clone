@@ -6,18 +6,7 @@ const HeaderContainer = styled.header`
   gap: 16px;
   overflow-x: scroll;
   padding-block: 20px;
- 
-  button{
-    font-weight: bold;
-    font-size: 1.4rem;
-    background: transparent;
-
-    &:hover{
-        color: #00b7ff;
-        transition: all;
-        transition-duration: 1s;
-    }
-  }
+  background-color: #ffffff;
 
   @media (min-width: 1440px) {
     overflow: initial;
@@ -39,16 +28,28 @@ const HeaderContainer = styled.header`
   }
 
   scrollbar-width: thin;
-  scrollbar-color: #000000 #F5F5F5; 
-  
+  scrollbar-color: #000000 #F5F5F5;  
 `;
+
+const TitleSectionButton = styled.button`
+  font-weight: bold;
+  font-size: 1.4rem;
+  background: transparent;
+  color: ${props => props.isSelected ? '#00b7ff' : 'black'};
+
+  &:hover{
+      color: #00b7ff;
+      transition: all;
+      transition-duration: 1s;
+  }
+`
 
 const OptionsForSectionContainer = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
-  background-color: white;
+  background-color: #f7f6f6;
   box-shadow: 0px 0px 4px #0000006e;
   z-index: 10;
   display: flex;
@@ -60,14 +61,20 @@ const OptionsForSectionContainer = styled.div`
   font-weight: bold;
   border-radius: 8px;
   height: 300px;
-  width: 200px;
+  width: 80%;
+  max-width: 300px;
   overflow-y: scroll;
   overflow-x: hidden;
+
+  @media (min-width: 768px) {
+    font-size: 3rem;
+  }
 
   a{
     padding-bottom: 4px;
     border-bottom: 2px solid #00000053;
     width: 100%;
+    text-decoration: none;
 
     &:hover{
       color: #3bb33b;
@@ -80,5 +87,6 @@ const OptionsForSectionContainer = styled.div`
 
 export {
   HeaderContainer,
-  OptionsForSectionContainer
+  OptionsForSectionContainer,
+  TitleSectionButton
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { OptionsForSectionContainer } from './HeaderStyle';
 import { OptionsForSectionConstants, TopMenuSectionsTitles } from './TopMenuSectionsTitles';
+import { Link } from 'react-router-dom';
 
 const OptionsForSection = ({ currentSection }) => {
 
@@ -9,9 +10,14 @@ const OptionsForSection = ({ currentSection }) => {
     return (
         <OptionsForSectionContainer>
             {OptionsForSectionConstants[currentSection].map(item => (
-                <a key={item}>
+                <Link
+                    key={item}
+                    to={`${currentSection.toLowerCase()}/${item.toLowerCase()}`}
+                    isClicked={item === currentSection}
+
+                >
                     {item}
-                </a>
+                </Link>
             ))}
         </OptionsForSectionContainer>
     );

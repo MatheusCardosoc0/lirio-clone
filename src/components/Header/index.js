@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HeaderContainer, OptionsForSectionContainer } from './HeaderStyle';
+import { HeaderContainer, OptionsForSectionContainer, TitleSectionButton } from './HeaderStyle';
 import { TopMenuSectionsTitles } from './TopMenuSectionsTitles';
 import OptionsForSection from './OptionsForSection';
 
@@ -18,9 +18,12 @@ const Header = () => {
         <HeaderContainer>
             {TopMenuSectionsTitles.map(item => (
                 <div key={item}>
-                    <button onClick={() => SetSection(item)}>
+                    <TitleSectionButton
+                        isSelected={item === currentSection}
+                        onClick={() => SetSection(item)}
+                    >
                         {item}
-                    </button>
+                    </TitleSectionButton>
                     {currentSection === item && (
                         <OptionsForSection currentSection={currentSection} />
                     )}
