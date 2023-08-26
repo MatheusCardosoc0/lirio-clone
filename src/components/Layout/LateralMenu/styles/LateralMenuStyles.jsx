@@ -70,6 +70,41 @@ const HelpButtons = styled.div`
   align-items: center;
   justify-items: center;
 
+  a{
+    background-color: #05eb5d;
+    color: black;
+    width: 90%;
+    max-width: 220px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-items: center;
+    gap: 6px;
+    border-radius: 8px;
+    text-decoration: none;
+
+    span{
+      font-weight: bolder;
+      font-size: 1.8rem;
+    }
+
+    svg{
+      width: 32px;
+      height: 32px;
+    }
+
+    @media (max-width: 768px) {
+      padding: 10px;
+      font-size: 1.6rem;
+
+      svg{
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
   button{
     background-color: #6ca4f7;
     color: black;
@@ -102,6 +137,17 @@ const HelpButtons = styled.div`
   }
 `
 
+const LogoContainer = styled.img`
+    width: 90%;
+    height: 90%;
+    margin-inline: auto;
+
+    @media (min-width: 768px){
+        width: 40%;
+        height: 40%;
+    }
+`
+
 const CloseButton = styled.button`
   height: 100%;
   width: 10%;
@@ -126,5 +172,6 @@ export {
   LateralMenuContainer,
   InviteButton,
   HelpButtons,
-  CloseButton
+  CloseButton,
+  LogoContainer
 }

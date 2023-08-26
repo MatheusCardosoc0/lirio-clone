@@ -1,9 +1,10 @@
 import React from 'react';
+import { Input1 } from '../../components/Inputs';
 
 const PessoasPage = () => {
     return (
         <div>
-            aaaaaa
+            <Input1 />
         </div>
     );
 }

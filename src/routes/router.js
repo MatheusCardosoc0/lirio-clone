@@ -1,8 +1,16 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import PessoasPage from "./PESSOAL/PessoasPage";
 import CentralDeAtendimentosPage from "./ATENDIMENTO/CentralDeAtendimentosPage";
 import App from "../App";
+
+const GuardedRoute = ({ children, redirectTo }) => {
+    if (window.location.pathname === "/") {
+        return <Navigate to={redirectTo} replace />;
+    }
+
+    return children;
+};
 
 export const router = createBrowserRouter([
     {
@@ -10,7 +18,16 @@ export const router = createBrowserRouter([
         element: <App />,
         children: [
             {
+                index: true,
                 path: '/',
+                element: (
+                    <GuardedRoute redirectTo="/Dashboard">
+                        {/* Seu componente base, caso haja algum */}
+                    </GuardedRoute>
+                )
+            },
+            {
+                path: "/Dashboard",
                 element: <Dashboard />
             },
             //PESSOAL

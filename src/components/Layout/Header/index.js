@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { HeaderContainer, OptionsForSectionContainer, TitleSectionButton } from './HeaderStyle';
-import { TopMenuSectionsTitles } from './TopMenuSectionsTitles';
-import OptionsForSection from './OptionsForSection';
+import { HeaderContainer, OptionsForSectionContainer, TitleSectionButton } from './styles/HeaderStyle';
+import { TopMenuSectionsTitles } from './utils/TopMenuSectionsTitles';
+import OptionsForSection from './components/OptionsForSection';
 
 const Header = () => {
     const [currentSection, setCurrentSection] = useState('');

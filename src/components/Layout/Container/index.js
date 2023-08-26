@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, NamePage } from './ContainerStyles';
+import { Box, NamePage } from './styles/ContainerStyles';
 import { useLocation } from 'react-router-dom';
 
 const Container = ({ children }) => {
@@ -9,7 +9,8 @@ const Container = ({ children }) => {
 
         const pats = urlDecode.split('/');
 
-        if (pats.length < 3) return urlDecode;
+        // Retorna a última parte da URL se houver menos de 3 segmentos
+        if (pats.length < 3) return pats[pats.length - 1];
 
         const word = pats[2];
 

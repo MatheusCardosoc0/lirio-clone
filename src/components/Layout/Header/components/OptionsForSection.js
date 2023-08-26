@@ -1,6 +1,6 @@
 import React from 'react';
-import { OptionsForSectionContainer } from './HeaderStyle';
-import { OptionsForSectionConstants, TopMenuSectionsTitles } from './TopMenuSectionsTitles';
+import { OptionsForSectionContainer } from '../styles/HeaderStyle';
+import { OptionsForSectionConstants, TopMenuSectionsTitles } from '../utils/TopMenuSectionsTitles';
 import { Link } from 'react-router-dom';
 
 const OptionsForSection = ({ currentSection }) => {
