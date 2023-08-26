@@ -1,6 +1,6 @@
 import { Navigate, Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import Dashboard from "./Dashboard";
-import PessoasPage from "./PESSOAL/PessoasPage";
+import PessoasPage from "./PESSOAL/Pessoas/PessoasPage";
 import CentralDeAtendimentosPage from "./ATENDIMENTO/CentralDeAtendimentosPage";
 import App from "../App";
 

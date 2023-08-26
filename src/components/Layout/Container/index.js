@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, NamePage } from './styles/ContainerStyles';
+import { Box, ContentContainer, NamePage } from './styles/ContainerStyles';
 import { useLocation } from 'react-router-dom';
 
 const Container = ({ children }) => {
@@ -26,7 +26,9 @@ const Container = ({ children }) => {
             <NamePage>
                 {transformUrl(location.pathname)}
             </NamePage>
-            {children}
+            <ContentContainer>
+                {children}
+            </ContentContainer>
         </Box>
     );
 }

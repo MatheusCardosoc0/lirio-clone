@@ -1,1 +1,1 @@
-export { Input1 } from './style/InputStyle1'
+export { default as BasicInput } from './InputType1'

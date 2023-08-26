@@ -2,8 +2,7 @@ import { styled } from "styled-components";
 
 const Box = styled.section`
   width: 100%;
-  height: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background-color: #dadaf7;
   box-shadow: 0px 0px 2px black;
 
@@ -24,7 +23,15 @@ const NamePage = styled.h2`
    font-weight: black;
 `
 
+const ContentContainer = styled.div`
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 80vh;
+    width: 100%;
+`
+
 export {
-    Box,
-    NamePage
+  Box,
+  NamePage,
+  ContentContainer
 }

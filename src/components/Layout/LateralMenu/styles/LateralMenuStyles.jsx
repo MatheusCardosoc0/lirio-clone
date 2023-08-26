@@ -8,6 +8,7 @@ const LateralMenuContainer = styled.section`
   display: flex;
   min-height: 100vh;
   position: fixed;
+  z-index: 100;
 
   div:nth-child(1){
     width: 100%;
