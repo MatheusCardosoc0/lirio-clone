@@ -3,13 +3,16 @@ import { InputStyle1 } from './style/InputStyle1';
 
 const BasicInput = ({
     label,
-    max
+    $isLarge,
+    onChange,
+    value
 }) => {
 
     return (
-        <InputStyle1 max={max} >
+        <InputStyle1 $isLarge={$isLarge} >
             <label htmlFor={label} >{label + ':'}</label>
-            <input id={label} />
+            <input id={label}
+                onChange={onChange} value={value} />
         </InputStyle1>
     );
 }

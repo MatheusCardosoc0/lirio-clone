@@ -1,26 +1,44 @@
 import React from 'react';
-import { StyledTable } from './styles/TableStyle1';
+import { StyledTable, TableContainer } from './styles/TableStyle1';
 
 const TablePrimary = ({ columns = [], data = [] }) => {
     return (
-        <StyledTable>
-            <thead>
-                <tr>
-                    {columns.map((column, index) => (
-                        <th key={index}>{column.label}</th>
-                    ))}
-                </tr>
-            </thead>
-            <tbody>
-                {data.map((row, rowIndex) => (
-                    <tr key={rowIndex}>
-                        {columns.map((column, colIndex) => (
-                            <td key={colIndex} data-label={column.label}>{row[column.filed]}</td>
+        <TableContainer>
+            <StyledTable>
+                <thead>
+                    <tr>
+                        {columns.map((column, index) => (
+                            <th key={index}>{column.label}</th>
                         ))}
                     </tr>
-                ))}
-            </tbody>
-        </StyledTable>
+                </thead>
+                <tbody>
+                    {data.map((row, rowIndex) => (
+                        <tr key={rowIndex}>
+                            {columns.map((column, colIndex) => (
+                                <td key={colIndex} data-label={column.label}>{row[column.filed]}</td>
+                            ))}
+                        </tr>
+                    ))}
+                </tbody>
+                {/* <thead>
+                    <tr>
+                        {Array.from({ length: 20 }).map((_, colIndex) => (
+                            <th key={colIndex}>{`Header ${colIndex + 1}`}</th>
+                        ))}
+                    </tr>
+                </thead>
+                <tbody>
+                    {Array.from({ length: 200 }).map((_, rowIndex) => (
+                        <tr key={rowIndex}>
+                            {Array.from({ length: 20 }).map((_, colIndex) => (
+                                <td key={colIndex}>{`Row ${rowIndex + 1} Col ${colIndex + 1}`}</td>
+                            ))}
+                        </tr>
+                    ))}
+                </tbody> */}
+            </StyledTable>
+        </TableContainer>
     );
 }
 

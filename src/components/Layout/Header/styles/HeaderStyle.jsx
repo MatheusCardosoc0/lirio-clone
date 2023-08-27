@@ -31,7 +31,7 @@ const HeaderContainer = styled.header`
   scrollbar-color: #000000 #F5F5F5;  
 `;
 
-const TitleSectionButton = styled.button`
+const TitleSectionButton = styled(({ isSelected, ...rest }) => <button {...rest} />)`
   font-weight: bold;
   font-size: 1.4rem;
   background: transparent;

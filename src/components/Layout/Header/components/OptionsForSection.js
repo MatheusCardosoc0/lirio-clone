@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 
 const OptionsForSection = ({ currentSection }) => {
 
-    console.log(OptionsForSectionConstants[currentSection])
-
     return (
         <OptionsForSectionContainer>
             {OptionsForSectionConstants[currentSection].map(item => (

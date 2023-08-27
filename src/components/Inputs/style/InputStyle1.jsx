@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const InputStyle1 = styled.div`
   width: 100%;
-  max-width: ${(props) => (props.max ? "100%" : "200px")};
+  max-width: ${(props) => (props.$isLarge ? "100%" : "200px")};
   background-color: white;
   font-size: 2rem;
   display: flex;

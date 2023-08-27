@@ -1,6 +1,6 @@
 import { Navigate, Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
 import Dashboard from "./Dashboard";
-import PessoasPage from "./PESSOAL/Pessoas/PessoasPage";
+import Pessoas from "./PESSOAL/Pessoas";
 import CentralDeAtendimentosPage from "./ATENDIMENTO/CentralDeAtendimentosPage";
 import App from "../App";
 
@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
             //PESSOAL
             {
                 path: '/pessoal/pessoas',
-                element: <PessoasPage />
+                element: <Pessoas />
             },
             //ATENDIMENTO
             {
