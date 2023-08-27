@@ -1,0 +1,1 @@
+export { default as TablePrimary } from './TableType1'
