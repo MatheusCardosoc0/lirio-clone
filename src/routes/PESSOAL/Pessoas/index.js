@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BasicInput } from '../../../components/Inputs';
-import { AiOutlineSearch } from 'react-icons/ai'
+import { AiOutlinePlus, AiOutlineSearch } from 'react-icons/ai'
 import { InputContainer } from './styles/InputContainer';
 import { ButtonStyle1 } from '../../../components/Buttons';
 import { PersonContainer } from './styles/PersonContainer';
@@ -8,11 +8,15 @@ import { TablePrimary } from '../../../components/Table';
 import { api } from '../../../libs/api';
 import { useDispatch, useSelector } from 'react-redux';
 import { SearchTermPersonId, SearchTermPersonName } from '../../../redux/actions/personActions';
+import { OptionButton, OptionsContainer } from './styles/OptionsContainer';
+import { useNavigate } from 'react-router-dom'
 
 const PessoasPage = () => {
 
-    const [allPersons, setAllPersons] = useState([]); // Guardar todos os dados
-    const [filteredPersons, setFilteredPersons] = useState([]); // Guardar dados filtrados
+    const [allPersons, setAllPersons] = useState([]);
+    const [filteredPersons, setFilteredPersons] = useState([]);
+
+    const navigation = useNavigate()
 
     async function getPersons() {
         try {
@@ -51,6 +55,11 @@ const PessoasPage = () => {
 
     return (
         <PersonContainer>
+            <OptionsContainer>
+                <OptionButton $color="green" onClick={() => navigation("/pessoal/pessoas/new_person")} >
+                    <AiOutlinePlus />
+                </OptionButton>
+            </OptionsContainer>
             <InputContainer>
                 <BasicInput
                     label={"Id"}

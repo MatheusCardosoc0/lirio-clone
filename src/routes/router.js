@@ -3,6 +3,7 @@ import Dashboard from "./Dashboard";
 import Pessoas from "./PESSOAL/Pessoas";
 import CentralDeAtendimentosPage from "./ATENDIMENTO/CentralDeAtendimentosPage";
 import App from "../App";
+import NewPerson from "./PESSOAL/Pessoas/NewPerson";
 
 const GuardedRoute = ({ children, redirectTo }) => {
     if (window.location.pathname === "/") {
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
             {
                 path: '/pessoal/pessoas',
                 element: <Pessoas />
+            },
+            {
+                path: '/pessoal/pessoas/new_person',
+                element: <NewPerson />
             },
             //ATENDIMENTO
             {

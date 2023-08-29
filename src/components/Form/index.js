@@ -1,0 +1,1 @@
+export { default as PrimaryForm } from './FormType1'
