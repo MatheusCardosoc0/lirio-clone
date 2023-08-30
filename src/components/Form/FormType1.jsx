@@ -8,7 +8,7 @@ const FormType1 = ({
     children,
     onSubmit,
     urlCancel,
-    urlSave
+    Title = ''
 }) => {
 
     const navigate = useNavigate()
@@ -20,7 +20,7 @@ const FormType1 = ({
             </CloseButton>
             <header>
                 <h2>
-                    Cadastro de pessoas
+                    {Title}
                 </h2>
             </header>
             <main>

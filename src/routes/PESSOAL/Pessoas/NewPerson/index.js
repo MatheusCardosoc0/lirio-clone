@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import { PrimaryForm } from '../../../../components/Form';
-import { BasicInput } from '../../../../components/Inputs';
-import { InputContainerNewPerson } from './styles/InputContainerNewPerson';
-import { api } from '../../../../libs/api';
+import { useState } from "react"
+import { api } from "../../../../libs/api"
+import { PrimaryForm } from "../../../../components/Form"
+import { InputContainerPerson } from "../styles/InputContainerPerson"
+import { BasicInput } from "../../../../components/Inputs"
+import { useNavigate } from "react-router-dom"
+
 
 const NewPerson = () => {
 
@@ -10,6 +12,8 @@ const NewPerson = () => {
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
     const [age, setAge] = useState(0)
+
+    const navigate = useNavigate()
 
     async function handleSubmit(event) {
         event.preventDefault()
@@ -23,6 +27,8 @@ const NewPerson = () => {
             })
 
             alert("Ok")
+
+            navigate("pessoal/pessoas")
         } catch (error) {
             alert("Error")
             console.log(error)
@@ -31,10 +37,11 @@ const NewPerson = () => {
 
     return (
         <PrimaryForm
+            Title="Cadastro de pessoas"
             urlCancel={"/pessoal/pessoas"}
             onSubmit={handleSubmit}
         >
-            <InputContainerNewPerson>
+            <InputContainerPerson>
                 <BasicInput label={"Nome"} $isLarge
                     onChange={e => setName(e.target.value)} />
                 <BasicInput label={"Email"} $isLarge
@@ -43,7 +50,7 @@ const NewPerson = () => {
                     onChange={e => setPhone(e.target.value)} />
                 <BasicInput label={"Idade"} $isLarge
                     onChange={e => setAge(e.target.value)} />
-            </InputContainerNewPerson>
+            </InputContainerPerson>
         </PrimaryForm>
     );
 }

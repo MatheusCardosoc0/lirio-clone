@@ -1,7 +1,14 @@
 import React from 'react';
 import { StyledTable, TableContainer } from './styles/TableStyle1';
+import { Link } from 'react-router-dom';
 
-const TablePrimary = ({ columns = [], data = [] }) => {
+const TablePrimary = (
+    {
+        columns = [],
+        data = [],
+        navigateTo
+    }) => {
+
     return (
         <TableContainer>
             <StyledTable>
@@ -16,7 +23,13 @@ const TablePrimary = ({ columns = [], data = [] }) => {
                     {data.map((row, rowIndex) => (
                         <tr key={rowIndex}>
                             {columns.map((column, colIndex) => (
-                                <td key={colIndex} data-label={column.label}>{row[column.filed]}</td>
+                                <td key={colIndex} data-label={column.label}>
+                                    <Link
+                                        to={`${navigateTo}/${row.id}`}
+                                    >
+                                        {row[column.filed]}
+                                    </Link>
+                                </td>
                             ))}
                         </tr>
                     ))}

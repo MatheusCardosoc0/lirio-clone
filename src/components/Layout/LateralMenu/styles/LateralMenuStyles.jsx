@@ -81,13 +81,13 @@ const HelpButtons = styled.div`
     flex-direction: row;
     align-items: center;
     justify-items: center;
-    gap: 6px;
+    gap: 8px;
     border-radius: 8px;
     text-decoration: none;
 
     span{
       font-weight: bolder;
-      font-size: 1.8rem;
+      font-size: 2rem;
     }
 
     svg{

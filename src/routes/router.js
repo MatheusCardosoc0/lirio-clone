@@ -4,6 +4,8 @@ import Pessoas from "./PESSOAL/Pessoas";
 import CentralDeAtendimentosPage from "./ATENDIMENTO/CentralDeAtendimentosPage";
 import App from "../App";
 import NewPerson from "./PESSOAL/Pessoas/NewPerson";
+import SearchPerson from "./PESSOAL/Pessoas/SearchPersons";
+import ChangePerson from "./PESSOAL/Pessoas/ChangePerson";
 
 const GuardedRoute = ({ children, redirectTo }) => {
     if (window.location.pathname === "/") {
@@ -34,12 +36,24 @@ export const router = createBrowserRouter([
             //PESSOAL
             {
                 path: '/pessoal/pessoas',
-                element: <Pessoas />
+                element: <Pessoas />,
+                children: [
+                    {
+                        path: '/pessoal/pessoas',
+                        element: <SearchPerson />,
+                        index: true
+                    },
+                    {
+                        path: '/pessoal/pessoas/new_person',
+                        element: <NewPerson />
+                    },
+                    {
+                        path: '/pessoal/pessoas/change/:id',
+                        element: <ChangePerson />
+                    },
+                ]
             },
-            {
-                path: '/pessoal/pessoas/new_person',
-                element: <NewPerson />
-            },
+
             //ATENDIMENTO
             {
                 path: 'atendimento/central de atendimentos',
