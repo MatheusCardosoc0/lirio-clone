@@ -1,9 +1,8 @@
 import { useState } from "react"
-import { api } from "../../../../libs/api"
 import { PrimaryForm } from "../../../../components/Form"
 import { InputContainerPerson } from "../styles/InputContainerPerson"
 import { BasicInput } from "../../../../components/Inputs"
-import { useNavigate } from "react-router-dom"
+import { useSubmitDataPost } from "../../../../functions/useSubmitDataPost"
 
 
 const NewPerson = () => {
@@ -13,33 +12,19 @@ const NewPerson = () => {
     const [phone, setPhone] = useState('')
     const [age, setAge] = useState(0)
 
-    const navigate = useNavigate()
-
-    async function handleSubmit(event) {
-        event.preventDefault()
-
-        try {
-            await api.post('/api/user', {
-                name,
-                email,
-                phone,
-                age
-            })
-
-            alert("Ok")
-
-            navigate("pessoal/pessoas")
-        } catch (error) {
-            alert("Error")
-            console.log(error)
-        }
-    }
+    const handleSubmit = useSubmitDataPost('/api/person')
 
     return (
         <PrimaryForm
             Title="Cadastro de pessoas"
             urlCancel={"/pessoal/pessoas"}
-            onSubmit={handleSubmit}
+            onSubmit={(e) => handleSubmit(e, "/pessoal/pessoas", {
+                name,
+                email,
+                phone,
+                age
+            }
+            )}
         >
             <InputContainerPerson>
                 <BasicInput label={"Nome"} $isLarge

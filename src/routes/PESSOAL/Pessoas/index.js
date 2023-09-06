@@ -1,5 +1,5 @@
 import { Outlet, useNavigate } from "react-router-dom";
-import { OptionButton, OptionsContainer } from "./styles/OptionsContainer";
+import { OptionButton, OptionsContainer } from "../../../components/containers";
 import { AiOutlinePlus } from "react-icons/ai";
 
 const Container = () => {

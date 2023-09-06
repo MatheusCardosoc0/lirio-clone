@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const PersonContainer = styled.section`
+export const BasicSearchContainer = styled.section`
   display: flex;
   flex-direction: column;
   gap: 12px;

@@ -8,7 +8,8 @@ const FormType1 = ({
     children,
     onSubmit,
     urlCancel,
-    Title = ''
+    Title = '',
+    removeFunction
 }) => {
 
     const navigate = useNavigate()
@@ -27,9 +28,23 @@ const FormType1 = ({
                 {children}
             </main>
             <footer>
-                <ButtonStyle1 $color={"green"} $max_width={"140px"}>
+                <ButtonStyle1
+                    $color={"green"}
+                    $max_width={"140px"}
+                    type='submit'
+                >
                     SALVAR
                 </ButtonStyle1>
+                {removeFunction && (
+                    <ButtonStyle1
+                        $color={"red"}
+                        $max_width={"140px"}
+                        type='button'
+                        onClick={removeFunction}
+                    >
+                        Remover
+                    </ButtonStyle1>
+                )}
             </footer>
         </FormStyle1 >
     );

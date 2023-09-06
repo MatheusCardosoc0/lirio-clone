@@ -4,6 +4,7 @@ import { BasicInput } from '../../../../components/Inputs';
 import { InputContainerPerson } from '../styles/InputContainerPerson';
 import { api } from '../../../../libs/api';
 import { useNavigate, useParams } from 'react-router-dom';
+import useSubmitDataPut from '../../../../functions/useSubmitDataPut';
 
 const ChangePerson = () => {
 
@@ -17,7 +18,7 @@ const ChangePerson = () => {
 
     async function GetSpecificPerson(id) {
         try {
-            const response = await api.get(`api/user/${id}`)
+            const response = await api.get(`api/person/${id}`)
             const { data } = response
 
             setName(data.name)
@@ -33,32 +34,34 @@ const ChangePerson = () => {
         GetSpecificPerson(id)
     }, [])
 
-    async function handleSubmit(event) {
-        event.preventDefault()
 
+
+    async function DeletePerson() {
         try {
-            await api.put(`/api/user/${id}`, {
-                id,
-                name,
-                email,
-                phone,
-                age
-            })
+            await api.delete(`/api/person/${id}`)
 
-            alert("Ok")
+            alert("Pessoa removida")
 
             navigate("/pessoal/pessoas")
         } catch (error) {
-            alert("Error")
             console.log(error)
         }
     }
+
+    const handleSubmit = useSubmitDataPut("/api/person/", "/pessoal/pessoas", id)
 
     return (
         <PrimaryForm
             Title='Alterar Pessoa'
             urlCancel={"/pessoal/pessoas"}
-            onSubmit={handleSubmit}
+            onSubmit={e => handleSubmit(e, {
+                id,
+                name,
+                email,
+                phone,
+                age
+            })}
+            removeFunction={() => DeletePerson()}
         >
             <InputContainerPerson>
                 <BasicInput label={"Nome"} $isLarge

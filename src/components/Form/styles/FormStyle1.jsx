@@ -17,16 +17,15 @@ const FormStyle1 = styled.form`
     font-size: 2.4rem;
     font-weight: bold;
 
-    text-align: start;
-    background-color: #ff7300;
-    color: white;
+    text-align: start;  
+    color: #000000;
   }
   main{
     padding: 8px;
   }
   footer{
-    background-color: #ff7300;
     padding: 8px;
+    gap: 12px;
     
     display: flex;
     align-items: start;
@@ -50,6 +49,6 @@ const CloseButton = styled.button`
 `
 
 export {
-    FormStyle1,
-    CloseButton
+  FormStyle1,
+  CloseButton
 }
