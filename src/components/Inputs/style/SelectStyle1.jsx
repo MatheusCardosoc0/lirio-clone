@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const InputStyle1 = styled.div`
+export const SelectStyle1 = styled.div`
   width: 100%;
   max-width: ${(props) => (props.$isLarge ? "100%" : "200px")};
   background-color: white;
@@ -12,7 +12,7 @@ export const InputStyle1 = styled.div`
   position: relative;
   padding-top: 24px;
 
-  input {
+  select {
     border: none;
     padding: 6px;
     width: 100%;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const InputStyle1 = styled.div`
+export const InputStyleConsult = styled.div`
   width: 100%;
   max-width: ${(props) => (props.$isLarge ? "100%" : "200px")};
   background-color: white;
@@ -37,5 +37,20 @@ export const InputStyle1 = styled.div`
   &:focus-within label {
     transform: scale(0.7);
     top: -2px;
+  }
+
+  button {
+    border-radius: 100%;
+    position: absolute;
+    color: white;
+    background-color: #4f3dec;
+    padding: 6px;
+
+    top: 20%;
+    right: 1%;
+    svg{
+      font-size: 2.4rem;
+     
+    }
   }
 `;
