@@ -6,25 +6,19 @@ import useSubmitDataPut from '../../../../functions/useSubmitDataPut';
 import useDeleteData from '../../../../functions/useDeleteData';
 import useGetDataSpecific from '../../../../functions/useGetDataSpecific';
 
-const ChangePerson = () => {
+const ChangeGroup = () => {
 
     const [data, setData] = useState({
-        name: '',
-        email: '',
-        age: 0,
-        phone: ''
+        name: ''
     })
     const {
-        age,
-        email,
-        name,
-        phone
+        name
     } = data
 
     const { id } = useParams()
 
-    const urlApi = "/api/person/"
-    const urlReturn = "/pessoal/pessoas"
+    const urlApi = "/api/group/"
+    const urlReturn = "/pessoal/grupos"
 
     useGetDataSpecific(id, `${urlApi}`, setData)
 
@@ -34,14 +28,11 @@ const ChangePerson = () => {
 
     return (
         <PrimaryForm
-            Title='Alterar Pessoa'
-            urlCancel={"/pessoal/pessoas"}
+            Title='Alterar Grupo'
+            urlCancel={urlReturn}
             onSubmit={e => handleSubmit(e, {
                 id,
                 name,
-                email,
-                phone,
-                age
             })}
             removeFunction={() => DeletePerson()}
         >
@@ -50,21 +41,9 @@ const ChangePerson = () => {
                     onChange={e => setData({ ...data, name: e.target.value })}
                     value={name}
                 />
-                <BasicInput label={"Email"} $isLarge
-                    onChange={e => setData({ ...data, email: e.target.value })}
-                    value={email}
-                />
-                <BasicInput label={"Telefone"} $isLarge
-                    onChange={e => setData({ ...data, phone: e.target.value })}
-                    value={phone}
-                />
-                <BasicInput label={"Idade"} $isLarge
-                    onChange={e => setData({ ...data, age: e.target.value })}
-                    value={age}
-                />
             </BasicGridContainerForm>
         </PrimaryForm>
     );
 }
 
-export default ChangePerson;
+export default ChangeGroup;

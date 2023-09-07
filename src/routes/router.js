@@ -1,11 +1,19 @@
-import { Navigate, Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import Dashboard from "./Dashboard";
-import Pessoas from "./PESSOAL/Pessoas";
 import CentralDeAtendimentosPage from "./ATENDIMENTO/CentralDeAtendimentosPage";
 import App from "../App";
+import Pessoas from "./PESSOAL/Pessoas";
 import NewPerson from "./PESSOAL/Pessoas/NewPerson";
-import SearchPerson from "./PESSOAL/Pessoas/SearchPersons";
+import SearchPersons from "./PESSOAL/Pessoas/SearchPersons";
 import ChangePerson from "./PESSOAL/Pessoas/ChangePerson";
+import Grupos from "./PESSOAL/Grupos"
+import NewGroup from "./PESSOAL/Grupos/NewGroup";
+import SearchGroups from "./PESSOAL/Grupos/SearchGroups";
+import ChangeGroup from "./PESSOAL/Grupos/ChangeGroup";
+import Cidade from "./PESSOAL/Cidades";
+import NewCity from "./PESSOAL/Cidades/NewCity";
+import SearchCities from "./PESSOAL/Cidades/SearchCities";
+import ChangeCity from "./PESSOAL/Cidades/ChangeCity";
 
 const GuardedRoute = ({ children, redirectTo }) => {
     if (window.location.pathname === "/") {
@@ -40,7 +48,7 @@ export const router = createBrowserRouter([
                 children: [
                     {
                         path: '/pessoal/pessoas',
-                        element: <SearchPerson />,
+                        element: <SearchPersons />,
                         index: true
                     },
                     {
@@ -51,6 +59,44 @@ export const router = createBrowserRouter([
                         path: '/pessoal/pessoas/change/:id',
                         element: <ChangePerson />
                     },
+                ]
+            },
+            {
+                path: '/pessoal/grupos',
+                element: <Grupos />,
+                children: [
+                    {
+                        path: '/pessoal/grupos',
+                        element: <SearchGroups />,
+                        index: true
+                    },
+                    {
+                        path: '/pessoal/grupos/new_group',
+                        element: <NewGroup />
+                    },
+                    {
+                        path: '/pessoal/grupos/change/:id',
+                        element: <ChangeGroup />
+                    }
+                ]
+            },
+            {
+                path: '/pessoal/cidades',
+                element: <Cidade />,
+                children: [
+                    {
+                        path: '/pessoal/cidades',
+                        element: <SearchCities />,
+                        index: true
+                    },
+                    {
+                        path: '/pessoal/cidades/new_city',
+                        element: <NewCity />
+                    },
+                    {
+                        path: '/pessoal/cidades/change/:id',
+                        element: <ChangeCity />
+                    }
                 ]
             },
 

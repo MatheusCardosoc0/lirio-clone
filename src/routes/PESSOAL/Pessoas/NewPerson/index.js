@@ -1,6 +1,5 @@
 import { useState } from "react"
-import { PrimaryForm } from "../../../../components/Form"
-import { InputContainerPerson } from "../styles/InputContainerPerson"
+import { BasicGridContainerForm, PrimaryForm } from "../../../../components/Form"
 import { BasicInput } from "../../../../components/Inputs"
 import { useSubmitDataPost } from "../../../../functions/useSubmitDataPost"
 
@@ -26,7 +25,7 @@ const NewPerson = () => {
             }
             )}
         >
-            <InputContainerPerson>
+            <BasicGridContainerForm>
                 <BasicInput label={"Nome"} $isLarge
                     onChange={e => setName(e.target.value)} />
                 <BasicInput label={"Email"} $isLarge
@@ -35,7 +34,7 @@ const NewPerson = () => {
                     onChange={e => setPhone(e.target.value)} />
                 <BasicInput label={"Idade"} $isLarge
                     onChange={e => setAge(e.target.value)} />
-            </InputContainerPerson>
+            </BasicGridContainerForm>
         </PrimaryForm>
     );
 }

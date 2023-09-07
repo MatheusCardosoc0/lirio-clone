@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { InputContainer } from './styles/InputContainer';
 import { BasicInput } from '../Inputs';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,18 +10,8 @@ const BasicFilterElement = ({
     dataList,
     setFilteredDataList
 }) => {
-    const dispatch = useDispatch();
-
-    const handleSetSearchTermName = (str) => {
-        dispatch(SearchTermPersonName(str));
-    };
-
-    const handleSetSearchTermId = (str) => {
-        dispatch(SearchTermPersonId(str));
-    };
-
-    const isSearchTermName = useSelector(state => state.pessoal.searchTermName)
-    const isSearchTermId = useSelector(state => state.pessoal.searchTermId)
+    const [isSearchTermId, setIsSearchTermId] = useState('')
+    const [isSearchTermName, setIsSearchTermName] = useState('')
 
     const filterPerson = () => {
         const filter = dataList.filter(person =>
@@ -36,13 +26,13 @@ const BasicFilterElement = ({
             <BasicInput
                 label={"Id"}
                 $isLarge
-                onChange={e => handleSetSearchTermId(e.target.value)}
+                onChange={e => setIsSearchTermId(e.target.value)}
                 value={isSearchTermId}
             />
             <div>
                 <BasicInput
                     max label={"Nome"}
-                    onChange={e => handleSetSearchTermName(e.target.value)}
+                    onChange={e => setIsSearchTermName(e.target.value)}
                     value={isSearchTermName}
                 />
                 <ButtonStyle1
