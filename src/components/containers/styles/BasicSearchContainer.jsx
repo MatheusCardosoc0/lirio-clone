@@ -10,6 +10,6 @@ export const BasicSearchContainer = styled.section`
   @media (min-width: 1024px) {
     justify-content: start;
     align-items: start;
-    padding-left: 32px;
+    padding-left: 96px;
   }
 `

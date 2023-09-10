@@ -23,6 +23,7 @@ const SearchCities = () => {
                     { label: "ID", filed: "id" },
                     { label: "Nome", filed: "name" },
                     { label: "№ IBGE", filed: "ibgNumber" },
+                    { label: "Estado", filed: "state" }
                 ]}
             />
         </BasicSearchContainer>

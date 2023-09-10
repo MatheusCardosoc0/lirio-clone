@@ -8,7 +8,8 @@ const ConsultInput = ({
     $isLarge,
     onChange,
     value,
-    openModal
+    openModal,
+    title
 }) => {
 
     return (
@@ -17,7 +18,7 @@ const ConsultInput = ({
             <input id={label}
                 onChange={onChange} value={value} />
 
-            <button onClick={openModal} type='button' >
+            <button onClick={openModal} type='button' title={title || 'Consultar Api'}>
                 <BsRssFill />
             </button>
         </InputStyleConsult>

@@ -19,6 +19,7 @@ function App() {
       {menuState && <LateralMenu />}
       {!menuState && (
         <OpenButton
+          title='Abrir menu lateral'
           onClick={() => dispatch(toggleMenu())}
         >
           <FaArrowLeft />

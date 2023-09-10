@@ -43,13 +43,17 @@ const NewCity = () => {
                     <BasicInput
                         label={"Nome"}
                         $isLarge
-                        onChange={e => setName(e.target.value)} />
+                        onChange={e => setName(e.target.value)}
+                        value={name}
+                    />
                     <div>
                         <ConsultInput
                             label={"№ IBGE"}
                             $isLarge
                             openModal={CheckForOpenModal}
-                            onChange={e => setIbgeNumber(e.target.value)} />
+                            onChange={e => setIbgeNumber(e.target.value)}
+                            value={ibgNumber}
+                        />
                         <BasicSelect
                             label={"UF"}
                             $isLarge
@@ -63,6 +67,8 @@ const NewCity = () => {
                 <BasicModal
                     IDForUrl={state}
                     closeModal={() => setIsOpenModal(false)}
+                    setValueId={setIbgeNumber}
+                    setValueName={setName}
                 />
             )}
         </>

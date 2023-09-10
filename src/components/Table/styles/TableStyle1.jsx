@@ -58,6 +58,13 @@ const StyledTable = styled.table`
     cursor: pointer;
   }
 
+  button{
+    width: 100%;
+    height: 100%;
+    text-align: start;
+    background-color: transparent;
+  }
+
   @media (max-width: 500px) {
     font-size: 1.4rem;
   }

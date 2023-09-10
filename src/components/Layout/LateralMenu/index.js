@@ -39,6 +39,7 @@ const LateralMenu = () => {
 
             <CloseButton
                 onClick={() => dispatch(toggleMenu())}
+                title='Fechar menu lateral'
             >
                 <FaArrowLeft />
             </CloseButton>

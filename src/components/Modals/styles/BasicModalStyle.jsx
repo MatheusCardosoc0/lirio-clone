@@ -24,20 +24,5 @@ export const BasicModalStyle = styled.section`
     position: relative;
     width: 100%;
     height: 100%;
-
-    button:nth-child(1){
-       border-radius: 100%;
-       position: absolute;
-       padding: 4px;
-       background-color: red;
-       color: white;
-       display: flex;
-       align-items: center;
-
-       font-size: 3rem;
-
-       top: 0%;
-       right: 0%;
-    }
   }
 `
