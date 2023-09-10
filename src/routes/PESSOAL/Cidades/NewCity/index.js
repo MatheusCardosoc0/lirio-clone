@@ -2,6 +2,8 @@ import { useState } from "react"
 import { BasicGridContainerForm, PrimaryForm } from "../../../../components/Form"
 import { BasicInput, BasicSelect, ConsultInput } from "../../../../components/Inputs"
 import { useSubmitDataPost } from "../../../../functions/useSubmitDataPost"
+import { UFBRStates } from "../../../../utils/UFBRStates"
+import { BasicModal } from "../../../../components/Modals"
 
 
 const NewCity = () => {
@@ -10,29 +12,60 @@ const NewCity = () => {
     const [ibgNumber, setIbgeNumber] = useState('')
     const [state, setState] = useState('')
 
-    const urlApi = "/api/group/"
-    const urlReturn = "/pessoal/grupos"
+    const [isOpenModal, setIsOpenModal] = useState(false)
+
+    const urlApi = "/api/city/"
+    const urlReturn = "/pessoal/cidades"
 
     const handleSubmit = useSubmitDataPost(`${urlApi}`)
 
+    const CheckForOpenModal = () => {
+        if (state === '') {
+            return alert("Preencha o campo estado")
+        }
+
+        setIsOpenModal(true)
+    }
+
     return (
-        <PrimaryForm
-            Title="Cadastro de Grupos"
-            urlCancel={urlReturn}
-            onSubmit={(e) => handleSubmit(e, urlReturn, {
-                name,
-            }
+        <>
+            <PrimaryForm
+                Title="Cadastro de Cdades"
+                urlCancel={urlReturn}
+                onSubmit={(e) => handleSubmit(e, urlReturn, {
+                    name,
+                    ibgNumber,
+                    state
+                }
+                )}
+            >
+                <BasicGridContainerForm>
+                    <BasicInput
+                        label={"Nome"}
+                        $isLarge
+                        onChange={e => setName(e.target.value)} />
+                    <div>
+                        <ConsultInput
+                            label={"№ IBGE"}
+                            $isLarge
+                            openModal={CheckForOpenModal}
+                            onChange={e => setIbgeNumber(e.target.value)} />
+                        <BasicSelect
+                            label={"UF"}
+                            $isLarge
+                            onChange={e => setState(e.target.value)}
+                            options={UFBRStates}
+                        />
+                    </div>
+                </BasicGridContainerForm>
+            </PrimaryForm>
+            {isOpenModal && (
+                <BasicModal
+                    IDForUrl={state}
+                    closeModal={() => setIsOpenModal(false)}
+                />
             )}
-        >
-            <BasicGridContainerForm>
-                <BasicInput label={"Nome"} $isLarge
-                    onChange={e => setName(e.target.value)} />
-                <ConsultInput label={"№ IBGE"} $isLarge
-                    onChange={e => setIbgeNumber(e.target.value)} />
-                <BasicSelect label={"UF"} $isLarge
-                    onChange={e => setState(e.target.value)} />
-            </BasicGridContainerForm>
-        </PrimaryForm>
+        </>
     );
 }
 

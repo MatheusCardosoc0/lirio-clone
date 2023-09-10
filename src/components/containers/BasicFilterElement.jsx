@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 import { InputContainer } from './styles/InputContainer';
 import { BasicInput } from '../Inputs';
-import { useDispatch, useSelector } from 'react-redux';
-import { SearchTermPersonId, SearchTermPersonName } from '../../redux/actions/personActions';
 import { ButtonStyle1 } from '../Buttons';
 import { AiOutlineSearch } from 'react-icons/ai';
 
 const BasicFilterElement = ({
     dataList,
-    setFilteredDataList
+    setFilteredDataList,
+    label1 = 'ID',
+    label2 = 'Nome'
 }) => {
     const [isSearchTermId, setIsSearchTermId] = useState('')
     const [isSearchTermName, setIsSearchTermName] = useState('')
 
-    const filterPerson = () => {
-        const filter = dataList.filter(person =>
-            person.id.toLowerCase().includes(isSearchTermId.toLowerCase()) && person.name.toLowerCase().includes(isSearchTermName.toLowerCase())
-        );
+    const filterData = () => {
+        const filter = dataList.filter(Data => {
+            const id = String(Data.id).toLowerCase();
+            const nameOrNome = Data.name ? Data.name.toLowerCase() : Data.nome ? Data.nome.toLowerCase() : '';
+            return id.includes(isSearchTermId.toLowerCase()) && nameOrNome.includes(isSearchTermName.toLowerCase());
+        });
 
         setFilteredDataList(filter);
     };
@@ -24,19 +26,20 @@ const BasicFilterElement = ({
     return (
         <InputContainer>
             <BasicInput
-                label={"Id"}
+                label={label1}
                 $isLarge
                 onChange={e => setIsSearchTermId(e.target.value)}
                 value={isSearchTermId}
             />
             <div>
                 <BasicInput
-                    max label={"Nome"}
+                    max
+                    label={label2}
                     onChange={e => setIsSearchTermName(e.target.value)}
                     value={isSearchTermName}
                 />
                 <ButtonStyle1
-                    onClick={() => filterPerson()} // Corrigido
+                    onClick={() => filterData()} // Corrigido
                 >
                     <AiOutlineSearch />
                     Filtrar

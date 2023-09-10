@@ -7,18 +7,20 @@ const BasicSelect = ({
     $isLarge,
     onChange,
     value,
-    openModal
+    options = []
 }) => {
 
     return (
         <SelectStyle1 $isLarge={$isLarge} >
             <label htmlFor={label} >{label + ':'}</label>
             <select id={label}
-                onChange={onChange} value={value} />
-
-            <button onClick={openModal} >
-                <BsRssFill />
-            </button>
+                onChange={onChange} value={value}>
+                {options.map((item, index) => (
+                    <option key={index} value={item.name} >
+                        {item.name}
+                    </option>
+                ))}
+            </select>
         </SelectStyle1>
     );
 }

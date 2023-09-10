@@ -17,7 +17,7 @@ const ConsultInput = ({
             <input id={label}
                 onChange={onChange} value={value} />
 
-            <button onClick={openModal} >
+            <button onClick={openModal} type='button' >
                 <BsRssFill />
             </button>
         </InputStyleConsult>

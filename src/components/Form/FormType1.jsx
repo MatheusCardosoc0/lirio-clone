@@ -33,7 +33,7 @@ const FormType1 = ({
                     $max_width={"140px"}
                     type='submit'
                 >
-                    SALVAR
+                    Salvar
                 </ButtonStyle1>
                 {removeFunction && (
                     <ButtonStyle1
