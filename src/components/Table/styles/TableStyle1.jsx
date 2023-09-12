@@ -26,18 +26,19 @@ const TableContainer = styled.div`
 
 const StyledTable = styled.table`
   width: 100%;
-  max-width: 100%; // Alterado para adaptar à tela
+  
   border-collapse: collapse;
   margin: 20px 0;
   box-shadow: 0px 0px 2px #00000092;
   border-radius: 4px;
   font-size: 1.6rem;
-  overflow: auto; // Adicionado rolagem horizontal
+  overflow: auto;
 
   th, td {
     padding: 10px 15px;
     text-align: left;
     border: 1px solid #ddd;
+    white-space: nowrap;
   }
 
   th {

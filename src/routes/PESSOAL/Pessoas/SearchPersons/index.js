@@ -25,8 +25,8 @@ const SearchPerson = () => {
                     { label: "Email", filed: "email" },
                     { label: "Telefone", filed: "phone" },
                     { label: "Idade", filed: "age" },
-                    { label: "Grupo", filed: `${(row) => row.group && row.group.name}` },
-                    { label: "Cidade", filed: "city.name" }
+                    { label: "Grupo", filed: `group` },
+                    { label: "Cidade", filed: "city" }
                 ]}
             />
         </BasicSearchContainer>

@@ -30,7 +30,7 @@ const TablePrimary = (
                                         <Link
                                             to={`${navigateTo}/${row.id}`}
                                         >
-                                            {row[column.filed]}
+                                            {row[column.filed] && typeof row[column.filed] === 'object' ? row[column.filed].name : row[column.filed]}
                                         </Link>
                                     )}
                                     {setValueFunction && (
@@ -41,7 +41,7 @@ const TablePrimary = (
                                                     setValueFunction(row.id, row.nome || row.name)
                                             }}
                                         >
-                                            {row[column.filed]}
+                                            {row[column.filed] && typeof row[column.filed] === 'object' ? row[column.filed].name : row[column.filed]}
                                         </button>
                                     )}
                                 </td>
