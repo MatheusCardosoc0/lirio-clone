@@ -7,7 +7,8 @@ const TablePrimary = (
         columns = [],
         data = [],
         navigateTo,
-        setValueFunction
+        setValueFunction,
+        setValueObject
     }) => {
 
     return (
@@ -34,7 +35,11 @@ const TablePrimary = (
                                     )}
                                     {setValueFunction && (
                                         <button
-                                            onClick={() => setValueFunction(row.id, row.nome || row.name)}
+                                            onClick={() => {
+                                                setValueObject ? setValueFunction('', '', { ...row })
+                                                    :
+                                                    setValueFunction(row.id, row.nome || row.name)
+                                            }}
                                         >
                                             {row[column.filed]}
                                         </button>

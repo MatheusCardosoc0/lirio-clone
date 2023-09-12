@@ -65,10 +65,12 @@ const NewCity = () => {
             </PrimaryForm>
             {isOpenModal && (
                 <BasicModal
-                    IDForUrl={state}
+                    Url={`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${state}/municipios`}
                     closeModal={() => setIsOpenModal(false)}
                     setValueId={setIbgeNumber}
                     setValueName={setName}
+                    filed1={"id"}
+                    filed2={"name"}
                 />
             )}
         </>

@@ -8,19 +8,27 @@ import { CloseButton } from '../Buttons';
 
 const BasicModal = ({
     setValue,
+    setObject,
     setValueId,
     setValueName,
     closeModal,
-    IDForUrl
+    Url,
+    filed1,
+    filed2
 }) => {
 
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
 
-    useGetDataList(setFilteredData, setData, `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${IDForUrl}/municipios`);
+    useGetDataList(setFilteredData, setData, Url);
 
-    function ThrowValues(id, name) {
+    function ThrowValues(id, name, object) {
         closeModal();
+
+        if (typeof setObject === "function") {
+            setObject(object);
+            return;
+        }
 
         if (typeof setValue === "function") {
             setValue(String(id), name);
@@ -49,9 +57,10 @@ const BasicModal = ({
                 <TablePrimary
                     data={filteredData}
                     setValueFunction={ThrowValues}
+                    setValueObject={setObject !== null}
                     columns={[
-                        { label: "ID", filed: "id" },
-                        { label: "Nome", filed: "nome" }
+                        { label: "ID", filed: filed1 },
+                        { label: "Nome", filed: filed2 }
                     ]}
                 />
             </div>
