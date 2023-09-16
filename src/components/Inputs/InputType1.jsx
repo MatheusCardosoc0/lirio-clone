@@ -5,14 +5,19 @@ const BasicInput = ({
     label,
     $isLarge,
     onChange,
-    value
+    value,
+    type
 }) => {
 
     return (
         <InputStyle1 $isLarge={$isLarge} >
             <label htmlFor={label} >{label + ':'}</label>
-            <input id={label}
-                onChange={onChange} value={value} />
+            <input
+                id={label}
+                onChange={onChange}
+                value={value}
+                type={type}
+            />
         </InputStyle1>
     );
 }

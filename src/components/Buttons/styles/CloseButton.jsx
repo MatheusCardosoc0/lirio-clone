@@ -8,7 +8,7 @@ export const CloseButton = styled.button`
   color: white;
   display: flex;
   align-items: center;  
-  font-size: 3rem;  
-  top: 0%;
-  right: 0%;
+  font-size: 3.4rem;  
+  top: 1%;
+  right: 1%;
 `

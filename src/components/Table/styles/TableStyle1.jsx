@@ -4,6 +4,7 @@ const TableContainer = styled.div`
   overflow: auto;
   max-height: 60vh;
   max-width: 98%;
+  b
 
   &::-webkit-scrollbar {
     height: 8px;
@@ -33,7 +34,6 @@ const StyledTable = styled.table`
   border-radius: 4px;
   font-size: 1.6rem;
   overflow: auto;
-
   th, td {
     padding: 10px 15px;
     text-align: left;

@@ -2,8 +2,9 @@ import styled from 'styled-components';
 
 export const InputStyleConsult = styled.div`
   width: 100%;
-  max-width: ${(props) => (props.$isLarge ? "100%" : "200px")};
-  background-color: white;
+  max-width: ${(props) => (props.$isLarge ? "50%" : "200px")};
+  background-color: #4230e9;
+  color: white;
   font-size: 2rem;
   display: flex;
   align-items: center;
@@ -11,17 +12,12 @@ export const InputStyleConsult = styled.div`
   gap: 2px;
   position: relative;
   padding-top: 24px;
-
-  input {
-    border: none;
-    padding: 6px;
+  
+  span{
+    text-align: start;
     width: 100%;
-    height: 100%;
-    background-color: transparent;
-
-    &:focus {
-      outline: none;
-    }
+    padding-left: 8px;
+    cursor: pointer;
   }
 
   label {
@@ -43,14 +39,14 @@ export const InputStyleConsult = styled.div`
     border-radius: 100%;
     position: absolute;
     color: white;
-    background-color: #4f3dec;
+    background-color: #f77700;
     padding: 6px;
+    align-items: center;
 
-    top: 20%;
+    top: 10%;
     right: 1%;
     svg{
       font-size: 2.4rem;
-     
     }
   }
 `;

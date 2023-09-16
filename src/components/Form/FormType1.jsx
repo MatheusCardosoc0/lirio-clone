@@ -1,7 +1,7 @@
 import React from 'react';
-import { CloseButton, FormStyle1 } from './styles/FormStyle1';
+import { FormStyle1 } from './styles/FormStyle1';
 import { AiOutlineClose } from 'react-icons/ai'
-import { ButtonStyle1 } from '../Buttons';
+import { ButtonStyle1, CloseButton } from '../Buttons';
 import { useNavigate } from 'react-router-dom';
 
 const FormType1 = ({

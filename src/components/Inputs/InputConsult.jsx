@@ -13,12 +13,19 @@ const ConsultInput = ({
 }) => {
 
     return (
-        <InputStyleConsult $isLarge={$isLarge} >
+        <InputStyleConsult $isLarge={$isLarge}
+            onClick={openModal}
+        >
             <label htmlFor={label} >{label + ':'}</label>
-            <input id={label}
-                onChange={onChange} value={value} />
+            <span>
+                {value || '...'}
+            </span>
 
-            <button onClick={openModal} type='button' title={title || 'Consultar Api'}>
+            <button
+                onClick={openModal}
+                type='button'
+                title={title || 'Consultar Api'}
+            >
                 <BsRssFill />
             </button>
         </InputStyleConsult>
