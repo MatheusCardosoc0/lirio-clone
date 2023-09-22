@@ -1,30 +1,33 @@
 import React, { useState } from 'react';
 import { BasicGridContainerForm, PrimaryForm } from '../../../../components/Form';
-import { BasicInput, ConsultInput } from '../../../../components/Inputs';
+import { BasicInput, ConsultInput, InputDate, CheckInput } from '../../../../components/Inputs';
 import { useParams } from 'react-router-dom';
 import useSubmitDataPut from '../../../../functions/useSubmitDataPut';
 import useDeleteData from '../../../../functions/useDeleteData';
 import useGetDataSpecific from '../../../../functions/useGetDataSpecific';
 import { BasicModal } from '../../../../components/Modals';
+import { ButtonStyle1 } from '../../../../components/Buttons';
 
 const ChangePerson = () => {
 
     const [data, setData] = useState({
         name: '',
+        razao: '',
         email: '',
-        age: 0,
         phone: '',
+        CPF: '',
+        IBGE: '',
+        inscricaoEstadual: '',
+        address: '',
+        birthDate: '',
+        age: 0,
+        city: {},
         group: {},
-        city: {}
-    })
-    const {
-        age,
-        email,
-        name,
-        phone,
-        city,
-        group
-    } = data
+        cep: ''
+    });
+
+
+    const { name, razao, email, phone, CPF, IBGE, inscricaoEstadual, address, birthDate, age, city, group, cep } = data;
 
     const { id } = useParams()
 
@@ -43,63 +46,132 @@ const ChangePerson = () => {
     return (
         <>
             <PrimaryForm
-                Title='Alterar Pessoa'
+                Title="Cadastro de pessoas"
                 urlCancel={"/pessoal/pessoas"}
-                onSubmit={e => handleSubmit(e, {
-                    id,
+                onSubmit={(e) => handleSubmit(e, "/pessoal/pessoas", {
                     name,
                     email,
                     phone,
                     age,
+                    city,
                     group,
-                    city
-                })}
-                removeFunction={() => DeletePerson()}
+                    ibge: IBGE,
+                    inscricaoEstadual,
+                    Razao: razao || name,
+                    cep,
+                    cpf: CPF,
+                    birthDate,
+                    address
+                }
+                )}
             >
                 <BasicGridContainerForm>
+                    <BasicInput
+                        label={"Nome"}
+                        $isLarge
+                        onChange={e => setData({ ...data, name: e.target.value })}
+                        value={name} />
+
+                    {CPF.length === 14 && (
+                        <div>
+                            <BasicInput
+                                label={"Razão"}
+                                $isLarge
+                                onChange={e => setData({ ...data, razao: e.target.value })}
+                                value={razao || name} />
+
+                            <BasicInput
+                                label={"IBGE"}
+                                $isLarge
+                                onChange={e => setData({ ...data, IBGE: e.target.value })}
+                                value={IBGE} />
+                        </div>
+                    )}
+
+
                     <div>
                         <BasicInput
-                            label={"Nome"}
-                            value={data.name}
+                            label={CPF.length === 14 ? "CNPJ" : "CPF"}
                             $isLarge
-                            onChange={e => setData({ ...data, name: e.target.value })} />
-                        <BasicInput
-                            label={"Email"}
-                            value={data.email}
-                            $isLarge
-                            onChange={e => setData({ ...data, email: e.target.value })} />
+                            onChange={e => setData({ ...data, CPF: e.target.value })}
+                            value={CPF}
+                        />
+                        {CPF.length === 14 && (
+                            <BasicInput
+                                label={"Inscrição Estadual"}
+                                $isLarge
+                                onChange={e => setData({ ...data, inscricaoEstadual: e.target.value })}
+                                value={inscricaoEstadual}
+                            />
+                        )}
                     </div>
                     <div>
                         <BasicInput
-                            label={"Telefone"}
-                            value={data.phone}
+                            label={"CEP"}
                             $isLarge
-                            onChange={e => setData({ ...data, phone: e.target.value })} />
-
+                            onChange={e => setData({ ...data, cep: e.target.value })}
+                            value={cep}
+                        />
                         <BasicInput
-                            label={"Idade"}
-                            value={data.age}
+                            label={"Endereço"}
                             $isLarge
-                            onChange={e => setData({ ...data, age: e.target.value })} />
+                            onChange={e => setData({ ...data, address: e.target.value })}
+                            value={address}
+                        />
+                    </div>
+                    <div>
+                        <BasicInput label={"Telefone"} $isLarge
+                            onChange={e => setData({ ...data, phone: e.target.value })}
+                            value={phone}
+                        />
+                        <BasicInput
+                            label={"Email"} $isLarge
+                            onChange={e => setData({ ...data, email: e.target.value })}
+                            value={email}
+
+                        />
+
                     </div>
 
-                    <ConsultInput
-                        $isLarge
-                        label={"Cidade"}
-                        onChange={value => setData({ ...data, city: value })}
-                        openModal={() => setOpenModalCity(true)}
-                        title={"Consultar cidades cadastradas"}
-                        value={data.city?.name}
-                    />
+                    {CPF.length === 14 && (
+                        <div>
+                            <InputDate
+                                label={"Data de Nascimento"}
+                                $isLarge
+                                setDate={setData}
+                                value={birthDate}
+                                object={data}
+                            />
 
-                    <ConsultInput
-                        $isLarge
-                        label={"Grupo"}
-                        onChange={value => setData({ ...data, group: value })}
-                        openModal={() => setOpenModalGroup(true)}
-                        title={"Consultar grupos cadastrados"}
-                        value={data.group?.name}
-                    />
+                            <BasicInput label={"Idade"} $isLarge
+                                onChange={e => setData({ ...data, age: e.target.value })} value={age} />
+                        </div>
+                    )}
+                    <div>
+                        <ConsultInput
+                            $isLarge
+                            label={"Cidade"}
+                            onChange={value => setData({ ...data, city: value })}
+                            openModal={() => setOpenModalCity(true)}
+                            title={"Consultar cidades cadastradas"}
+                            value={city.name}
+                        />
+
+                        <ConsultInput
+                            $isLarge
+                            label={"Grupo"}
+                            onChange={value => setData({ ...data, group: value })}
+                            openModal={() => setOpenModalGroup(true)}
+                            title={"Consultar grupos cadastrados"}
+                            value={group.name}
+                        />
+                    </div>
+
+
+
+
+
+
                 </BasicGridContainerForm>
             </PrimaryForm>
             {openModalCity && (

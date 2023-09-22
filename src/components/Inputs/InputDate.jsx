@@ -5,7 +5,8 @@ const InputDate = ({
     label,
     $isLarge,
     setDate,
-    value
+    value,
+    object = {}
 }) => {
 
     const handleChange = (value) => {
@@ -19,7 +20,11 @@ const InputDate = ({
 
         value = value.slice(0, 10);
 
-        setDate(value);
+        if (object) {
+            setDate({ ...object, birthDate: value });
+        } else {
+            setDate(value);
+        }
     };
 
     return (

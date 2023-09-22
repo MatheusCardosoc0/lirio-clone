@@ -25,7 +25,14 @@ const SearchPerson = () => {
                     { label: "Email", filed: "email" },
                     { label: "Telefone", filed: "phone" },
                     { label: "Idade", filed: "age" },
-                    { label: "Grupo", filed: `group` },
+                    { label: "CPF", filed: "cpf" },
+                    { label: "Endereço", filed: "address" },
+                    { label: "Data de Nascimento", filed: "birthDate" },
+                    { label: "IBGE", filed: "ibge" },
+                    { label: "Razão", filed: "razao" },
+                    { label: "Inscrição Estadual", filed: "inscricaoEstadual" },
+                    { label: "CEP", filed: "cep" },
+                    { label: "Grupo", filed: "group" },
                     { label: "Cidade", filed: "city" }
                 ]}
             />
