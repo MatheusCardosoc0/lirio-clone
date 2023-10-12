@@ -50,7 +50,7 @@ const BasicModal = ({
                     <AiOutlineClose />
                 </CloseButton>
                 <BasicFilterElement
-                    label1='COD. IBGE'
+                    label1='Código'
                     dataList={data}
                     setFilteredDataList={setFilteredData}
                 />

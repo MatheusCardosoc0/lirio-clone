@@ -6,7 +6,7 @@ const InputDate = ({
     $isLarge,
     setDate,
     value,
-    object = {}
+    object
 }) => {
 
     const handleChange = (value) => {
@@ -19,6 +19,8 @@ const InputDate = ({
             value = `${value.slice(0, 2)}/${value.slice(2, 4)}/${value.slice(4, 8)}`;
 
         value = value.slice(0, 10);
+
+        console.log(value)
 
         if (object) {
             setDate({ ...object, birthDate: value });

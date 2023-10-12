@@ -7,6 +7,8 @@ import useDeleteData from '../../../../functions/useDeleteData';
 import useGetDataSpecific from '../../../../functions/useGetDataSpecific';
 import { BasicModal } from '../../../../components/Modals';
 import { ButtonStyle1 } from '../../../../components/Buttons';
+import { api } from '../../../../libs/api';
+import { calculateAge } from '../../../../functions/calculateAge';
 
 const ChangePerson = () => {
 
@@ -15,8 +17,8 @@ const ChangePerson = () => {
         razao: '',
         email: '',
         phone: '',
-        CPF: '',
-        IBGE: '',
+        cpf: '',
+        ibge: '',
         inscricaoEstadual: '',
         address: '',
         birthDate: '',
@@ -27,12 +29,14 @@ const ChangePerson = () => {
     });
 
 
-    const { name, razao, email, phone, CPF, IBGE, inscricaoEstadual, address, birthDate, age, city, group, cep } = data;
+    const { name, razao, email, phone, cpf: CPF, ibge: IBGE, inscricaoEstadual, address, birthDate, age, city, group, cep } = data;
 
     const { id } = useParams()
 
     const [openModalCity, setOpenModalCity] = useState(false)
     const [openModalGroup, setOpenModalGroup] = useState(false)
+
+    const [options, setOptions] = useState('PF')
 
     const urlApi = "/api/person/"
     const urlReturn = "/pessoal/pessoas"
@@ -43,12 +47,76 @@ const ChangePerson = () => {
 
     const handleSubmit = useSubmitDataPut(`${urlApi}`, urlReturn, id)
 
+    console.log(data)
+
+    const fetchDataCNPJ = async () => {
+        if (CPF) {
+            try {
+                const response = await api.get(`/api/request_cnpj/fetchData/${CPF}`);
+                const info = response.data;
+
+                console.log(info)
+
+                setData(prevData => ({
+                    ...prevData,
+                    name: info.nome || info.razao,
+                    cep: info.cep,
+                    email: info.email,
+                    ibge: info.ibge,
+                    razao: info.razao,
+                    phone: `(${info.ddd})${info.telcom}`,
+                    address: info.endereco
+                }));
+
+
+                alert("Ok");
+            } catch (error) {
+                alert("Great!");
+                console.error("Erro ao buscar dados", error);
+            }
+        }
+        else {
+            alert("Informe o CNPJ")
+        }
+    };
+
+    const fetchDataCPF = async () => {
+        if (CPF && birthDate) {
+            const formatDate = (date) => {
+                const [day, month, year] = date.split('/');
+                return `${year}-${month}-${day}`;
+            };
+
+            const formattedDate = formatDate(birthDate);
+
+            try {
+                const response = await api.post("https://localhost:7221/RequestCpf/fetchData", {
+                    cpf: CPF,
+                    birthDate: formattedDate
+                });
+                const info = response.data.data[0];
+
+                setData({ ...data, name: info.nome || '' });
+                setData({ ...data, birthDate: info.normalizado_data_nascimento ? calculateAge(data.normalizado_data_nascimento) : 0 })
+
+                alert("Ok");
+            } catch (error) {
+                alert("Great!");
+                console.error("Erro ao buscar dados", error);
+            }
+        }
+        else {
+            alert("Informe o CPF e a Data de nascimento")
+        }
+    };
+
     return (
         <>
             <PrimaryForm
                 Title="Cadastro de pessoas"
-                urlCancel={"/pessoal/pessoas"}
-                onSubmit={(e) => handleSubmit(e, "/pessoal/pessoas", {
+                urlCancel={urlReturn}
+                onSubmit={(e) => handleSubmit(e, {
+                    id,
                     name,
                     email,
                     phone,
@@ -64,15 +132,24 @@ const ChangePerson = () => {
                     address
                 }
                 )}
+                removeFunction={() => DeletePerson()}
             >
                 <BasicGridContainerForm>
+                    <CheckInput
+                        options={[
+                            { title: 'Pessoa Fisica', value: 'PF' },
+                            { title: 'Pessoa Jurídica', value: 'PJ' }
+                        ]}
+                        setData={setOptions}
+                        data={options}
+                    />
                     <BasicInput
                         label={"Nome"}
                         $isLarge
                         onChange={e => setData({ ...data, name: e.target.value })}
                         value={name} />
 
-                    {CPF.length === 14 && (
+                    {options === 'PJ' && (
                         <div>
                             <BasicInput
                                 label={"Razão"}
@@ -91,12 +168,12 @@ const ChangePerson = () => {
 
                     <div>
                         <BasicInput
-                            label={CPF.length === 14 ? "CNPJ" : "CPF"}
+                            label={options === "PJ" ? "CNPJ" : "CPF"}
                             $isLarge
-                            onChange={e => setData({ ...data, CPF: e.target.value })}
+                            onChange={e => setData({ ...data, cpf: e.target.value })}
                             value={CPF}
                         />
-                        {CPF.length === 14 && (
+                        {options === 'PJ' && (
                             <BasicInput
                                 label={"Inscrição Estadual"}
                                 $isLarge
@@ -133,7 +210,7 @@ const ChangePerson = () => {
 
                     </div>
 
-                    {CPF.length === 14 && (
+                    {options === "PF" && (
                         <div>
                             <InputDate
                                 label={"Data de Nascimento"}
@@ -144,7 +221,9 @@ const ChangePerson = () => {
                             />
 
                             <BasicInput label={"Idade"} $isLarge
-                                onChange={e => setData({ ...data, age: e.target.value })} value={age} />
+                                onChange={e => setData({ ...data, age: e.target.value })}
+                                value={age}
+                            />
                         </div>
                     )}
                     <div>
@@ -170,7 +249,23 @@ const ChangePerson = () => {
 
 
 
-
+                    {options === 'PF' ? (
+                        <ButtonStyle1
+                            type="button"
+                            onClick={fetchDataCPF}
+                            $color={'indigo'}
+                        >
+                            Buscar Dados do CPF
+                        </ButtonStyle1>
+                    ) : (
+                        <ButtonStyle1
+                            type="button"
+                            onClick={fetchDataCNPJ}
+                            $color={'purple'}
+                        >
+                            Buscar Dados do CNPJ
+                        </ButtonStyle1>
+                    )}
 
                 </BasicGridContainerForm>
             </PrimaryForm>
