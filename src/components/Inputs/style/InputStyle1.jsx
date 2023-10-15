@@ -32,6 +32,8 @@ export const InputStyle1 = styled.div`
     transition-duration: 0.5s;
     font-size: 2.4rem;
     padding-left: 8px;
+    left: 1px;
+    transform-origin: 0%;
   }
 
   &:focus-within label {

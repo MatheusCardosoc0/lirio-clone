@@ -1,4 +1,4 @@
-import { SEARCH_TERM_PERSON_ID, SEARCH_TERM_PERSON_NAME } from "../../actions/personActions";
+import { SEARCH_TERM_PERSON_ID, SEARCH_TERM_PERSON_NAME, SET_DATA } from "../../actions/PESSOAL/personActions";
 
 const initialState = {
     searchTermName: '',
@@ -16,6 +16,11 @@ const personReducer = (state = initialState, action) => {
             return {
                 ...state,
                 searchTermId: action.payload
+            };
+        case SET_DATA:
+            return {
+                ...state,
+                data: action.payload,
             };
         default:
             return state;

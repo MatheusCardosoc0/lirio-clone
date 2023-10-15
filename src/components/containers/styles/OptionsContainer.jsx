@@ -6,6 +6,7 @@ const OptionsContainer = styled.div`
   overflow-x: auto;
   padding: 4px;
   overflow-y: hidden;
+  position: fixed;
 
   display: flex;
   gap: 8px;
@@ -28,6 +29,6 @@ const OptionButton = styled.button`
 `
 
 export {
-    OptionButton,
-    OptionsContainer
+  OptionButton,
+  OptionsContainer
 }

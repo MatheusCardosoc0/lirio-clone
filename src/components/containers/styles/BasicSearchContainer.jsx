@@ -6,6 +6,7 @@ export const BasicSearchContainer = styled.section`
   gap: 12px;
   justify-content: center;
   align-items: center;
+  padding-top: 52px;
 
   @media (min-width: 1024px) {
     justify-content: start;

@@ -33,7 +33,7 @@ const HeaderContainer = styled.header`
 
 const TitleSectionButton = styled(({ isSelected, ...rest }) => <button {...rest} />)`
   font-weight: bold;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   background: transparent;
   color: ${props => props.isSelected ? '#00b7ff' : 'black'};
 
@@ -49,15 +49,13 @@ const OptionsForSectionContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
-  background-color: #f7f6f6;
-  box-shadow: 0px 0px 4px #0000006e;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 5px #000000;
   z-index: 10;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  font-size: 2rem;
+  font-size: 3rem;
   align-items: start;
-  padding: 20px;
   font-weight: bold;
   border-radius: 8px;
   height: 300px;
@@ -65,20 +63,36 @@ const OptionsForSectionContainer = styled.div`
   max-width: 300px;
   overflow-y: scroll;
   overflow-x: hidden;
+  animation: flyingToLocal 0.5s ease-in-out;
+  transition: all 1s;
+  gap: 6px;
+  padding: 6px;
 
   @media (min-width: 768px) {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
   a{
     padding-bottom: 4px;
-    border-bottom: 2px solid #00000053;
     width: 100%;
     text-decoration: none;
+    font-size: 3rem;
+    background-color: white;
+    padding: 12px;
+    box-shadow: 0px 0px 5px black;
+    border-radius: 8px;
+
 
     &:hover{
-      color: #3bb33b;
+      color: #ffffff;
       cursor: pointer;
+      background-color: #007700;
+    }
+  }
+
+  @keyframes flyingToLocal {
+    0%{
+      opacity: 0%;
     }
   }
 `

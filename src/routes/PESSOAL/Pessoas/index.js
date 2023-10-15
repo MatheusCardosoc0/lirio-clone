@@ -9,12 +9,15 @@ const Container = () => {
     return (
         <>
             <OptionsContainer>
-                <OptionButton $color="green" onClick={() => navigation("/pessoal/pessoas/new_person")}
+                <OptionButton
+                    $color="green"
+                    onClick={() => navigation("/pessoal/pessoas/new_person")}
                     title="Cadastrar nova pessoa"
                 >
                     <AiOutlinePlus />
                 </OptionButton>
             </OptionsContainer>
+
             <Outlet />
         </>
     );

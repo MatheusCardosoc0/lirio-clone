@@ -6,20 +6,22 @@ const useGetDataSpecific = (id, urlApi, setData = {}) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const getData = async () => {
-            setLoading(true);
-            setError(null);
-            try {
-                const response = await api.get(`${urlApi}${id}`);
-                setData(response.data);
-            } catch (error) {
-                setError(error);
-            } finally {
-                setLoading(false);
-            }
-        };
+        if (id) {
+            const getData = async () => {
+                setLoading(true);
+                setError(null);
+                try {
+                    const response = await api.get(`${urlApi}${id}`);
+                    setData(response.data);
+                } catch (error) {
+                    setError(error);
+                } finally {
+                    setLoading(false);
+                }
+            };
 
-        getData();
+            getData();
+        }
     }, [id]);
     return { loading, error };
 };

@@ -3,15 +3,18 @@ import { OptionsForSectionContainer } from '../styles/HeaderStyle';
 import { OptionsForSectionConstants, TopMenuSectionsTitles } from '../utils/TopMenuSectionsTitles';
 import { Link } from 'react-router-dom';
 
-const OptionsForSection = ({ currentSection }) => {
+const OptionsForSection = ({ currentSection, setCurrentSection }) => {
 
     return (
-        <OptionsForSectionContainer>
+        <OptionsForSectionContainer
+
+        >
             {OptionsForSectionConstants[currentSection].map(item => (
                 <Link
                     key={item}
                     to={`${currentSection.toLowerCase()}/${item.toLowerCase()}`}
                     isClicked={item === currentSection}
+                    onClick={setCurrentSection}
 
                 >
                     {item}

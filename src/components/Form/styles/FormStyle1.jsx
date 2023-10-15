@@ -11,6 +11,7 @@ const FormStyle1 = styled.form`
   gap: 1px;
   border-radius: 12px;
   overflow: hidden;
+  padding-bottom: 20px;
 
   header{
     padding-left: 16px;

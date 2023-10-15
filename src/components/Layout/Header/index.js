@@ -25,7 +25,10 @@ const Header = () => {
                         {item}
                     </TitleSectionButton>
                     {currentSection === item && (
-                        <OptionsForSection currentSection={currentSection} />
+                        <OptionsForSection
+                            currentSection={currentSection}
+                            setCurrentSection={() => setCurrentSection('')}
+                        />
                     )}
                 </div>
             ))}

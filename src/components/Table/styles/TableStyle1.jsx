@@ -4,21 +4,19 @@ const TableContainer = styled.div`
   overflow: auto;
   max-height: 60vh;
   max-width: 98%;
-  b
 
   &::-webkit-scrollbar {
-    height: 8px;
-    width: 8px;
-    background-color: #F5F5F5;
+    height: 8px; 
+    width: 8px; 
+    background-color: #F5F5F5; 
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #f7901b;
-    border-radius: 4px;
+    background-color: #f7901b; 
   }
 
   &::-webkit-scrollbar-track {
-    background-color: #F5F5F5;
+    background-color: #F5F5F5; 
   }
 
   scrollbar-width: thin;
