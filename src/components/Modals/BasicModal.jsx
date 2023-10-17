@@ -8,6 +8,7 @@ import { CloseButton } from '../Buttons';
 
 const BasicModal = ({
     setValue,
+    object,
     setObject,
     setValueId,
     setValueName,
@@ -26,7 +27,7 @@ const BasicModal = ({
         closeModal();
 
         if (typeof setObject === "function") {
-            setObject(object);
+            setObject(...object, name, id);
             return;
         }
 

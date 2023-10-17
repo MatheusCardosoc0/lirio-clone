@@ -50,7 +50,7 @@ const BasedFormPerson = ({
     return (
         <>
             <PrimaryForm
-                Title="Cadastro de pessoas"
+                Title={id ? "Alterar pessoa" : "Cadastro de pessoas"}
                 urlCancel={urlReturn}
                 removeFunction={() => {
                     id && DeletePerson()
