@@ -8,14 +8,15 @@ import { CloseButton } from '../Buttons';
 
 const BasicModal = ({
     setValue,
-    object,
+    keys = ["id", "name"],
     setObject,
     setValueId,
     setValueName,
     closeModal,
     Url,
-    filed1,
-    filed2
+    primaryValue = "id",
+    secondValue = "name",
+    isUseGetAllValue
 }) => {
 
     const [data, setData] = useState([]);
@@ -23,11 +24,20 @@ const BasicModal = ({
 
     useGetDataList(setFilteredData, setData, Url);
 
-    function ThrowValues(id, name, object) {
+    function ThrowValues(id, name, value) {
         closeModal();
 
+        let transformedObject = {
+            [keys[0]]: value[primaryValue],
+            [keys[1]]: value[secondValue]
+        };
+
         if (typeof setObject === "function") {
-            setObject(...object, name, id);
+            if (isUseGetAllValue) {
+                setObject(value)
+            } else {
+                setObject(prevValue => ({ ...prevValue, ...transformedObject }));
+            }
             return;
         }
 
@@ -60,8 +70,8 @@ const BasicModal = ({
                     setValueFunction={ThrowValues}
                     setValueObject={setObject !== null}
                     columns={[
-                        { label: "ID", filed: filed1 },
-                        { label: "Nome", filed: filed2 }
+                        { label: "ID", filed: primaryValue },
+                        { label: "Nome", filed: secondValue }
                     ]}
                 />
             </div>

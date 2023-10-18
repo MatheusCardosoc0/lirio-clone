@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { api } from '../libs/api';
 
-const useSubmitDataPostOrPut = (urlApi, urlReturn, id = null) => {
+const useSubmitDataPostOrPut = (urlApi, urlReturn, id) => {
     const navigate = useNavigate();
 
     async function handleSubmit(event, data) {

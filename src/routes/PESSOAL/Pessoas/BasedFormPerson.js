@@ -9,7 +9,7 @@ import useDeleteData from '../../../functions/useDeleteData';
 import useGetDataSpecific from '../../../functions/useGetDataSpecific';
 
 const BasedFormPerson = ({
-    id = null
+    id
 }) => {
     const {
         setOpenModalCity,
@@ -52,9 +52,7 @@ const BasedFormPerson = ({
             <PrimaryForm
                 Title={id ? "Alterar pessoa" : "Cadastro de pessoas"}
                 urlCancel={urlReturn}
-                removeFunction={() => {
-                    id && DeletePerson()
-                }}
+                removeFunction={id ? () => DeletePerson() : null}
                 onSubmit={(e) => handleSubmit(e, {
                     name,
                     email,
@@ -213,8 +211,7 @@ const BasedFormPerson = ({
                     Url={'/api/city'}
                     closeModal={() => setOpenModalCity(false)}
                     setObject={value => setData({ ...data, city: value })}
-                    filed1={"id"}
-                    filed2={"name"}
+                    isUseGetAllValue
                 />
             )}
 
@@ -223,8 +220,6 @@ const BasedFormPerson = ({
                     Url={'/api/group'}
                     closeModal={() => setOpenModalGroup(false)}
                     setObject={value => setData({ ...data, group: value })}
-                    filed1={"id"}
-                    filed2={"name"}
                 />
             )}
         </>

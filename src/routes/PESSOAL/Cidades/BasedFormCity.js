@@ -35,6 +35,8 @@ const BasedFormCity = ({
 
     const handleSubmit = useSubmitDataPostOrPut(`${urlApi}`, urlReturn, id)
 
+    console.log(data)
+
     return (
         <>
             <PrimaryForm
@@ -44,9 +46,9 @@ const BasedFormCity = ({
                     id,
                     name,
                     state,
-                    ibgNumber
+                    ibgNumber: ibgNumber.toString()
                 })}
-                removeFunction={() => DeleteCity()}
+                removeFunction={id ? () => DeleteCity() : null}
             >
                 <BasicGridContainerForm>
                     <BasicInput
@@ -71,18 +73,20 @@ const BasedFormCity = ({
                         />
                     </div>
                 </BasicGridContainerForm>
-            </PrimaryForm>
+            </PrimaryForm >
             {isOpenModal && (
                 <BasicModal
                     IDForUrl={state}
                     setObject={setData}
+                    keys={["ibgNumber", "name"]}
                     Url={`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${state}/municipios`}
                     closeModal={() => setIsOpenModal(false)}
                     setValue={(id, name) => UpdateDataIdAndName(id, name)}
-                    filed1={"id"}
-                    filed2={"nome"}
+                    primaryValue={"id"}
+                    secondValue={"nome"}
                 />
-            )}
+            )
+            }
         </>
     )
 }

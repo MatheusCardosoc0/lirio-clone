@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 
 const useBasedFunctionCity = () => {
     const [data, setData] = useState({
-        name: '',
         ibgNumber: '',
+        name: '',
         state: ''
 
     })
