@@ -14,6 +14,10 @@ import Cidade from "./PESSOAL/Cidades";
 import NewCity from "./PESSOAL/Cidades/NewCity";
 import SearchCities from "./PESSOAL/Cidades/SearchCities";
 import ChangeCity from "./PESSOAL/Cidades/ChangeCity";
+import GrupoProdutos from "./MATERIAIS/GrupoProdutos";
+import SearchGroupProduct from "./MATERIAIS/GrupoProdutos/SearchGroupProduct";
+import NewGroupProduct from "./MATERIAIS/GrupoProdutos/NewGroupProduct";
+import ChangeGroupProduct from "./MATERIAIS/GrupoProdutos/ChangeGroupProduct";
 
 const GuardedRoute = ({ children, redirectTo }) => {
     if (window.location.pathname === "/") {
@@ -33,7 +37,6 @@ export const router = createBrowserRouter([
                 path: '/',
                 element: (
                     <GuardedRoute redirectTo="/Dashboard">
-                        {/* Seu componente base, caso haja algum */}
                     </GuardedRoute>
                 )
             },
@@ -96,6 +99,26 @@ export const router = createBrowserRouter([
                     {
                         path: '/pessoal/cidades/change/:id',
                         element: <ChangeCity />
+                    }
+                ]
+            },
+            //MATERIAIS
+            {
+                path: '/materiais/grupos de produtos',
+                element: <GrupoProdutos />,
+                children: [
+                    {
+                        path: '/materiais/grupos de produtos',
+                        element: <SearchGroupProduct />,
+                        index: true
+                    },
+                    {
+                        path: '/materiais/grupos de produtos/new_group_product',
+                        element: <NewGroupProduct />
+                    },
+                    {
+                        path: '/materiais/grupos de produtos/change/:id',
+                        element: <ChangeGroupProduct />
                     }
                 ]
             },

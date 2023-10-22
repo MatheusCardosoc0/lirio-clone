@@ -3,7 +3,7 @@ import { HeaderContainer, OptionsForSectionContainer, TitleSectionButton } from 
 import { TopMenuSectionsTitles } from './utils/TopMenuSectionsTitles';
 import OptionsForSection from './components/OptionsForSection';
 
-const Header = () => {
+const Navbar = () => {
     const [currentSection, setCurrentSection] = useState('');
 
     function SetSection(item) {
@@ -36,4 +36,4 @@ const Header = () => {
     );
 }
 
-export default Header;
+export default Navbar;

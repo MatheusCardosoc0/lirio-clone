@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import LateralMenu from './components/Layout/LateralMenu';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 import { toggleMenu } from './redux/actions/menuActions';
-import Header from './components/Layout/Header';
+import Navbar from './components/Layout/Navbar';
 import Container from './components/Layout/Container';
 import { Outlet } from 'react-router-dom';
 import { MainContainer, OpenButton } from './components/Layout/Main/MainStyles';
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <MainContainer>
-      <Header />
+      <Navbar />
       {menuState && <LateralMenu />}
       {!menuState && (
         <OpenButton
