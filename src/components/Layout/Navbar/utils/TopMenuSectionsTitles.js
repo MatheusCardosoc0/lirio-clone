@@ -14,15 +14,15 @@ const TopMenuSectionsTitles = [
 
 const OptionsForSectionConstants = {
     PESSOAL: ['Pessoas', 'Grupos', 'Cidades'],
-    ATENDIMENTO: ['Central de atendimentos'],
-    MATERIAIS: ['Produtos', 'Tributos', 'Grupos de Produtos'],
-    VENDAS: ['Venda balcão', 'Venda simples'],
-    FINANCEIRO: ['Retorno nfe'],
+    ATENDIMENTO: [''],
+    MATERIAIS: ['Produtos', 'Grupos de Produtos'],
+    VENDAS: [''],
+    FINANCEIRO: [''],
     FATURAMENTO: [''],
-    RELATÓRIOS: ['Pessoal', 'Vendas'],
-    UTILITÁRIOS: ['Painel sped'],
+    RELATÓRIOS: ['', ''],
+    UTILITÁRIOS: [''],
     JANELAS: [''],
-    AJUDA: ['Sobre...'],
+    AJUDA: [''],
     SAIR: null,
 }
 

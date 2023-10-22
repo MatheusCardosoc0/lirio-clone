@@ -1,8 +1,15 @@
 import React from 'react'
+import { BasedFormProductGroup } from '../BasedFormProductGroups'
+import { useParams } from 'react-router-dom'
 
 const ChangeGroupProduct = () => {
+
+    const { id } = useParams()
+
     return (
-        <div>ChangeGroupProduct</div>
+        <BasedFormProductGroup
+            id={id}
+        />
     )
 }
 

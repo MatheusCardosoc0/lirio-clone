@@ -8,7 +8,7 @@ import { CloseButton } from '../Buttons';
 
 const BasicModal = ({
     setValue,
-    keys = ["id", "name"],
+    keys = null,
     setObject,
     setValueId,
     setValueName,
@@ -27,16 +27,16 @@ const BasicModal = ({
     function ThrowValues(id, name, value) {
         closeModal();
 
-        let transformedObject = {
-            [keys[0]]: value[primaryValue],
-            [keys[1]]: value[secondValue]
-        };
-
         if (typeof setObject === "function") {
-            if (isUseGetAllValue) {
-                setObject(value)
-            } else {
+            if (keys) {
+                let transformedObject = {
+                    [keys[0]]: value[primaryValue],
+                    [keys[1]]: value[secondValue]
+                };
+
                 setObject(prevValue => ({ ...prevValue, ...transformedObject }));
+            } else {
+                setObject(value)
             }
             return;
         }

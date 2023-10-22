@@ -18,6 +18,10 @@ import GrupoProdutos from "./MATERIAIS/GrupoProdutos";
 import SearchGroupProduct from "./MATERIAIS/GrupoProdutos/SearchGroupProduct";
 import NewGroupProduct from "./MATERIAIS/GrupoProdutos/NewGroupProduct";
 import ChangeGroupProduct from "./MATERIAIS/GrupoProdutos/ChangeGroupProduct";
+import SearchProducts from "./MATERIAIS/Produtos/SearchProducts";
+import Produtos from "./MATERIAIS/Produtos";
+import NewProduct from "./MATERIAIS/Produtos/NewProduct";
+import ChangeProduct from "./MATERIAIS/Produtos/ChangeProduct/inex";
 
 const GuardedRoute = ({ children, redirectTo }) => {
     if (window.location.pathname === "/") {
@@ -113,12 +117,31 @@ export const router = createBrowserRouter([
                         index: true
                     },
                     {
-                        path: '/materiais/grupos de produtos/new_group_product',
+                        path: '/materiais/grupos de produtos/new_product_group',
                         element: <NewGroupProduct />
                     },
                     {
                         path: '/materiais/grupos de produtos/change/:id',
                         element: <ChangeGroupProduct />
+                    }
+                ]
+            },
+            {
+                path: '/materiais/produtos',
+                element: <Produtos />,
+                children: [
+                    {
+                        path: '/materiais/produtos',
+                        element: <SearchProducts />,
+                        index: true
+                    },
+                    {
+                        path: '/materiais/produtos/new_product',
+                        element: <NewProduct />
+                    },
+                    {
+                        path: '/materiais/produtos/change/:id',
+                        element: <ChangeProduct />
                     }
                 ]
             },

@@ -1,8 +1,9 @@
 import React from 'react'
+import { BasedFormProductGroup } from '../BasedFormProductGroups'
 
 const NewGroupProduct = () => {
     return (
-        <div>NewGroupProduct</div>
+        <BasedFormProductGroup />
     )
 }
 

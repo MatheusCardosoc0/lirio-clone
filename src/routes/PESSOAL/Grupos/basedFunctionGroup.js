@@ -9,9 +9,6 @@ const useBasedFunctionGroup = () => {
     const [data, setData] = useState({
         name: ''
     })
-    const {
-        name
-    } = data
 
     const urlApi = "/api/group/"
     const urlReturn = "/pessoal/grupos"

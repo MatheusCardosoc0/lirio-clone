@@ -1,12 +1,12 @@
 import React from 'react'
 import { BasicGridContainerForm, PrimaryForm } from '../../../components/Form'
 import useGetDataSpecific from '../../../functions/useGetDataSpecific'
-import useBasedFunctionGroup from './basedFunctionGroup'
 import { BasicInput } from '../../../components/Inputs'
 import useDeleteData from '../../../functions/useDeleteData'
 import useSubmitDataPostOrPut from '../../../functions/useSubmitDataPostOrPut'
+import useBasedFunctionProductGroup from './basedFunctionProductGroup'
 
-export const BasedFormGroup = ({
+export const BasedFormProductGroup = ({
     id
 }) => {
 
@@ -15,7 +15,7 @@ export const BasedFormGroup = ({
         setData,
         urlApi,
         urlReturn
-    } = useBasedFunctionGroup()
+    } = useBasedFunctionProductGroup()
 
     const {
         name
@@ -23,19 +23,19 @@ export const BasedFormGroup = ({
 
     useGetDataSpecific(id, `${urlApi}`, setData)
 
-    const DeleteGroup = useDeleteData(`${urlApi}`, id, urlReturn)
+    const DeleteProductGroup = useDeleteData(`${urlApi}`, id, urlReturn)
 
     const handleSubmit = useSubmitDataPostOrPut(`${urlApi}`, urlReturn, id)
     return (
         <PrimaryForm
-            Title={id ? 'Alterar Grupo' : 'Cadastrar Grupo'}
+            Title={id ? 'Alterar Grupo de Produtos' : 'Cadastrar Grupo de Produtos'}
             urlCancel={urlReturn}
             onSubmit={e => handleSubmit(e, {
                 id,
                 name,
             })}
             removeFunction={() => {
-                id && DeleteGroup()
+                id && DeleteProductGroup()
             }}
         >
             <BasicGridContainerForm>
