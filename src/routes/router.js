@@ -1,6 +1,5 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import Dashboard from "./Dashboard";
-import CentralDeAtendimentosPage from "./ATENDIMENTO/CentralDeAtendimentosPage";
 import App from "../App";
 import Pessoas from "./PESSOAL/Pessoas";
 import NewPerson from "./PESSOAL/Pessoas/NewPerson";
@@ -22,6 +21,10 @@ import SearchProducts from "./MATERIAIS/Produtos/SearchProducts";
 import Produtos from "./MATERIAIS/Produtos";
 import NewProduct from "./MATERIAIS/Produtos/NewProduct";
 import ChangeProduct from "./MATERIAIS/Produtos/ChangeProduct/inex";
+import Moedas from "./FINANCEIRO/Moedas"
+import SearchCoins from "./FINANCEIRO/Moedas/SearchCoins";
+import NewCoin from "./FINANCEIRO/Moedas/NewCoin";
+import ChangeCoin from "./FINANCEIRO/Moedas/ChangeCoin";
 
 const GuardedRoute = ({ children, redirectTo }) => {
     if (window.location.pathname === "/") {
@@ -145,12 +148,26 @@ export const router = createBrowserRouter([
                     }
                 ]
             },
-
-            //ATENDIMENTO
+            // FINANCEIRO
             {
-                path: 'atendimento/central de atendimentos',
-                element: <CentralDeAtendimentosPage />
-            }
+                path: '/financeiro/moedas',
+                element: <Moedas />,
+                children: [
+                    {
+                        path: '/financeiro/moedas',
+                        element: <SearchCoins />,
+                        index: true
+                    },
+                    {
+                        path: '/financeiro/moedas/new_coin',
+                        element: <NewCoin />
+                    },
+                    {
+                        path: '/financeiro/moedas/change/:id',
+                        element: <ChangeCoin />
+                    }
+                ]
+            },
         ]
     }
 ])

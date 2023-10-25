@@ -17,7 +17,7 @@ const OptionsForSectionConstants = {
     ATENDIMENTO: [''],
     MATERIAIS: ['Produtos', 'Grupos de Produtos'],
     VENDAS: [''],
-    FINANCEIRO: [''],
+    FINANCEIRO: ['Moedas', 'Condições de pagamento'],
     FATURAMENTO: [''],
     RELATÓRIOS: ['', ''],
     UTILITÁRIOS: [''],

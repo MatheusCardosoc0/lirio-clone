@@ -7,6 +7,8 @@ const useSubmitDataPostOrPut = (urlApi, urlReturn, id) => {
     async function handleSubmit(event, data) {
         event.preventDefault();
 
+        console.log(data, id)
+
         try {
             if (id) {
                 await api.put(`${urlApi}${id}`, data);

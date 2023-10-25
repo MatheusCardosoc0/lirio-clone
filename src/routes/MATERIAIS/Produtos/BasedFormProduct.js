@@ -40,6 +40,7 @@ const BasedFormProduct = ({
                 urlCancel={urlReturn}
                 removeFunction={id ? () => DeleteProduct() : null}
                 onSubmit={(e) => handleSubmit(e, {
+                    id,
                     name,
                     description,
                     group,
