@@ -1,13 +1,14 @@
 import { useState } from 'react'
 
-const useBasedFunctionGroup = () => {
+const useBasedFunctionCoin = () => {
 
     const [data, setData] = useState({
-        name: ''
+        name: '',
+        isUseCreditLimit: false
     })
 
-    const urlApi = "/api/group/"
-    const urlReturn = "/pessoal/grupos"
+    const urlApi = "/api/coins/"
+    const urlReturn = "/financeiro/moedas"
 
     return {
         urlApi,
@@ -17,4 +18,4 @@ const useBasedFunctionGroup = () => {
     }
 }
 
-export default useBasedFunctionGroup
+export default useBasedFunctionCoin

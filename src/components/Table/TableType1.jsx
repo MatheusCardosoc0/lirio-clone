@@ -2,14 +2,23 @@ import React from 'react';
 import { StyledTable, TableContainer } from './styles/TableStyle1';
 import { Link } from 'react-router-dom';
 
-const TablePrimary = (
-    {
-        columns = [],
-        data = [],
-        navigateTo,
-        setValueFunction,
-        setValueObject
-    }) => {
+const TablePrimary = ({
+    columns = [],
+    data = [],
+    navigateTo,
+    setValueFunction,
+    setValueObject
+}) => {
+
+    const formatCellValue = (value) => {
+        if (typeof value === 'boolean') {
+            return value ? 'Sim' : 'Não';
+        } else if (typeof value === 'object' && value !== null) {
+            return value.name;
+        } else {
+            return value;
+        }
+    };
 
     return (
         <TableContainer>
@@ -30,7 +39,7 @@ const TablePrimary = (
                                         <Link
                                             to={`${navigateTo}/${row.id}`}
                                         >
-                                            {row[column.filed] && typeof row[column.filed] === 'object' ? row[column.filed].name : row[column.filed]}
+                                            {formatCellValue(row[column.filed])}
                                         </Link>
                                     )}
                                     {setValueFunction && (
@@ -41,7 +50,7 @@ const TablePrimary = (
                                                     setValueFunction(row.id, row.nome || row.name)
                                             }}
                                         >
-                                            {row[column.filed] && typeof row[column.filed] === 'object' ? row[column.filed].name : row[column.filed]}
+                                            {formatCellValue(row[column.filed])}
                                         </button>
                                     )}
                                 </td>

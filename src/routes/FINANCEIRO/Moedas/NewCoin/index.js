@@ -1,8 +1,9 @@
 import React from 'react'
+import { BasedFormCoins } from '../BasedFormCoins'
 
 const NewCoin = () => {
     return (
-        <div>NewCoin</div>
+        <BasedFormCoins />
     )
 }
 

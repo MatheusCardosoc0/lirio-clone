@@ -1,12 +1,26 @@
-import React from 'react';
-import { CheckInputStyle } from './style/CheckInputStyle';
-import { BsCheckLg, BsFillCircleFill } from 'react-icons/bs'
+import { BsCheckLg, BsFillCircleFill } from 'react-icons/bs';
+import { CheckInputStyle } from './style/CheckInputStyle'
 
 const CheckInput = ({
     options = [],
     setData,
-    data
+    data,
+    name = null
 }) => {
+
+    function handleClick(option) {
+        if (typeof data === 'boolean' || (typeof data === 'object' && typeof data[name] === 'boolean')) {
+            setData(prevData => typeof prevData === 'boolean' ? !prevData : { ...prevData, [name]: !prevData[name] });
+            return;
+        }
+
+
+        if (typeof data === 'object' && name) {
+            setData(data => ({ ...data, [name]: option.value }));
+        } else {
+            setData(option.value);
+        }
+    }
 
     return (
         <CheckInputStyle>
@@ -14,12 +28,11 @@ const CheckInput = ({
                 <div>
                     <label>{option.title}</label>
                     <span
-                        onClick={() => setData(option.value)}
+                        onClick={() => handleClick(option)}
                     >
-                        {data === option.value && (
+                        {(data === option.value || (typeof data === 'object' && data[name] === option.value)) ? (
                             <BsCheckLg />
-                        )}
-                        {data !== option.value && (
+                        ) : (
                             <BsFillCircleFill />
                         )}
                     </span>
@@ -29,4 +42,4 @@ const CheckInput = ({
     );
 }
 
-export default CheckInput;
+export default CheckInput
