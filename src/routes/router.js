@@ -21,10 +21,14 @@ import SearchProducts from "./MATERIAIS/Produtos/SearchProducts";
 import Produtos from "./MATERIAIS/Produtos";
 import NewProduct from "./MATERIAIS/Produtos/NewProduct";
 import ChangeProduct from "./MATERIAIS/Produtos/ChangeProduct/inex";
-import Moedas from "./FINANCEIRO/Moedas"
+import Moedas from "./FINANCEIRO/Moedas";
+import MetodosPagamento from "./FINANCEIRO/Metodos de pagamento"
 import SearchCoins from "./FINANCEIRO/Moedas/SearchCoins";
 import NewCoin from "./FINANCEIRO/Moedas/NewCoin";
 import ChangeCoin from "./FINANCEIRO/Moedas/ChangeCoin";
+import SearchPaymentTerms from "./FINANCEIRO/Metodos de pagamento/SearchPaymentTerms";
+import NewPaymentTerms from "./FINANCEIRO/Metodos de pagamento/NewPaymentTerms";
+import ChangePaymentTerms from "./FINANCEIRO/Metodos de pagamento/ChangePaymentTerms";
 
 const GuardedRoute = ({ children, redirectTo }) => {
     if (window.location.pathname === "/") {
@@ -165,6 +169,25 @@ export const router = createBrowserRouter([
                     {
                         path: '/financeiro/moedas/change/:id',
                         element: <ChangeCoin />
+                    }
+                ]
+            },
+            {
+                path: '/financeiro/metodos de pagamento',
+                element: <MetodosPagamento />,
+                children: [
+                    {
+                        path: '/financeiro/metodos de pagamento',
+                        element: <SearchPaymentTerms />,
+                        index: true
+                    },
+                    {
+                        path: '/financeiro/metodos de pagamento/new_payment_terms',
+                        element: <NewPaymentTerms />
+                    },
+                    {
+                        path: '/financeiro/metodos de pagamento/change/:id',
+                        element: <ChangePaymentTerms />
                     }
                 ]
             },

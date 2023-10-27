@@ -4,9 +4,9 @@ import useGetDataSpecific from '../../../functions/useGetDataSpecific'
 import { BasicInput, CheckInput } from '../../../components/Inputs'
 import useDeleteData from '../../../functions/useDeleteData'
 import useSubmitDataPostOrPut from '../../../functions/useSubmitDataPostOrPut'
-import useBasedFunctionCoin from './basedFunctionCoins'
+import useBasedFunctionPaymentTerms from './basedFunctionPaymentTerms'
 
-export const BasedFormCoins = ({
+export const BasedFormPaymentTerms = ({
     id
 }) => {
 
@@ -15,29 +15,29 @@ export const BasedFormCoins = ({
         setData,
         urlApi,
         urlReturn
-    } = useBasedFunctionCoin()
+    } = useBasedFunctionPaymentTerms()
 
     const {
         name,
-        isUseCreditLimit
+        installments
     } = data
 
     useGetDataSpecific(id, `${urlApi}`, setData)
 
-    const DeleteCoin = useDeleteData(`${urlApi}`, id, urlReturn)
+    const DeletePaymentTerm = useDeleteData(`${urlApi}`, id, urlReturn)
 
     const handleSubmit = useSubmitDataPostOrPut(`${urlApi}`, urlReturn, id)
     return (
         <PrimaryForm
-            Title={id ? 'Alterar Moeda' : 'Cadastrar Moeda'}
+            Title={id ? 'Alterar Metodo de pagamento' : 'Cadastrar Metodo de pagamento'}
             urlCancel={urlReturn}
             onSubmit={e => handleSubmit(e, {
                 id,
                 name,
-                isUseCreditLimit
+                installments
             })}
             removeFunction={() => {
-                id && DeleteCoin()
+                id && DeletePaymentTerm()
             }}
         >
             <BasicGridContainerForm>
@@ -45,13 +45,11 @@ export const BasedFormCoins = ({
                     onChange={e => setData({ ...data, name: e.target.value })}
                     value={name}
                 />
-                <CheckInput
-                    options={[
-                        { title: 'Usar limite de crédito', value: true }
-                    ]}
-                    setData={setData}
-                    data={data}
-                    name="isUseCreditLimit"
+
+                <BasicInput label={"Parcelas"} $isLarge
+                    onChange={e => setData({ ...data, installments: e.target.value })}
+                    value={installments}
+                    type={"number"}
                 />
             </BasicGridContainerForm>
         </PrimaryForm>
