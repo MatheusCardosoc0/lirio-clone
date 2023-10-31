@@ -29,6 +29,8 @@ import ChangeCoin from "./FINANCEIRO/Moedas/ChangeCoin";
 import SearchPaymentTerms from "./FINANCEIRO/Metodos de pagamento/SearchPaymentTerms";
 import NewPaymentTerms from "./FINANCEIRO/Metodos de pagamento/NewPaymentTerms";
 import ChangePaymentTerms from "./FINANCEIRO/Metodos de pagamento/ChangePaymentTerms";
+import Login from "../Login";
+import { GuardedRoutes } from "../components/Auth";
 
 const GuardedRoute = ({ children, redirectTo }) => {
     if (window.location.pathname === "/") {
@@ -40,8 +42,16 @@ const GuardedRoute = ({ children, redirectTo }) => {
 
 export const router = createBrowserRouter([
     {
+        path: "/login",
+        element: <Login />
+    },
+    {
         path: '/',
-        element: <App />,
+        element: (
+            <GuardedRoutes redirectTo="/login">
+                <App />
+            </GuardedRoutes>
+        ),
         children: [
             {
                 index: true,

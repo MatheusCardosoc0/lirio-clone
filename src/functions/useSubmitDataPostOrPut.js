@@ -13,7 +13,8 @@ const useSubmitDataPostOrPut = (urlApi, urlReturn, id) => {
             if (id) {
                 await api.put(`${urlApi}${id}`, data);
             } else {
-                await api.post(urlApi, data);
+                const response = await api.post(urlApi, data);
+                console.log(response.data)
             }
 
             alert('Ok');
