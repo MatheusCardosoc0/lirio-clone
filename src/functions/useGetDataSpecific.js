@@ -13,6 +13,8 @@ const useGetDataSpecific = (id, urlApi, setData = {}) => {
                 try {
                     const response = await api.get(`${urlApi}${id}`);
                     setData(response.data);
+
+                    console.log(response.data)
                 } catch (error) {
                     setError(error);
                 } finally {

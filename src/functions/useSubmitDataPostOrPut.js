@@ -10,11 +10,15 @@ const useSubmitDataPostOrPut = (urlApi, urlReturn, id) => {
         console.log(data, id)
 
         try {
+            let response
             if (id) {
-                await api.put(`${urlApi}${id}`, data);
+                response = await api.put(`${urlApi}${id}`, data);
             } else {
-                const response = await api.post(urlApi, data);
-                console.log(response.data)
+                response = await api.post(urlApi, data);
+
+                if (response.data && response.data.token) {
+                    localStorage.setItem('authToken', response.data.token)
+                }
             }
 
             alert('Ok');

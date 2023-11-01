@@ -31,6 +31,7 @@ import NewPaymentTerms from "./FINANCEIRO/Metodos de pagamento/NewPaymentTerms";
 import ChangePaymentTerms from "./FINANCEIRO/Metodos de pagamento/ChangePaymentTerms";
 import Login from "../Login";
 import { GuardedRoutes } from "../components/Auth";
+import LoginGuardedRoute from "../components/Auth/LoginGuardedRoute";
 
 const GuardedRoute = ({ children, redirectTo }) => {
     if (window.location.pathname === "/") {
@@ -43,7 +44,11 @@ const GuardedRoute = ({ children, redirectTo }) => {
 export const router = createBrowserRouter([
     {
         path: "/login",
-        element: <Login />
+        element: (
+            <LoginGuardedRoute redirectTo="/Dashboard">
+                <Login />
+            </LoginGuardedRoute>
+        )
     },
     {
         path: '/',

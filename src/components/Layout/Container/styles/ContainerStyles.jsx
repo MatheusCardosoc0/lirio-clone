@@ -13,11 +13,14 @@ const Box = styled.section`
 `
 
 const NamePage = styled.h2`
-   width: 100%;
+   width: 98.5%;
    padding: 12px;
    background-color: #423ffa;
    color: white;
    margin-top: 0;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
 
    font-size: 3rem;
    font-weight: black;
@@ -30,8 +33,26 @@ const ContentContainer = styled.div`
     width: 100%;
 `
 
+const UserBox = styled.span`
+  display: flex;
+  gap: 4px;
+
+  h3{
+    font-size: 2rem;
+    color: white;
+  }
+
+  div{
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: white;
+  }
+`
+
 export {
   Box,
   NamePage,
-  ContentContainer
+  ContentContainer,
+  UserBox
 }

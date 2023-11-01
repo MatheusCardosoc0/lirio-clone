@@ -1,6 +1,7 @@
 import React from 'react';
-import { Box, ContentContainer, NamePage } from './styles/ContainerStyles';
+import { Box, ContentContainer, NamePage, UserBox } from './styles/ContainerStyles';
 import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Container = ({ children }) => {
 
@@ -9,7 +10,6 @@ const Container = ({ children }) => {
 
         const pats = urlDecode.split('/');
 
-        // Retorna a última parte da URL se houver menos de 3 segmentos
         if (pats.length < 3) return pats[pats.length - 1];
 
         const word = pats[2];
@@ -21,10 +21,16 @@ const Container = ({ children }) => {
 
     const location = useLocation()
 
+    const userName = useSelector(state => state.user.userName)
+
     return (
         <Box>
             <NamePage>
                 {transformUrl(location.pathname)}
+                <UserBox>
+                    <h3>{userName}</h3>
+                    <div />
+                </UserBox>
             </NamePage>
             <ContentContainer>
                 {children}
