@@ -11,6 +11,10 @@ const HeaderContainer = styled.header`
   justify-content: start;
   gap: 2px;
 
+  div{
+    position: relative;
+  }
+
   @media (min-width: 1440px) {
     overflow: initial;
   }
@@ -35,15 +39,16 @@ const HeaderContainer = styled.header`
 `;
 
 const TitleSectionButton = styled(({ isSelected, ...rest }) => <button {...rest} />)`
-  font-weight: bold;
+  font-weight: bolder;
   font-size: 1.6rem;
+  border: 1px solid black;
   background:  ${props => props.isSelected ? '#398f00' : 'white'};;
   border-right: 6px;
   box-shadow: 3px 1px 2px black;
   height: 100%;
   width: 100%;
   color: ${props => props.isSelected ? 'white' : 'black'};
-  padding-inline: 12px;
+  padding-inline: 20px;
 
   &:hover{
       color: white;
@@ -55,28 +60,26 @@ const TitleSectionButton = styled(({ isSelected, ...rest }) => <button {...rest}
 `
 
 const OptionsForSectionContainer = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
+  position: absolute;
+  top: 184px;
   transform: translateY(-50%) translateX(-50%);
   background-color: #ffffff;
   box-shadow: 0px 0px 5px #000000;
-  z-index: 10;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   font-size: 3rem;
   align-items: start;
   font-weight: bold;
-  border-radius: 8px;
   height: 300px;
-  width: 80%;
-  max-width: 300px;
+  min-width: 256px;
+  max-width: 256px;
   overflow-y: scroll;
   overflow-x: hidden;
   animation: flyingToLocal 0.5s ease-in-out;
   transition: all 1s;
-  gap: 6px;
-  padding: 6px;
+  left: 60%;
+  direction: rtl;
 
   @media (min-width: 768px) {
     font-size: 2rem;
@@ -87,16 +90,16 @@ const OptionsForSectionContainer = styled.div`
     width: 100%;
     text-decoration: none;
     font-size: 3rem;
-    background-color: white;
-    padding: 12px;
+    background-color: #ffffff;
+    padding-block: 12px;
     box-shadow: 0px 0px 5px black;
-    border-radius: 8px;
+    text-align: center;
+    border: 1px solid black;
 
 
     &:hover{
-      color: #ffffff;
       cursor: pointer;
-      background-color: #007700;
+      transform:scale(1.2) ;
     }
   }
 

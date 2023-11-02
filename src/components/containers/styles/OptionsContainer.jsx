@@ -7,24 +7,29 @@ const OptionsContainer = styled.div`
   padding: 4px;
   overflow-y: hidden;
   position: fixed;
+  top: 19%;
 
   display: flex;
   gap: 8px;
 `
 
 const OptionButton = styled.button`
-  width: 40px;
-  height: 40px;
+  width: 56px;
+  height: 56px;
   border-radius: 100%;
-  background-color: transparent;
+  background-color: ${props => props.$color};
+  align-items: center;
+  border-right: 4px solid;
+  border-bottom: 4px solid;
+  border-color: ${props => `rgba(0, 0, 0, 0.167)`};
 
   &:hover{
-    scale: 1.4;
+    border: none;
   }
     
   svg{
     font-size: 4rem;
-    color: ${props => props.$color} ;
+    color:  white;
   }
 `
 

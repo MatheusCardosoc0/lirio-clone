@@ -12,6 +12,7 @@ export const InputStyleConsult = styled.div`
   gap: 2px;
   position: relative;
   padding-top: 24px;
+  cursor: pointer;
   
   span{
     text-align: start;
@@ -28,6 +29,7 @@ export const InputStyleConsult = styled.div`
     transition-duration: 0.5s;
     font-size: 2.4rem;
     padding-left: 8px;
+    cursor: pointer;
   }
 
   &:focus-within label {

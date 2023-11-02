@@ -6,7 +6,7 @@ const OpenButton = styled.button`
     top: 12%;
     right: 1%;
     transform: translateY(-50%);
-    z-index: 100;
+    z-index: 80;
 
     border-radius: 100%;
     background-color: #5e9cf8;

@@ -8,7 +8,6 @@ const FormStyle1 = styled.form`
   flex-direction: column;
   position: relative;
   margin-inline: auto;
-  gap: 1px;
   border-radius: 12px;
   overflow: hidden;
   padding-bottom: 20px;
@@ -22,7 +21,7 @@ const FormStyle1 = styled.form`
     color: #000000;
   }
   main{
-    padding: 8px;
+    padding: 4px;
   }
   footer{
     padding: 8px;

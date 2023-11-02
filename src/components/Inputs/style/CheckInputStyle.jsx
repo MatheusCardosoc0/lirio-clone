@@ -8,18 +8,16 @@ const CheckInputStyle = styled.div`
 
   div{
     display: flex;
-    flex-direction: column;
-    gap: 2px;
+    gap: 8px;
     font-size: 2rem;
     margin-right: 8px;
 
     align-items: start;
     border: solid 0.2px #00000060;
-    padding: 2px;
-    border-radius: 10%;
-    background-color: #944cf3;
-    color: white;
-    box-shadow: 0px 0px 4px black;
+    padding: 4px;
+    background-color: #ffffff;
+    color: black;
+    box-shadow: 1px 1px 2px black;
 
     label{
         font-weight: bold;
@@ -28,11 +26,11 @@ const CheckInputStyle = styled.div`
     span{
         padding: 2px;
         border: 1px solid black;
-        border-radius: 20%;
+        border-radius: 100%;
 
         display: flex;
         align-items: center;
-        background-color: #ff8902;
+        background-color: #f6ff00;
         color: #0c0c0c;
         cursor: pointer;
     }
@@ -40,5 +38,5 @@ const CheckInputStyle = styled.div`
 `
 
 export {
-    CheckInputStyle
+  CheckInputStyle
 }

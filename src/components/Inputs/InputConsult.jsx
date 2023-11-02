@@ -6,7 +6,6 @@ import { InputStyle1 } from './style/InputStyle1'
 const ConsultInput = ({
     label,
     $isLarge,
-    onChange,
     value,
     openModal,
     title
@@ -16,7 +15,9 @@ const ConsultInput = ({
         <InputStyleConsult $isLarge={$isLarge}
             onClick={openModal}
         >
-            <label htmlFor={label} >{label + ':'}</label>
+            <label htmlFor={label} >
+                {label + ':'}
+            </label>
             <span>
                 {value || '...'}
             </span>
