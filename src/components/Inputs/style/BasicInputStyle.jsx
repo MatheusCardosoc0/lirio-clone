@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const InputStyle1 = styled.div`
+export const BasicInputStyle = styled.div`
   width: 100%;
   max-width: ${(props) => (props.$isLarge ? "100%" : "200px")};
   background-color: white;
@@ -11,6 +11,7 @@ export const InputStyle1 = styled.div`
   gap: 2px;
   position: relative;
   padding-top: 24px;
+  max-height: 28px;
 
   input {
     border: none;

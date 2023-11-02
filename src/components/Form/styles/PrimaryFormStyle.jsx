@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-const FormStyle1 = styled.form`
+const PrimaryFormStyle = styled.form`
   width: 90%;
   max-width: 700px;
   background-color: transparent;
@@ -33,22 +33,6 @@ const FormStyle1 = styled.form`
   }
 `
 
-const CloseButton = styled.button`
-  position: absolute;
-  top: 4px;
-  right: 4px;
-
-  width: 40px;
-  height: 40px;
-  border-radius: 100%;
-  background-color: red;
-  color: white;
-  font-size: 3rem;
-  display: flex;
-  align-items: center;
-`
-
 export {
-  FormStyle1,
-  CloseButton
+  PrimaryFormStyle
 }

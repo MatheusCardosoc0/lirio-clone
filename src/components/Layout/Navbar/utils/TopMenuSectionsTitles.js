@@ -6,20 +6,20 @@ const TopMenuSectionsTitles = [
     'FINANCEIRO',
     'FATURAMENTO',
     'RELATÓRIOS',
-    'UTILITÁRIOS',
+    'UTILITARIOS',
     'JANELAS',
     'AJUDA'
 ]
 
 const OptionsForSectionConstants = {
-    PESSOAL: ['Pessoas', 'Grupos', 'Cidades'],
+    PESSOAL: ['Pessoas', 'Grupos de pessoas', 'Cidades'],
     ATENDIMENTO: [''],
     MATERIAIS: ['Produtos', 'Grupos de Produtos'],
     VENDAS: [''],
     FINANCEIRO: ['Moedas', 'Metodos de pagamento'],
     FATURAMENTO: [''],
-    RELATÓRIOS: ['', ''],
-    UTILITÁRIOS: [''],
+    RELATÓRIOS: [''],
+    UTILITARIOS: ['Usuarios'],
     JANELAS: [''],
     AJUDA: [''],
 }

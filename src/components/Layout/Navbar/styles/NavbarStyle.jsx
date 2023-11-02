@@ -9,7 +9,7 @@ const HeaderContainer = styled.header`
   background-color: #ffffff;
   height: 44px;
   justify-content: start;
-  gap: 2px;
+  gap: 4px;
 
   div{
     position: relative;
@@ -43,12 +43,11 @@ const TitleSectionButton = styled(({ isSelected, ...rest }) => <button {...rest}
   font-size: 1.6rem;
   border: 1px solid black;
   background:  ${props => props.isSelected ? '#398f00' : 'white'};;
-  border-right: 6px;
-  box-shadow: 3px 1px 2px black;
   height: 100%;
   width: 100%;
   color: ${props => props.isSelected ? 'white' : 'black'};
   padding-inline: 20px;
+  box-shadow: 0px 0px 1px black;
 
   &:hover{
       color: white;
@@ -64,7 +63,6 @@ const OptionsForSectionContainer = styled.div`
   top: 184px;
   transform: translateY(-50%) translateX(-50%);
   background-color: #ffffff;
-  box-shadow: 0px 0px 5px #000000;
   z-index: 100;
   display: flex;
   flex-direction: column;
@@ -92,7 +90,6 @@ const OptionsForSectionContainer = styled.div`
     font-size: 3rem;
     background-color: #ffffff;
     padding-block: 12px;
-    box-shadow: 0px 0px 5px black;
     text-align: center;
     border: 1px solid black;
 
@@ -117,7 +114,8 @@ const LogoutButton = styled.button`
   color: white;
   background: red;
   border-right: 6px;
-  box-shadow: 2px 1px 2px black;
+  box-shadow: 0px 0px 1px black;
+  border: 1px solid black;
   height: 100%;
   width: 60px;
 `

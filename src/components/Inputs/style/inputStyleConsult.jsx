@@ -13,12 +13,14 @@ export const InputStyleConsult = styled.div`
   position: relative;
   padding-top: 24px;
   cursor: pointer;
+  overflow: hidden;
   
   span{
     text-align: start;
     width: 100%;
     padding-left: 8px;
     cursor: pointer;
+    white-space: nowrap;
   }
 
   label {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { BsRssFill } from 'react-icons/bs'
 import { InputStyleConsult } from './style/inputStyleConsult';
-import { InputStyle1 } from './style/InputStyle1'
 
 const ConsultInput = ({
     label,

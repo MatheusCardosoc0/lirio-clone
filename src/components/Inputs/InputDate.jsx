@@ -1,5 +1,5 @@
 import React from 'react';
-import { InputStyle1 } from './style/InputStyle1';
+import { BasicInputStyle } from './style/BasicInputStyle';
 
 const InputDate = ({
     label,
@@ -30,7 +30,7 @@ const InputDate = ({
     };
 
     return (
-        <InputStyle1 $isLarge={$isLarge} >
+        <BasicInputStyle $isLarge={$isLarge} >
             <label htmlFor={label} >{label + ':'}</label>
             <input
                 id={label}
@@ -39,7 +39,7 @@ const InputDate = ({
                 placeholder='dd/mm/yyyy'
                 value={value}
             />
-        </InputStyle1>
+        </BasicInputStyle>
     );
 }
 

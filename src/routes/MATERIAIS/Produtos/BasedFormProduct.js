@@ -39,14 +39,7 @@ const BasedFormProduct = ({
                 Title={id ? "Alterar produto" : "Cadastro de produtos"}
                 urlCancel={urlReturn}
                 removeFunction={id ? () => DeleteProduct() : null}
-                onSubmit={(e) => handleSubmit(e, {
-                    id,
-                    name,
-                    description,
-                    group,
-                    price
-                }
-                )}
+                onSubmit={(e) => handleSubmit(e, data)}
             >
                 <BasicGridContainerForm>
                     <BasicInput

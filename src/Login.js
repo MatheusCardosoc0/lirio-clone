@@ -18,7 +18,7 @@ const Login = () => {
     return (
         <LoginContainer>
             <LoginForm
-                onSubmit={e => handleSubmit(e, dataForLogin)}
+                onSubmit={e => handleSubmit(e, dataForLogin, "Login feito com sucesso")}
             >
                 <img src={Logo} alt='Logo' />
                 <BasicInput

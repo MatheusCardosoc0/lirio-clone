@@ -53,23 +53,7 @@ const BasedFormPerson = ({
                 Title={id ? "Alterar pessoa" : "Cadastro de pessoas"}
                 urlCancel={urlReturn}
                 removeFunction={id ? () => DeletePerson() : null}
-                onSubmit={(e) => handleSubmit(e, {
-                    name,
-                    email,
-                    phone,
-                    age,
-                    city,
-                    group,
-                    ibge,
-                    inscricaoEstadual,
-                    Razao: razao || name,
-                    cep,
-                    cpf,
-                    birthDate,
-                    address,
-                    id
-                }
-                )}
+                onSubmit={(e) => handleSubmit(e, { ...data, razao: razao || name })}
             >
                 <BasicGridContainerForm>
                     <CheckInput

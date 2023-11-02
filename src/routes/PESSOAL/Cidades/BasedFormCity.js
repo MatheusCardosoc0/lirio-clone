@@ -35,19 +35,12 @@ const BasedFormCity = ({
 
     const handleSubmit = useSubmitDataPostOrPut(`${urlApi}`, urlReturn, id)
 
-    console.log(data)
-
     return (
         <>
             <PrimaryForm
                 Title={id ? 'Alterar Cidade' : 'Cadastrar Cidade'}
                 urlCancel={urlReturn}
-                onSubmit={e => handleSubmit(e, {
-                    id,
-                    name,
-                    state,
-                    ibgNumber: ibgNumber.toString()
-                })}
+                onSubmit={e => handleSubmit(e, { ...data, ibgNumber: ibgNumber.toString() })}
                 removeFunction={id ? () => DeleteCity() : null}
             >
                 <BasicGridContainerForm>

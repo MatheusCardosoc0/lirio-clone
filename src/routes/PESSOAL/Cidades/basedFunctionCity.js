@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import toast from 'react-hot-toast'
 
 const useBasedFunctionCity = () => {
     const [data, setData] = useState({
@@ -14,8 +15,13 @@ const useBasedFunctionCity = () => {
     const urlReturn = "/pessoal/cidades"
 
     const CheckForOpenModal = () => {
-        if (data.state === '') {
-            return alert("Preencha o campo estado")
+        if (data.state === 'Nenhum' || data.state === '') {
+            return toast("Preencha o campo estado", {
+                style: {
+                    backgroundColor: 'yellow',
+                    color: 'black'
+                }
+            })
         }
 
         setIsOpenModal(true)

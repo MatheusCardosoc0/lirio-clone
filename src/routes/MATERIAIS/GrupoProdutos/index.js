@@ -1,21 +1,12 @@
 import React from 'react'
-import { OptionButton, OptionsContainer } from '../../../components/containers'
-import { AiOutlinePlus } from 'react-icons/ai'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
+import BasicOptionsContainer from '../../../components/containers/BasicOptionsContainer'
 
 const GrupoProdutos = () => {
 
-    const navigation = useNavigate()
-
     return (
         <>
-            <OptionsContainer>
-                <OptionButton $color="green" onClick={() => navigation("/materiais/grupos de produtos/new_product_group")}
-                    title="Cadastrar novo grupo de produtos"
-                >
-                    <AiOutlinePlus />
-                </OptionButton>
-            </OptionsContainer>
+            <BasicOptionsContainer url={"/materiais/grupos de produtos"} />
             <Outlet />
         </>
     )

@@ -1,20 +1,11 @@
-import { Outlet, useNavigate } from "react-router-dom";
-import { OptionButton, OptionsContainer } from "../../../components/containers";
-import { AiOutlinePlus } from "react-icons/ai";
+import { Outlet } from "react-router-dom";
+import BasicOptionsContainer from "../../../components/containers/BasicOptionsContainer";
 
 const Container = () => {
 
-    const navigation = useNavigate()
-
     return (
         <>
-            <OptionsContainer>
-                <OptionButton $color="green" onClick={() => navigation("/financeiro/moedas/new_coin")}
-                    title="Cadastrar nova moeda"
-                >
-                    <AiOutlinePlus />
-                </OptionButton>
-            </OptionsContainer>
+            <BasicOptionsContainer url={"/financeiro/moedas"} />
             <Outlet />
         </>
     );

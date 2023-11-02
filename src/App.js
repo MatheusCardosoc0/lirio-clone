@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import LateralMenu from './components/Layout/LateralMenu';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
+import { FaArrowLeft } from 'react-icons/fa'
 import { toggleMenu } from './redux/actions/menuActions';
 import Navbar from './components/Layout/Navbar';
 import Container from './components/Layout/Container';

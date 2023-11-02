@@ -15,8 +15,7 @@ const BasicModal = ({
     closeModal,
     Url,
     primaryValue = "id",
-    secondValue = "name",
-    isUseGetAllValue
+    secondValue = "name"
 }) => {
 
     const [data, setData] = useState([]);

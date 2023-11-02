@@ -23,6 +23,10 @@ import NewProduct from "./MATERIAIS/Produtos/NewProduct";
 import ChangeProduct from "./MATERIAIS/Produtos/ChangeProduct/inex";
 import Moedas from "./FINANCEIRO/Moedas";
 import MetodosPagamento from "./FINANCEIRO/Metodos de pagamento"
+import Usuarios from "./UTILITARIOS/Usuarios"
+import SearchUsers from "./UTILITARIOS/Usuarios/SearchUsers"
+import ChangeUser from "./UTILITARIOS/Usuarios/ChangeUser"
+import NewUser from "./UTILITARIOS/Usuarios/NewUser"
 import SearchCoins from "./FINANCEIRO/Moedas/SearchCoins";
 import NewCoin from "./FINANCEIRO/Moedas/NewCoin";
 import ChangeCoin from "./FINANCEIRO/Moedas/ChangeCoin";
@@ -81,7 +85,7 @@ export const router = createBrowserRouter([
                         index: true
                     },
                     {
-                        path: '/pessoal/pessoas/new_person',
+                        path: '/pessoal/pessoas/new',
                         element: <NewPerson />
                     },
                     {
@@ -91,20 +95,20 @@ export const router = createBrowserRouter([
                 ]
             },
             {
-                path: '/pessoal/grupos',
+                path: '/pessoal/grupos de pessoas',
                 element: <Grupos />,
                 children: [
                     {
-                        path: '/pessoal/grupos',
+                        path: '/pessoal/grupos de pessoas',
                         element: <SearchGroups />,
                         index: true
                     },
                     {
-                        path: '/pessoal/grupos/new_group',
+                        path: '/pessoal/grupos de pessoas/new',
                         element: <NewGroup />
                     },
                     {
-                        path: '/pessoal/grupos/change/:id',
+                        path: '/pessoal/grupos de pessoas/change/:id',
                         element: <ChangeGroup />
                     }
                 ]
@@ -119,7 +123,7 @@ export const router = createBrowserRouter([
                         index: true
                     },
                     {
-                        path: '/pessoal/cidades/new_city',
+                        path: '/pessoal/cidades/new',
                         element: <NewCity />
                     },
                     {
@@ -139,7 +143,7 @@ export const router = createBrowserRouter([
                         index: true
                     },
                     {
-                        path: '/materiais/grupos de produtos/new_product_group',
+                        path: '/materiais/grupos de produtos/new',
                         element: <NewGroupProduct />
                     },
                     {
@@ -158,7 +162,7 @@ export const router = createBrowserRouter([
                         index: true
                     },
                     {
-                        path: '/materiais/produtos/new_product',
+                        path: '/materiais/produtos/new',
                         element: <NewProduct />
                     },
                     {
@@ -178,7 +182,7 @@ export const router = createBrowserRouter([
                         index: true
                     },
                     {
-                        path: '/financeiro/moedas/new_coin',
+                        path: '/financeiro/moedas/new',
                         element: <NewCoin />
                     },
                     {
@@ -197,12 +201,32 @@ export const router = createBrowserRouter([
                         index: true
                     },
                     {
-                        path: '/financeiro/metodos de pagamento/new_payment_terms',
+                        path: '/financeiro/metodos de pagamento/new',
                         element: <NewPaymentTerms />
                     },
                     {
                         path: '/financeiro/metodos de pagamento/change/:id',
                         element: <ChangePaymentTerms />
+                    }
+                ]
+            },
+            //UTILITÀRIOS
+            {
+                path: '/utilitarios/usuarios',
+                element: <Usuarios />,
+                children: [
+                    {
+                        path: '/utilitarios/usuarios',
+                        element: <SearchUsers />,
+                        index: true
+                    },
+                    {
+                        path: '/utilitarios/usuarios/new',
+                        element: <NewUser />
+                    },
+                    {
+                        path: '/utilitarios/usuarios/change/:id',
+                        element: <ChangeUser />
                     }
                 ]
             },

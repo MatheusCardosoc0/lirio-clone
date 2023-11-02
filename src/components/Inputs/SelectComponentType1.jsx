@@ -1,5 +1,4 @@
 import React from 'react';
-import { BsRssFill } from 'react-icons/bs'
 import { SelectStyle1 } from './style/SelectStyle1';
 
 const BasicSelect = ({

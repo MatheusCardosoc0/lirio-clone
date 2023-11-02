@@ -39,7 +39,7 @@ const BasicFilterElement = ({
                     value={isSearchTermName}
                 />
                 <ButtonStyle1
-                    onClick={() => filterData()} // Corrigido
+                    onClick={() => filterData()}
                 >
                     <AiOutlineSearch />
                     Filtrar

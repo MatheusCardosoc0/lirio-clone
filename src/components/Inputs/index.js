@@ -1,4 +1,4 @@
-export { default as BasicInput } from './InputType1'
+export { default as BasicInput } from './BasicInput'
 export { default as ConsultInput } from './InputConsult'
 export { default as BasicSelect } from './SelectComponentType1'
 export { default as InputDate } from './InputDate'

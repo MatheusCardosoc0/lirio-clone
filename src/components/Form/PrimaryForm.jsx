@@ -1,24 +1,16 @@
 import React from 'react';
-import { FormStyle1 } from './styles/FormStyle1';
-import { AiOutlineClose } from 'react-icons/ai'
-import { ButtonStyle1, CloseButton } from '../Buttons';
-import { useNavigate } from 'react-router-dom';
+import { PrimaryFormStyle } from './styles/PrimaryFormStyle';
+import { ButtonStyle1 } from '../Buttons';
 
-const FormType1 = ({
+const PrimaryForm = ({
     children,
     onSubmit,
-    urlCancel,
     Title = '',
     removeFunction
 }) => {
 
-    const navigate = useNavigate()
-
     return (
-        <FormStyle1 onSubmit={onSubmit} >
-            <CloseButton onClick={() => navigate(urlCancel)} >
-                <AiOutlineClose />
-            </CloseButton>
+        <PrimaryFormStyle onSubmit={onSubmit} >
             <header>
                 <h2>
                     {Title}
@@ -46,8 +38,8 @@ const FormType1 = ({
                     </ButtonStyle1>
                 )}
             </footer>
-        </FormStyle1 >
+        </PrimaryFormStyle >
     );
 }
 
-export default FormType1;
+export default PrimaryForm;

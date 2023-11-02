@@ -15,9 +15,6 @@ export const BasicModalStyle = styled.section`
   background-color: #8a82fa;
   box-shadow: 1px 1px 4px black;
 
-  display: flex;
-  flex-direction: column;
-
   @media (min-width: 768px ) {
     max-width: 1000px;
     height: 90%;
@@ -27,5 +24,8 @@ export const BasicModalStyle = styled.section`
     position: relative;
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 `

@@ -1,21 +1,12 @@
 import React from 'react'
-import { OptionButton, OptionsContainer } from '../../../components/containers'
-import { AiOutlinePlus } from 'react-icons/ai'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
+import BasicOptionsContainer from '../../../components/containers/BasicOptionsContainer'
 
 const Produtos = () => {
 
-    const navigation = useNavigate()
-
     return (
         <>
-            <OptionsContainer>
-                <OptionButton $color="green" onClick={() => navigation("/materiais/produtos/new_product")}
-                    title="Cadastrar novo produto"
-                >
-                    <AiOutlinePlus />
-                </OptionButton>
-            </OptionsContainer>
+            <BasicOptionsContainer url={"/materiais/produtos"} />
             <Outlet />
         </>
     )

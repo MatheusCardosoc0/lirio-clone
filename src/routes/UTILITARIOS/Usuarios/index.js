@@ -5,7 +5,7 @@ const Container = () => {
 
     return (
         <>
-            <BasicOptionsContainer url={"/pessoal/pessoas"} />
+            <BasicOptionsContainer url={"/utilitarios/usuarios"} />
             <Outlet />
         </>
     );

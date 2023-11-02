@@ -30,10 +30,7 @@ export const BasedFormGroup = ({
         <PrimaryForm
             Title={id ? 'Alterar Grupo' : 'Cadastrar Grupo'}
             urlCancel={urlReturn}
-            onSubmit={e => handleSubmit(e, {
-                id,
-                name,
-            })}
+            onSubmit={e => handleSubmit(e, data)}
             removeFunction={() => {
                 id && DeleteGroup()
             }}

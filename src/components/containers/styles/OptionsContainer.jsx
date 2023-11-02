@@ -14,8 +14,8 @@ const OptionsContainer = styled.div`
 `
 
 const OptionButton = styled.button`
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   border-radius: 100%;
   background-color: ${props => props.$color};
   align-items: center;
@@ -28,7 +28,7 @@ const OptionButton = styled.button`
   }
     
   svg{
-    font-size: 4rem;
+    font-size: 3.6rem;
     color:  white;
   }
 `

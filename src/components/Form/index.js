@@ -1,2 +1,2 @@
-export { default as PrimaryForm } from './FormType1'
+export { default as PrimaryForm } from './PrimaryForm'
 export { BasicGridContainerForm } from './styles/BasicGridContainerForm'
