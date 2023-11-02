@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const TableContainer = styled.div`
   overflow: auto;
-  max-height: 55vh;
+  max-height: 50vh;
   max-width: 98%;
 
   &::-webkit-scrollbar {

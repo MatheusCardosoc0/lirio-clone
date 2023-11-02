@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HeaderContainer, OptionsForSectionContainer, TitleSectionButton } from './styles/HeaderStyle';
+import { HeaderContainer, LogoutButton, TitleSectionButton } from './styles/HeaderStyle';
 import { TopMenuSectionsTitles } from './utils/TopMenuSectionsTitles';
 import OptionsForSection from './components/OptionsForSection';
 
@@ -12,6 +12,11 @@ const Navbar = () => {
         }
 
         setCurrentSection('')
+    }
+
+    function logOut() {
+        localStorage.removeItem("authToken")
+        window.location.reload()
     }
 
     return (
@@ -32,6 +37,11 @@ const Navbar = () => {
                     )}
                 </div>
             ))}
+            <LogoutButton
+                onClick={() => logOut()}
+            >
+                Sair
+            </LogoutButton>
         </HeaderContainer>
     );
 }

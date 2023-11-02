@@ -15,6 +15,9 @@ const BasicSelect = ({
             <label htmlFor={label} >{label + ':'}</label>
             <select id={label}
                 onChange={onChange} value={value}>
+                <option value={"Nenhum"} >
+                    Nenhum
+                </option>
                 {options.map((item, index) => (
                     <option key={index} value={item.name} >
                         {item.name}

@@ -8,8 +8,7 @@ const TopMenuSectionsTitles = [
     'RELATÓRIOS',
     'UTILITÁRIOS',
     'JANELAS',
-    'AJUDA',
-    'SAIR',
+    'AJUDA'
 ]
 
 const OptionsForSectionConstants = {
@@ -23,7 +22,6 @@ const OptionsForSectionConstants = {
     UTILITÁRIOS: [''],
     JANELAS: [''],
     AJUDA: [''],
-    SAIR: null,
 }
 
 export {

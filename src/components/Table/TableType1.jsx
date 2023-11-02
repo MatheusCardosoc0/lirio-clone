@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyledTable, TableContainer } from './styles/TableStyle1';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const TablePrimary = ({
     columns = [],
@@ -9,6 +9,8 @@ const TablePrimary = ({
     setValueFunction,
     setValueObject
 }) => {
+
+    const navigate = useNavigate()
 
     const formatCellValue = (value) => {
         if (typeof value === 'boolean') {
@@ -32,15 +34,15 @@ const TablePrimary = ({
                 </thead>
                 <tbody>
                     {data.map((row, rowIndex) => (
-                        <tr key={rowIndex}>
+                        <tr key={rowIndex}
+                            onClick={() => {
+                                !setValueFunction && navigate(`${navigateTo}/${row.id}`)
+                            }}
+                        >
                             {columns.map((column, colIndex) => (
                                 <td key={colIndex} data-label={column.label}>
                                     {!setValueFunction && (
-                                        <Link
-                                            to={`${navigateTo}/${row.id}`}
-                                        >
-                                            {formatCellValue(row[column.filed])}
-                                        </Link>
+                                        formatCellValue(row[column.filed])
                                     )}
                                     {setValueFunction && (
                                         <button

@@ -16,11 +16,29 @@ const GuardedRoutes = ({ children, redirectTo }) => {
             console.log(response.data)
             dispatch(setCurrentUser(response.data.userName));
         } catch (error) {
+            localStorage.removeItem("authToken")
+            window.location.reload()
         }
+    }
+
+    function setupAuthInterceptor(getToken) {
+        api.interceptors.request.use(
+            async config => {
+                const token = localStorage.getItem("authToken");
+                if (token) {
+                    config.headers['Authorization'] = `Bearer ${token}`;
+                }
+                return config;
+            },
+            error => {
+                return Promise.reject(error);
+            }
+        );
     }
 
     useEffect(() => {
         if (token && !userName) {
+            setupAuthInterceptor()
             dispatch(fetchUserData(token));
         }
     }, [token, dispatch, userName]);

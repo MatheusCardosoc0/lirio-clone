@@ -3,10 +3,13 @@ import { styled } from "styled-components";
 const HeaderContainer = styled.header`
   width: 100%;
   display: flex;
-  gap: 16px;
   overflow-x: scroll;
-  padding-block: 20px;
+  padding-inline: 2px;
+  padding-block: 4px;
   background-color: #ffffff;
+  height: 44px;
+  justify-content: start;
+  gap: 2px;
 
   @media (min-width: 1440px) {
     overflow: initial;
@@ -34,13 +37,20 @@ const HeaderContainer = styled.header`
 const TitleSectionButton = styled(({ isSelected, ...rest }) => <button {...rest} />)`
   font-weight: bold;
   font-size: 1.6rem;
-  background: transparent;
-  color: ${props => props.isSelected ? '#00b7ff' : 'black'};
+  background:  ${props => props.isSelected ? '#398f00' : 'white'};;
+  border-right: 6px;
+  box-shadow: 3px 1px 2px black;
+  height: 100%;
+  width: 100%;
+  color: ${props => props.isSelected ? 'white' : 'black'};
+  padding-inline: 12px;
 
   &:hover{
-      color: #00b7ff;
+      color: white;
       transition: all;
       transition-duration: 1s;
+      background-color: #398f00;
+      filter: brightness(125%);
   }
 `
 
@@ -98,9 +108,22 @@ const OptionsForSectionContainer = styled.div`
 `
 
 
+const LogoutButton = styled.button`
+  font-weight: bold;
+  font-size: 2rem;
+  color: white;
+  background: red;
+  border-right: 6px;
+  box-shadow: 2px 1px 2px black;
+  height: 100%;
+  width: 60px;
+`
+
+
 
 export {
   HeaderContainer,
   OptionsForSectionContainer,
-  TitleSectionButton
+  TitleSectionButton,
+  LogoutButton
 }
