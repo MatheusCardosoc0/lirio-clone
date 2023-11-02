@@ -31,6 +31,7 @@ const Login = () => {
                     onChange={e => setDataForLogin({ ...dataForLogin, password: e.target.value })}
                     value={dataForLogin.password}
                     label={"Senha"}
+                    type={"password"}
                     $isLarge
                 />
 

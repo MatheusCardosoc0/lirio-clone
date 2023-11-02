@@ -61,6 +61,7 @@ const BasedFormUser = ({
                             $isLarge
                             onChange={e => setData({ ...data, password: e.target.value })}
                             value={password}
+                            type={"password"}
                         />
 
                     </div>
