@@ -14,19 +14,20 @@ root.render(
     <Provider store={store} >
       <RouterProvider router={router} />
       <Toaster
-        position='top-right'
+        position='bottom-right'
         gutter={8}
         reverseOrder={false}
         toastOptions={{
           duration: 2500,
           style: {
-            fontSize: '18px',
+            fontSize: '24px',
             fontWeight: 'bold',
+            width: '200px'
           },
           success: {
             style: {
               backgroundColor: '#0BDC35',
-              color: 'white'
+              color: 'white',
             },
             iconTheme: {
               primary: 'white',

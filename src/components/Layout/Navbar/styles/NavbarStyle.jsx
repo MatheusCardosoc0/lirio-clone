@@ -4,12 +4,9 @@ const HeaderContainer = styled.header`
   width: 100%;
   display: flex;
   overflow-x: scroll;
-  padding-inline: 2px;
-  padding-block: 4px;
   background-color: #ffffff;
   height: 44px;
   justify-content: start;
-  gap: 4px;
 
   div{
     position: relative;
@@ -41,43 +38,45 @@ const HeaderContainer = styled.header`
 const TitleSectionButton = styled(({ isSelected, ...rest }) => <button {...rest} />)`
   font-weight: bolder;
   font-size: 1.6rem;
-  border: 1px solid black;
-  background:  ${props => props.isSelected ? '#398f00' : 'white'};;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  background-image: linear-gradient(to right, #00bfff, #0e03e0);
   height: 100%;
-  width: 100%;
-  color: ${props => props.isSelected ? 'white' : 'black'};
+  width: 150px;
+  color: white;
+  filter:  ${props => props.isSelected ? 'brightness(125%)' : ''};
   padding-inline: 20px;
-  box-shadow: 0px 0px 1px black;
+  text-shadow: 0px 0px 2px black;
+  max-width: 300px;
 
   &:hover{
-      color: white;
-      transition: all;
-      transition-duration: 1s;
-      background-color: #398f00;
-      filter: brightness(125%);
+      filter: brightness(120%);
   }
 `
 
 const OptionsForSectionContainer = styled.div`
   position: absolute;
-  top: 184px;
+  top: 56px;
   transform: translateY(-50%) translateX(-50%);
-  background-color: #ffffff;
+  background-color: #e9e8e8;
   z-index: 100;
   display: flex;
   flex-direction: column;
   font-size: 3rem;
   align-items: start;
   font-weight: bold;
-  height: 300px;
-  min-width: 256px;
+  height: 200px;
+  width: 144px;
   max-width: 256px;
   overflow-y: scroll;
   overflow-x: hidden;
   animation: flyingToLocal 0.5s ease-in-out;
   transition: all 1s;
-  left: 60%;
+  left: 40%;
   direction: rtl;
+  box-shadow: 1px 1px 2px black;
+  border-radius: 8px;
+  transform: scale(1.5);
 
   @media (min-width: 768px) {
     font-size: 2rem;
@@ -87,16 +86,17 @@ const OptionsForSectionContainer = styled.div`
     padding-bottom: 4px;
     width: 100%;
     text-decoration: none;
-    font-size: 3rem;
-    background-color: #ffffff;
-    padding-block: 12px;
+    font-size: 1rem;
+    background-image: linear-gradient(to bottom, #26ff00, #029a16);
+    padding-block: 8px;
     text-align: center;
-    border: 1px solid black;
+    color: white;
+    text-shadow: 0px 0px 2px black;
 
 
     &:hover{
       cursor: pointer;
-      transform:scale(1.2) ;
+      transform: scale(1.1);
     }
   }
 
@@ -109,15 +109,23 @@ const OptionsForSectionContainer = styled.div`
 
 
 const LogoutButton = styled.button`
-  font-weight: bold;
-  font-size: 2rem;
-  color: white;
-  background: red;
-  border-right: 6px;
-  box-shadow: 0px 0px 1px black;
-  border: 1px solid black;
+  font-weight: bolder;
+  font-size: 1.6rem;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  background-image: linear-gradient(to right, #ff0000, #b50303);
   height: 100%;
-  width: 60px;
+  width: 100px;
+  color: white;
+  padding-inline: 20px;
+  text-shadow: 1px 1px 1px black;
+
+  &:hover{
+      color: white;
+      transition: all;
+      transition-duration: 1s;
+      background-color: '#b01501';
+  }
 `
 
 

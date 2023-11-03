@@ -7,7 +7,7 @@ const useBasedFunctionGroup = () => {
     })
 
     const urlApi = "/api/group/"
-    const urlReturn = "/pessoal/grupos"
+    const urlReturn = "/pessoal/grupos de pessoas"
 
     return {
         urlApi,

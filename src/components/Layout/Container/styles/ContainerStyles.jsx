@@ -15,12 +15,13 @@ const Box = styled.section`
 const NamePage = styled.h2`
    width: 98.5%;
    padding: 12px;
-   background-color: #423ffa;
+   background-image: linear-gradient(to right, #4800fd, #6600d2);
    color: white;
    margin-top: 0;
    display: flex;
    align-items: center;
    justify-content: space-between;
+   box-shadow: 0px 3px 3px black;
 
    font-size: 3rem;
    font-weight: black;
