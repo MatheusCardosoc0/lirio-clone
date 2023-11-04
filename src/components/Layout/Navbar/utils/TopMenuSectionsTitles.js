@@ -7,7 +7,6 @@ const TopMenuSectionsTitles = [
     'FATURAMENTO',
     'RELATÓRIOS',
     'UTILITARIOS',
-    'JANELAS',
     'AJUDA'
 ]
 

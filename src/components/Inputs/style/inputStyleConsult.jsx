@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const InputStyleConsult = styled.div`
   width: 100%;
   max-width: ${(props) => (props.$isLarge ? "50%" : "200px")};
-  background-color: #4230e9;
+  background-image: linear-gradient(to top, #0f0099, #4230e9);
   color: white;
   font-size: 2rem;
   display: flex;
@@ -21,6 +21,7 @@ export const InputStyleConsult = styled.div`
     padding-left: 8px;
     cursor: pointer;
     white-space: nowrap;
+    filter: drop-shadow(1px 1px 1px black);
   }
 
   label {
@@ -32,25 +33,25 @@ export const InputStyleConsult = styled.div`
     font-size: 2.4rem;
     padding-left: 8px;
     cursor: pointer;
+    filter: drop-shadow(1px 1px 1px black);
   }
 
-  &:focus-within label {
-    transform: scale(0.7);
-    top: -2px;
+  &:hover {
+    filter: brightness(160%);
   }
 
   button {
-    border-radius: 100%;
     position: absolute;
     color: white;
-    background-color: #f77700;
     padding: 6px;
     align-items: center;
+    background-color: transparent;
 
     top: 10%;
     right: 1%;
     svg{
       font-size: 2.4rem;
+      filter: drop-shadow(1px 1px 1px black);
     }
   }
 `;

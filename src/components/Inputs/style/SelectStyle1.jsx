@@ -11,6 +11,8 @@ export const SelectStyle1 = styled.div`
   gap: 2px;
   position: relative;
   padding-top: 24px;
+  border: 2px solid black;
+  box-shadow: 1px 1px 1px black;
 
   select {
     border: none;

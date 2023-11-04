@@ -1,2 +1,2 @@
 export { default as GuardedRoutes } from "./GuardedRoutes"
-export { LoginContainer, LoginForm } from "./LoginPageStyle"
+export { LoginContainer, LoginForm, LogoContainer, BoxLoginContainer } from "./LoginPageStyle"

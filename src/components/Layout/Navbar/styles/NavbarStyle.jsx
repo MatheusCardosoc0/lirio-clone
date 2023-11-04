@@ -10,6 +10,7 @@ const HeaderContainer = styled.header`
 
   div{
     position: relative;
+    width: 100%;
   }
 
   @media (min-width: 1440px) {
@@ -42,7 +43,7 @@ const TitleSectionButton = styled(({ isSelected, ...rest }) => <button {...rest}
   border-bottom: 2px solid black;
   background-image: linear-gradient(to right, #00bfff, #0e03e0);
   height: 100%;
-  width: 150px;
+  width: 100%;
   color: white;
   filter:  ${props => props.isSelected ? 'brightness(125%)' : ''};
   padding-inline: 20px;
@@ -86,8 +87,8 @@ const OptionsForSectionContainer = styled.div`
     padding-bottom: 4px;
     width: 100%;
     text-decoration: none;
-    font-size: 1rem;
-    background-image: linear-gradient(to bottom, #26ff00, #029a16);
+    font-size: 1.2rem;
+    background-image: linear-gradient(to bottom, #21d602, #01640e);
     padding-block: 8px;
     text-align: center;
     color: white;
@@ -97,6 +98,7 @@ const OptionsForSectionContainer = styled.div`
     &:hover{
       cursor: pointer;
       transform: scale(1.1);
+      filter: brightness(120%);
     }
   }
 

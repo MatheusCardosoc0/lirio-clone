@@ -20,9 +20,6 @@ const PrimaryFormStyle = styled.form`
     text-align: start;  
     color: #000000;
   }
-  main{
-    padding: 4px;
-  }
   footer{
     padding: 8px;
     gap: 12px;

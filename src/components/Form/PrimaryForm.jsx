@@ -16,12 +16,12 @@ const PrimaryForm = ({
                     {Title}
                 </h2>
             </header>
-            <main>
+            <div>
                 {children}
-            </main>
+            </div>
             <footer>
                 <ButtonStyle1
-                    $color={"green"}
+                    $color={"linear-gradient(to bottom, #85f100, #02830f)"}
                     $max_width={"140px"}
                     type='submit'
                 >
@@ -29,7 +29,7 @@ const PrimaryForm = ({
                 </ButtonStyle1>
                 {removeFunction && (
                     <ButtonStyle1
-                        $color={"red"}
+                        $color={"linear-gradient(to bottom, #ff0000, #ff2f00)"}
                         $max_width={"140px"}
                         type='button'
                         onClick={removeFunction}

@@ -1,10 +1,10 @@
 import { styled } from "styled-components";
 
 const OptionsContainer = styled.div`
-  width: 90%;
+  width: 100%;
   max-width: 90%;
   overflow-x: auto;
-  padding: 4px;
+  padding-inline: 20px;
   overflow-y: hidden;
   position: fixed;
   top: 19%;
@@ -30,6 +30,7 @@ const OptionButton = styled.button`
   svg{
     font-size: 3.6rem;
     color:  white;
+    filter: drop-shadow(1px 1px 1px black);
   }
 `
 

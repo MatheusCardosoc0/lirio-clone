@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { LoginContainer, LoginForm } from './components/Auth'
+import { BoxLoginContainer, LoginContainer, LoginForm, LogoContainer } from './components/Auth'
 import { BasicInput } from './components/Inputs'
 import Logo from './assets/Logo.png'
 import { ButtonStyle1 } from './components/Buttons'
@@ -17,30 +17,37 @@ const Login = () => {
 
     return (
         <LoginContainer>
-            <LoginForm
-                onSubmit={e => handleSubmit(e, dataForLogin, "Login feito com sucesso")}
-            >
-                <img src={Logo} alt='Logo' />
-                <BasicInput
-                    label={"Usuário"}
-                    onChange={e => setDataForLogin({ ...dataForLogin, username: e.target.value })}
-                    value={dataForLogin.username}
-                    $isLarge
-                />
-                <BasicInput
-                    onChange={e => setDataForLogin({ ...dataForLogin, password: e.target.value })}
-                    value={dataForLogin.password}
-                    label={"Senha"}
-                    type={"password"}
-                    $isLarge
-                />
-
-                <ButtonStyle1
-                    $color={"green"}
+            <BoxLoginContainer>
+                <LogoContainer>
+                    <img src={Logo} alt='logo' />
+                </LogoContainer>
+                <LoginForm
+                    onSubmit={e => handleSubmit(e, dataForLogin, "Login feito com sucesso")}
                 >
-                    Entrar
-                </ButtonStyle1>
-            </LoginForm>
+                    <h3>
+                        Faça seu Login
+                    </h3>
+                    <BasicInput
+                        label={"Usuário"}
+                        onChange={e => setDataForLogin({ ...dataForLogin, username: e.target.value })}
+                        value={dataForLogin.username}
+                        $isLarge
+                    />
+                    <BasicInput
+                        onChange={e => setDataForLogin({ ...dataForLogin, password: e.target.value })}
+                        value={dataForLogin.password}
+                        label={"Senha"}
+                        type={"password"}
+                        $isLarge
+                    />
+
+                    <ButtonStyle1
+                        $color={"linear-gradient(to bottom, #ccff33, #008000)"}
+                    >
+                        Entrar
+                    </ButtonStyle1>
+                </LoginForm>
+            </BoxLoginContainer>
         </LoginContainer>
     )
 }

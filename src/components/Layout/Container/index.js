@@ -1,7 +1,8 @@
 import React from 'react';
-import { Box, ContentContainer, NamePage, UserBox } from './styles/ContainerStyles';
+import { Box, ContentContainer, NamePage, SeparateContainer, UserBox } from './styles/ContainerStyles';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import LateralMenu from '../LateralMenu';
 
 const Container = ({ children }) => {
 
@@ -24,18 +25,25 @@ const Container = ({ children }) => {
     const userName = useSelector(state => state.user.userName)
 
     return (
-        <Box>
-            <NamePage>
-                {transformUrl(location.pathname)}
-                <UserBox>
-                    <h3>{userName}</h3>
-                    <div />
-                </UserBox>
-            </NamePage>
-            <ContentContainer>
-                {children}
-            </ContentContainer>
-        </Box>
+        <SeparateContainer>
+            <LateralMenu>
+
+            </LateralMenu>
+            <Box>
+                <NamePage>
+                    <h2>
+                        {transformUrl(location.pathname)}
+                    </h2>
+                    <UserBox>
+                        <h3>{userName}</h3>
+                        <div />
+                    </UserBox>
+                </NamePage>
+                <ContentContainer>
+                    {children}
+                </ContentContainer>
+            </Box>
+        </SeparateContainer>
     );
 }
 

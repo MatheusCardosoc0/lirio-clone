@@ -28,32 +28,34 @@ const StyledTable = styled.table`
   
   border-collapse: collapse;
   margin: 20px 0;
-  box-shadow: 0px 0px 2px #00000092;
   border-radius: 4px;
   font-size: 1.6rem;
   overflow: auto;
+  box-shadow: 1px 2px 4px rgb(0, 0, 0);
+
   th, td {
     padding: 10px 15px;
     text-align: left;
-    border: 1px solid #ddd;
     white-space: nowrap;
+    box-shadow: inset -2px 2px 4px rgba(0, 0, 0, 0.282);
+    border: 2px solid transparent;
   }
 
   th {
-    background-color: blue;
+    background-image: linear-gradient(to right, #8400ff, #5500a4);
     color: white;
   }
 
   tr {
-    background-color: #e6e9f8;
+    background-color: #ececec;
   }
 
   tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #ffffff;
   }
 
   tr:hover {
-    background-color: orange;
+    background-color: #11ff00;
     cursor: pointer;
   }
 

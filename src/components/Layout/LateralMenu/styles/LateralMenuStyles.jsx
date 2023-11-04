@@ -1,50 +1,41 @@
 import { styled } from 'styled-components';
 
 const LateralMenuContainer = styled.section`
-  width: 40%;
-  background-image: linear-gradient(to top, #e5f1e3, #e5effa, #ffffff);
-  box-shadow: 0px 0px 12px #00000053;
+  width: 12%;
+  background-image: linear-gradient(to left, #4000ca, rgb(3, 251, 234));
+  border-right: 6px solid;
+  border-color: #300390;
   height: 100%;
   display: flex;
   min-height: 100vh;
-  position: fixed;
-  z-index: 100;
 
   div:nth-child(1){
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
     
     gap: 20px;
-
-    @media (max-width: 768px) {
-      width: 70%;
-      margin-inline: auto;
-    }
-  }
-
-  @media (max-width: 920px) {
-    width: 70%;
-  }
-
-  @media (max-width: 620px) {
-    width: 100%;
   }
 `
 
 const InviteButton = styled.button`
-  width: 100%;
-  padding: 20px;
-  background-color: orange;
+  width: 80%;
+  padding: 8px;
+  background-image: radial-gradient(circle at 100%, #ff9a52, #ff8127, #ff5e00);
   font-size: 18px;
   color: white;
   border: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 2rem;
+  font-size: 2.8rem;
   font-weight: bold;
+  border-radius: 16px;
+  box-shadow: 1px 1px 1px black;
+  text-shadow: 1px 1px 2px black;
 
   svg{
     width: 70px;
@@ -72,10 +63,9 @@ const HelpButtons = styled.div`
   justify-items: center;
 
   a{
-    background-color: #05eb5d;
-    color: black;
-    width: 90%;
-    max-width: 220px;
+    background-image: linear-gradient(to bottom, #aaff00, #008600);
+    color: white;
+    width: 70%;
     padding: 20px;
     display: flex;
     flex-direction: row;
@@ -84,6 +74,8 @@ const HelpButtons = styled.div`
     gap: 8px;
     border-radius: 8px;
     text-decoration: none;
+    text-shadow: 1px 1px 2px black;
+    box-shadow: 1px 1px 1px black;
 
     span{
       font-weight: bolder;
@@ -107,8 +99,8 @@ const HelpButtons = styled.div`
   }
 
   button{
-    background-color: #6ca4f7;
-    color: black;
+    background-image: linear-gradient(to bottom, #c7d503, #6b6d01);
+    color: white;
     width: 90%;
     max-width: 240px;
     padding: 20px;
@@ -118,8 +110,10 @@ const HelpButtons = styled.div`
     align-items: center;
     justify-items: center;
     gap: 6px;
-    font-size: 1.8rem;
+    font-size: 2rem;
     border-radius: 8px;
+    text-shadow: 1px 1px 2px black;
+    box-shadow: 1px 1px 1px black;
 
     svg{
       width: 32px;
@@ -139,14 +133,11 @@ const HelpButtons = styled.div`
 `
 
 const LogoContainer = styled.img`
-    width: 90%;
-    height: 90%;
+    width: 160px;
     margin-inline: auto;
-
-    @media (min-width: 768px){
-        width: 40%;
-        height: 40%;
-    }
+    background-image: radial-gradient(circle at 100%, white,white, #a6a6a6);
+    border-radius: 100%;
+    box-shadow: 0px 0px 2px black;
 `
 
 const CloseButton = styled.button`
