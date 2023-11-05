@@ -6,33 +6,37 @@ const CheckInputStyle = styled.div`
   justify-content: start;
   padding: 4px;
 
-  div{
+  button{
     display: flex;
     gap: 8px;
     font-size: 2rem;
     margin-right: 8px;
 
-    align-items: start;
-    border: solid 0.2px #00000060;
+    align-items: center;
+    border: solid 2px #0000005c;
     padding: 4px;
-    background-color: #ffffff;
+    background-image: linear-gradient(to bottom, #840089, #ae00ff);
     color: black;
+    border-radius: 8px;
     box-shadow: 1px 1px 2px black;
 
     label{
         font-weight: bold;
+        color: white;
+        text-shadow: 1px 1px 2px black;
     }
 
     span{
-        padding: 2px;
-        border: 1px solid black;
-        border-radius: 100%;
 
         display: flex;
         align-items: center;
-        background-color: #f6ff00;
-        color: #0c0c0c;
+        color: #ffffff;
         cursor: pointer;
+    }
+
+    svg{
+      font-size: 4rem;
+      filter: drop-shadow(1px 1px 1px black);
     }
   }
 `

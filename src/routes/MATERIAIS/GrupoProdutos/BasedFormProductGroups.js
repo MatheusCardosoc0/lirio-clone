@@ -34,9 +34,7 @@ export const BasedFormProductGroup = ({
                 id,
                 name,
             })}
-            removeFunction={() => {
-                id && DeleteProductGroup()
-            }}
+            removeFunction={id ? () => DeleteProductGroup() : null}
         >
             <BasicGridContainerForm>
                 <BasicInput label={"Nome"} $isLarge

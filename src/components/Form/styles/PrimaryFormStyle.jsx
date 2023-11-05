@@ -1,35 +1,29 @@
 import { styled } from "styled-components";
 
 const PrimaryFormStyle = styled.form`
-  width: 90%;
-  max-width: 700px;
+  width: 100%;
   background-color: transparent;
   display: flex;
-  flex-direction: column;
   position: relative;
   margin-inline: auto;
   border-radius: 12px;
   overflow: hidden;
   padding-bottom: 20px;
+  padding-top: 48px;
+  justify-content: space-evenly;
+`
 
-  header{
-    padding-left: 16px;
-    font-size: 2.4rem;
-    font-weight: bold;
-
-    text-align: start;  
-    color: #000000;
-  }
-  footer{
-    padding: 8px;
-    gap: 12px;
+const ActionsContainer = styled.div`
+  gap: 4px;
+  width: 164px;
     
-    display: flex;
-    align-items: start;
-    justify-content: start;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
 `
 
 export {
+  ActionsContainer,
   PrimaryFormStyle
 }

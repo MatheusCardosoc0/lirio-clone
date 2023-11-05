@@ -8,6 +8,7 @@ const OptionsContainer = styled.div`
   overflow-y: hidden;
   position: fixed;
   top: 19%;
+  z-index: 60;
 
   display: flex;
   gap: 8px;

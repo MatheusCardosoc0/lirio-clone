@@ -15,7 +15,17 @@ const Container = ({ children }) => {
 
         const word = pats[2];
 
-        const wordCapitalized = word.charAt(0).toUpperCase() + word.slice(1);
+        let wordCapitalized = word.charAt(0).toUpperCase() + word.slice(1);
+
+        if (url.includes("new")) {
+            wordCapitalized = wordCapitalized + ' |  NOVO'
+        }
+        else if (url.includes("change")) {
+            wordCapitalized = wordCapitalized + ' |  ALTERAR'
+        }
+        else {
+            wordCapitalized = wordCapitalized + ' |  PESQUISA'
+        }
 
         return wordCapitalized;
     }

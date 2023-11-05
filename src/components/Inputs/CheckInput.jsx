@@ -25,18 +25,19 @@ const CheckInput = ({
     return (
         <CheckInputStyle>
             {options.map((option) => (
-                <div>
+                <button
+                    type='button'
+                    onClick={() => handleClick(option)}
+                >
                     <label>{option.title}</label>
-                    <span
-                        onClick={() => handleClick(option)}
-                    >
+                    <span>
                         {(data === option.value || (typeof data === 'object' && data[name] === option.value)) ? (
                             <BsCheckLg />
                         ) : (
                             <BsFillCircleFill />
                         )}
                     </span>
-                </div>
+                </button>
             ))}
         </CheckInputStyle>
     );
