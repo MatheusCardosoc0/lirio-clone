@@ -7,47 +7,19 @@ import store from './redux/store';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './routes/router';
 import { Toaster } from 'react-hot-toast';
+import { ThemeProvider } from '@mui/material';
+import { theme } from './theme';
+import { CustomToaster } from './libs/hotToastConfig';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={store} >
-      <RouterProvider router={router} />
-      <Toaster
-        position='bottom-right'
-        gutter={8}
-        reverseOrder={false}
-        toastOptions={{
-          duration: 2500,
-          style: {
-            fontSize: '24px',
-            fontWeight: 'bold',
-            width: '200px'
-          },
-          success: {
-            style: {
-              backgroundColor: '#0BDC35',
-              color: 'white',
-            },
-            iconTheme: {
-              primary: 'white',
-              secondary: '#0BDC35'
-            }
-          },
-          error: {
-            duration: 5000,
-            style: {
-              backgroundColor: 'red',
-              color: 'white'
-            },
-            iconTheme: {
-              primary: 'white',
-              secondary: 'red'
-            }
-          }
-        }}
-      />
-    </Provider>
+    <ThemeProvider theme={theme} >
+      <Provider store={store} >
+        <RouterProvider router={router} />
+        <CustomToaster />
+      </Provider>
+    </ThemeProvider>
   </React.StrictMode>
 );
 

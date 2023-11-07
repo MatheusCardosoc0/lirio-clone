@@ -18,7 +18,3 @@ button {
   cursor: pointer;
   border: none;
 }
-
-button:hover {
-  filter: brightness(120%);
-}

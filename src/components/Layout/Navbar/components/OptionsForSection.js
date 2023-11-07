@@ -1,5 +1,5 @@
 import React from 'react';
-import { OptionsForSectionContainer } from '../styles/NavbarStyle';
+import { OptionsForSectionContainer } from '../NavbarStyle';
 import { OptionsForSectionConstants, TopMenuSectionsTitles } from '../utils/TopMenuSectionsTitles';
 import { Link } from 'react-router-dom';
 

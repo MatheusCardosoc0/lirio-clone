@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HeaderContainer, LogoutButton, TitleSectionButton } from './styles/NavbarStyle';
+import { HeaderContainer, LogoutButton, TitleSectionButton } from './NavbarStyle';
 import { TopMenuSectionsTitles } from './utils/TopMenuSectionsTitles';
 import OptionsForSection from './components/OptionsForSection';
 

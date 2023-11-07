@@ -1,51 +1,63 @@
 import React, { useState } from 'react'
 import { BoxLoginContainer, LoginContainer, LoginForm, LogoContainer } from './components/Auth'
-import { BasicInput } from './components/Inputs'
-import Logo from './assets/Logo.png'
-import { ButtonStyle1 } from './components/Buttons'
 import useSubmitDataPostOrPut from './functions/useSubmitDataPostOrPut'
+import { Button, TextField } from '@mui/material'
+import { CgShapeTriangle } from 'react-icons/cg'
+import { z } from 'zod'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod';
+
+const loginSchema = z.object({
+    username: z.string().min(1, "O nome de usuário é obrigatório"),
+    password: z.string().min(1, "A senha é obrigatória")
+});
 
 const Login = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: zodResolver(loginSchema)
+    });
 
-    const [dataForLogin, setDataForLogin] = useState({
-        username: '',
-        password: ''
-    })
+    const submitData = useSubmitDataPostOrPut("/api/SignIn/", "/Dashboard");
 
-    const handleSubmit = useSubmitDataPostOrPut("/api/SignIn/", "/Dashboard")
-
+    const onSubmit = (data) => {
+        submitData(data, "Login feito com sucesso", "Ocorreu um erro ao fazer o login");
+    };
 
     return (
         <LoginContainer>
             <BoxLoginContainer>
                 <LogoContainer>
-                    <img src={Logo} alt='logo' />
+                    <CgShapeTriangle />
                 </LogoContainer>
                 <LoginForm
-                    onSubmit={e => handleSubmit(e, dataForLogin, "Login feito com sucesso")}
+                    onSubmit={handleSubmit(onSubmit)}
                 >
                     <h3>
                         Faça seu Login
                     </h3>
-                    <BasicInput
-                        label={"Usuário"}
-                        onChange={e => setDataForLogin({ ...dataForLogin, username: e.target.value })}
-                        value={dataForLogin.username}
-                        $isLarge
+                    <TextField
+                        label="Usuário"
+                        variant="outlined"
+                        {...register("username")}
+                        error={!!errors.username}
+                        helperText={errors.username?.message}
                     />
-                    <BasicInput
-                        onChange={e => setDataForLogin({ ...dataForLogin, password: e.target.value })}
-                        value={dataForLogin.password}
-                        label={"Senha"}
-                        type={"password"}
-                        $isLarge
+                    <TextField
+                        label="Senha"
+                        variant="outlined"
+                        type="password"
+                        {...register("password")}
+                        error={!!errors.password}
+                        helperText={errors.password?.message}
                     />
 
-                    <ButtonStyle1
-                        $color={"linear-gradient(to bottom, #ccff33, #008000)"}
+                    <Button
+                        variant='contained'
+                        color='primary'
+                        type='submit'
                     >
                         Entrar
-                    </ButtonStyle1>
+                    </Button>
                 </LoginForm>
             </BoxLoginContainer>
         </LoginContainer>

@@ -5,8 +5,7 @@ import toast from 'react-hot-toast';
 const useSubmitDataPostOrPut = (urlApi, urlReturn, id) => {
     const navigate = useNavigate();
 
-    async function handleSubmit(event, data, message) {
-        event.preventDefault();
+    async function handleSubmit(data, messageSuccess, messageError) {
 
         console.log(data, id)
 
@@ -14,19 +13,19 @@ const useSubmitDataPostOrPut = (urlApi, urlReturn, id) => {
             let response
             if (id) {
                 response = await api.put(`${urlApi}${id}`, data);
-                toast.success(message ?? "Alterado")
+                toast.success(messageSuccess ?? "Alterado")
             } else {
                 response = await api.post(urlApi, data);
 
                 if (response.data && response.data.token) {
                     localStorage.setItem('authToken', response.data.token)
                 }
-                toast.success(message ?? "Registrado!")
+                toast.success(messageSuccess ?? "Registrado!")
             }
 
             navigate(urlReturn);
         } catch (error) {
-            alert('Error');
+            toast.error(messageError)
             console.log(error);
         }
     }

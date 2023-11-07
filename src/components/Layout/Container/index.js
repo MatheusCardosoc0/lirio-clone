@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, ContentContainer, NamePage, SeparateContainer, UserBox } from './styles/ContainerStyles';
+import { Box, ContentContainer, NamePage, SeparateContainer, UserBox } from './ContainerStyles';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import LateralMenu from '../LateralMenu';
@@ -36,9 +36,7 @@ const Container = ({ children }) => {
 
     return (
         <SeparateContainer>
-            <LateralMenu>
-
-            </LateralMenu>
+            <LateralMenu />
             <Box>
                 <NamePage>
                     <h2>

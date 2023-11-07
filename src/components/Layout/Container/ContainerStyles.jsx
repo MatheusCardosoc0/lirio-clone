@@ -8,21 +8,20 @@ const SeparateContainer = styled.section`
 const Box = styled.div`
   width: 88%;
   height: 100vh;
-  background-color: #dadaf7;
+  background-color: #ffffff;
 `
 
 const NamePage = styled.div`
    width: 100%;
-   background-image: linear-gradient(to right, #4800fd, #6600d2);
-   color: white;
+   background: #ffffff;
+   color: #000000;
    margin-top: 0;
    display: flex;
    align-items: center;
    justify-content: space-between;
-   border-bottom: 6px solid;
    border-color: rgba(0, 0, 0, 0.249);
-   text-shadow: 1px 1px 1px black;
    height: 80px;
+   box-shadow: 0px 4px 1px black;
   
 
    h2{
@@ -65,14 +64,14 @@ const UserBox = styled.span`
 
   h3{
     font-size: 2rem;
-    color: white;
+    color: color;
   }
 
   div{
     width: 60px;
     height: 60px;
     border-radius: 100%;
-    background-color: white;
+    background-color: #000000;
   }
 `
 

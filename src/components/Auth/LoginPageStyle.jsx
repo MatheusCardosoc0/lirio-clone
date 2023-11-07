@@ -17,14 +17,16 @@ const LoginForm = styled.form`
   gap: 12px;
   padding: 20px;
   align-items: start;
-  border-left: 4px solid yellowgreen;
+  border-top-right-radius: 32px;
+  border-bottom-right-radius: 32px;
+  border: 2px solid black;
+  box-shadow: 1px 1px 2px black;
+  height: 380px;
   
 
   h3{
     font-weight: bold;
     font-size: 3.6rem;
-    color: white;
-    text-shadow: 1px 1px 2px black;
   }
 
   div{
@@ -34,25 +36,25 @@ const LoginForm = styled.form`
 
 const LogoContainer = styled.div`
   display: flex;
-  align-items: start;
+  align-items: center;
   justify-content: start;
+  background-color: black;
+  height: 380px;
+  border-top-left-radius: 32px;
+  border-bottom-left-radius: 32px;
 
-  img{
-    width: 240px;
+  svg{
+    font-size: 20rem;
+    color: white;
   }
 `
 
 const BoxLoginContainer = styled.div`
   display: flex;
-  background-image: linear-gradient(to top right, #32057a, #4205de, #710080);
   align-items: end;
-  border-radius: 20px;
-  box-shadow: 1px 1px 4px black;
-  border-right: 8px solid;
-  border-bottom: 8px solid;
-  border-color: rgba(0, 0, 0, 0.4);
+  gap: 20px;
+  
   align-items: center;
-  overflow: hidden;
 `
 
 

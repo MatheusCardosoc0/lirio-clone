@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 const HeaderContainer = styled.header`
   width: 100%;
   display: flex;
-  overflow-x: scroll;
+  overflow-x: initial;
   background-color: #ffffff;
   height: 44px;
   justify-content: start;
@@ -12,28 +12,6 @@ const HeaderContainer = styled.header`
     position: relative;
     width: 100%;
   }
-
-  @media (min-width: 1440px) {
-    overflow: initial;
-  }
-
-  &::-webkit-scrollbar {
-    height: 8px; 
-    width: 8px; 
-    background-color: #F5F5F5; 
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #f7901b; 
-    border-radius: 4px; 
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: #F5F5F5; 
-  }
-
-  scrollbar-width: thin;
-  scrollbar-color: #000000 #F5F5F5;  
 `;
 
 const TitleSectionButton = styled(({ isSelected, ...rest }) => <button {...rest} />)`
@@ -41,17 +19,14 @@ const TitleSectionButton = styled(({ isSelected, ...rest }) => <button {...rest}
   font-size: 1.6rem;
   border-right: 2px solid black;
   border-bottom: 2px solid black;
-  background-image: linear-gradient(to right, #00bfff, #0e03e0);
+  background-image: ${props => props.isSelected ? 'linear-gradient(to right, #c5fb00, #249100)' : 'linear-gradient(to right, #fdfdfd, #cacaca)'};
   height: 100%;
   width: 100%;
-  color: white;
-  filter:  ${props => props.isSelected ? 'brightness(125%)' : ''};
+  color: #000000;
   padding-inline: 20px;
-  text-shadow: 0px 0px 2px black;
-  max-width: 300px;
 
   &:hover{
-      filter: brightness(120%);
+    background-image: linear-gradient(to right, #c5fb00, #249100) ;
   }
 `
 
@@ -59,7 +34,7 @@ const OptionsForSectionContainer = styled.div`
   position: absolute;
   top: 56px;
   transform: translateY(-50%) translateX(-50%);
-  background-color: #e9e8e8;
+  background-color: #ffffff;
   z-index: 100;
   display: flex;
   flex-direction: column;
@@ -69,36 +44,29 @@ const OptionsForSectionContainer = styled.div`
   height: 200px;
   width: 144px;
   max-width: 256px;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   animation: flyingToLocal 0.5s ease-in-out;
   transition: all 1s;
   left: 40%;
   direction: rtl;
-  box-shadow: 1px 1px 2px black;
-  border-radius: 8px;
   transform: scale(1.5);
-
-  @media (min-width: 768px) {
-    font-size: 2rem;
-  }
+  box-shadow: 0px 0px 1px black;
+  
 
   a{
     padding-bottom: 4px;
     width: 100%;
     text-decoration: none;
     font-size: 1.2rem;
-    background-image: linear-gradient(to bottom, #21d602, #01640e);
+    background-image: linear-gradient(to bottom, #676666, #000000);
     padding-block: 8px;
     text-align: center;
-    color: white;
-    text-shadow: 0px 0px 2px black;
-
+    color: #ffffff;
+    font-weight: bold;
 
     &:hover{
-      cursor: pointer;
-      transform: scale(1.1);
-      filter: brightness(120%);
+      background-image: linear-gradient(to bottom, #59ce00, #082300);
     }
   }
 
