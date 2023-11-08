@@ -18,14 +18,29 @@ export const theme = createTheme({
                         },
                     },
                     '&.MuiButton-containedSecondary': {
-                        backgroundColor: '#dc3545',
+                        backgroundColor: '#125AFF',
                         color: '#fff',
                         '&:hover': {
-                            backgroundColor: '#c82333',
+                            backgroundColor: '#1244B9',
+                        },
+                    },
+                    '&.MuiButton-outlinedPrimary': {
+                        border: '4px solid black',
+                        backgroundColor: '#F7FF00',
+                        color: '#000',
+                        '&:hover': {
+                            backgroundColor: '#B7BD03',
                         },
                     },
                 }
             },
         },
+        MuiSkeleton: {
+            styleOverrides: {
+                root: {
+                    backgroundColor: '#525252'
+                }
+            }
+        }
     },
 });

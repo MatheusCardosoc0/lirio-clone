@@ -1,1 +1,1 @@
-export { default as TablePrimary } from './TableType1'
+export { default as TablePrimary } from './TablePrimary'

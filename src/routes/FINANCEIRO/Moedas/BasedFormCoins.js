@@ -5,6 +5,7 @@ import { BasicInput, CheckInput } from '../../../components/Inputs'
 import useDeleteData from '../../../functions/useDeleteData'
 import useSubmitDataPostOrPut from '../../../functions/useSubmitDataPostOrPut'
 import useBasedFunctionCoin from './basedFunctionCoins'
+import { TextField } from '@mui/material'
 
 export const BasedFormCoins = ({
     id
@@ -41,7 +42,8 @@ export const BasedFormCoins = ({
             }}
         >
             <BasicGridContainerForm>
-                <BasicInput label={"Nome"} $isLarge
+                <TextField
+                    label={"Nome"}
                     onChange={e => setData({ ...data, name: e.target.value })}
                     value={name}
                 />

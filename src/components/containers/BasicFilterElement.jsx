@@ -3,12 +3,13 @@ import { InputContainer } from './styles/InputContainer';
 import { BasicInput } from '../Inputs';
 import { ButtonStyle1 } from '../Buttons';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { Button, TextField } from '@mui/material';
 
 const BasicFilterElement = ({
     dataList,
     setFilteredDataList,
-    label1 = 'ID',
-    label2 = 'Nome'
+    label1 = 'ID:',
+    label2 = 'Nome:'
 }) => {
     const [isSearchTermId, setIsSearchTermId] = useState('')
     const [isSearchTermName, setIsSearchTermName] = useState('')
@@ -25,25 +26,29 @@ const BasicFilterElement = ({
 
     return (
         <InputContainer>
-            <BasicInput
+            <TextField
                 label={label1}
-                $isLarge
+                variant='filled'
                 onChange={e => setIsSearchTermId(e.target.value)}
                 value={isSearchTermId}
             />
             <div>
-                <BasicInput
-                    max
+                <TextField
                     label={label2}
+                    variant='filled'
                     onChange={e => setIsSearchTermName(e.target.value)}
                     value={isSearchTermName}
                 />
-                <ButtonStyle1
+                <Button
+                    variant='contained'
+                    color='secondary'
                     onClick={() => filterData()}
                 >
-                    <AiOutlineSearch />
-                    Filtrar
-                </ButtonStyle1>
+                    <AiOutlineSearch
+                        size={32}
+                    />
+                    Buscar
+                </Button>
             </div>
         </InputContainer>
     )

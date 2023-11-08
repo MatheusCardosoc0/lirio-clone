@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { api } from '../../../libs/api';
 import { calculateAge } from '../../../functions/calculateAge';
+import toast from 'react-hot-toast';
 
 const useBasedFunctionPerson = () => {
     const [data, setData] = useState({
@@ -35,8 +36,6 @@ const useBasedFunctionPerson = () => {
                 const response = await api.get(`/api/request_cnpj/fetchData/${cpf}`);
                 const info = response.data;
 
-                console.log(info)
-
                 setData(prevData => ({
                     ...prevData,
                     name: info.nome || info.razao,
@@ -49,14 +48,14 @@ const useBasedFunctionPerson = () => {
                 }));
 
 
-                alert("Ok");
+                toast.success("Informações do CNPJ foram importadas");
             } catch (error) {
-                alert("Great!");
+                toast.error("CNPJ invalido");
                 console.error("Erro ao buscar dados", error);
             }
         }
         else {
-            alert("Informe o CNPJ")
+            toast("Informe o CNPJ")
         }
     };
 

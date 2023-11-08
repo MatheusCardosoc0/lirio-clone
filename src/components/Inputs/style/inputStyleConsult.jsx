@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const InputStyleConsult = styled.div`
   width: 100%;
   max-width: ${(props) => (props.$isLarge ? "50%" : "200px")};
-  background-image: linear-gradient(to top, #0f0099, #4230e9);
+  background-image: linear-gradient(to top, #000000, #2d2d2d);
   color: white;
   font-size: 2rem;
   display: flex;

@@ -7,6 +7,7 @@ import useBasedFunctionPerson from './basedFunctionPerson';
 import useSubmitDataPostOrPut from '../../../functions/useSubmitDataPostOrPut';
 import useDeleteData from '../../../functions/useDeleteData';
 import useGetDataSpecific from '../../../functions/useGetDataSpecific';
+import { Button, TextField } from '@mui/material';
 
 const BasedFormPerson = ({
     id
@@ -64,7 +65,16 @@ const BasedFormPerson = ({
                         setData={setOptions}
                         data={options}
                     />
-                    <BasicInput
+                    {options === 'PJ' && (
+                        <Button
+                            type="button"
+                            onClick={fetchDataCNPJ}
+                            variant='outlined'
+                        >
+                            Buscar Dados do CNPJ
+                        </Button>
+                    )}
+                    <TextField
                         label={"Nome"}
                         $isLarge
                         onChange={e => setData({ ...data, name: e.target.value })}
@@ -72,13 +82,13 @@ const BasedFormPerson = ({
 
                     {options === 'PJ' && (
                         <div>
-                            <BasicInput
+                            <TextField
                                 label={"Razão"}
                                 $isLarge
                                 onChange={e => setData({ ...data, razao: e.target.value })}
                                 value={razao || name} />
 
-                            <BasicInput
+                            <TextField
                                 label={"IBGE"}
                                 $isLarge
                                 onChange={e => setData({ ...data, ibge: e.target.value })}
@@ -88,14 +98,14 @@ const BasedFormPerson = ({
 
 
                     <div>
-                        <BasicInput
+                        <TextField
                             label={options === "PJ" ? "CNPJ" : "CPF"}
                             $isLarge
                             onChange={e => setData({ ...data, cpf: e.target.value })}
                             value={cpf}
                         />
                         {options === 'PJ' && (
-                            <BasicInput
+                            <TextField
                                 label={"Inscrição Estadual"}
                                 $isLarge
                                 onChange={e => setData({ ...data, inscricaoEstadual: e.target.value })}
@@ -104,13 +114,13 @@ const BasedFormPerson = ({
                         )}
                     </div>
                     <div>
-                        <BasicInput
+                        <TextField
                             label={"CEP"}
                             $isLarge
                             onChange={e => setData({ ...data, cep: e.target.value })}
                             value={cep}
                         />
-                        <BasicInput
+                        <TextField
                             label={"Endereço"}
                             $isLarge
                             onChange={e => setData({ ...data, address: e.target.value })}
@@ -118,11 +128,11 @@ const BasedFormPerson = ({
                         />
                     </div>
                     <div>
-                        <BasicInput label={"Telefone"} $isLarge
+                        <TextField label={"Telefone"} $isLarge
                             onChange={e => setData({ ...data, phone: e.target.value })}
                             value={phone}
                         />
-                        <BasicInput
+                        <TextField
                             label={"Email"} $isLarge
                             onChange={e => setData({ ...data, email: e.target.value })}
                             value={email}
@@ -133,17 +143,17 @@ const BasedFormPerson = ({
 
                     {options === "PF" && (
                         <div>
-                            <InputDate
-                                label={"Data de Nascimento"}
-                                $isLarge
+                            <TextField
                                 setDate={setData}
-                                value={birthDate}
-                                object={data}
+                                onChange={e => setData({ ...data, age: e.target.value })}
+                                type='date'
                             />
 
-                            <BasicInput label={"Idade"} $isLarge
+                            <TextField
+                                label={"Idade"}
                                 onChange={e => setData({ ...data, age: e.target.value })}
                                 value={age}
+                                type='number'
                             />
                         </div>
                     )}
@@ -168,25 +178,6 @@ const BasedFormPerson = ({
                     </div>
 
 
-
-
-                    {options === 'PF' ? (
-                        <ButtonStyle1
-                            type="button"
-                            onClick={fetchDataCPF}
-                            $color={'indigo'}
-                        >
-                            Buscar Dados do CPF
-                        </ButtonStyle1>
-                    ) : (
-                        <ButtonStyle1
-                            type="button"
-                            onClick={fetchDataCNPJ}
-                            $color={'purple'}
-                        >
-                            Buscar Dados do CNPJ
-                        </ButtonStyle1>
-                    )}
 
                 </BasicGridContainerForm>
             </PrimaryForm>

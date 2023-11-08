@@ -16,12 +16,7 @@ const useBasedFunctionCity = () => {
 
     const CheckForOpenModal = () => {
         if (data.state === 'Nenhum' || data.state === '') {
-            return toast("Preencha o campo estado", {
-                style: {
-                    backgroundColor: 'yellow',
-                    color: 'black'
-                }
-            })
+            return toast("Preencha o campo estado")
         }
 
         setIsOpenModal(true)

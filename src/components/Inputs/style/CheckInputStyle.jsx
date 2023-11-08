@@ -15,15 +15,15 @@ const CheckInputStyle = styled.div`
     align-items: center;
     border: solid 2px #0000005c;
     padding: 4px;
-    background-image: linear-gradient(to bottom, #840089, #ae00ff);
+    background-image: linear-gradient(to bottom, #494949, #000000);
     color: black;
-    border-radius: 8px;
-    box-shadow: 1px 1px 2px black;
+    cursor: pointer;
 
     label{
         font-weight: bold;
         color: white;
         text-shadow: 1px 1px 2px black;
+        cursor: pointer;
     }
 
     span{

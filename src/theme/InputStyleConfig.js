@@ -4,20 +4,27 @@ export const InputStyleConfig = {
             root: {
                 height: 'auto',
                 backgroundColor: '#fff',
+                '& .MuiFilledInput-root': {
+                    backgroundColor: '#fff',
+                    fontSize: '2rem',
+                    boxShadow: '0px 0px 2px black',
+                    '&:hover': {
+                        backgroundColor: '#fff',
+                    }
+                },
                 '& .MuiOutlinedInput-root': {
+                    color: 'black',
+                    fontWeight: 'bold',
+                    fontSize: '2rem',
                     '& fieldset': {
-                        borderColor: 'black',
-                    },
-                    '&:hover fieldset': {
-                        borderColor: 'black',
+                        border: '4px solid black',
                     },
                     '&.Mui-focused fieldset': {
-                        borderColor: 'black',
+                        border: '4px solid #0B55FF',
                     },
                 },
-                borderRadius: '4px',
+                borderRadius: '8px',
                 width: '100%',
-
             },
         },
     },
@@ -34,10 +41,13 @@ export const InputStyleConfig = {
                 fontSize: '2rem',
                 fontWeight: 'bold',
                 color: 'black',
-                '&.Mui-focused,  &.MuiFormLabel-filled': {
-                    color: 'black',
-                    fontSize: '1.2rem',
-                    transform: 'translate(12px, -6px) scale(0.75)',
+                '&.Mui-focused': {
+                    color: '#0B55FF',
+                    fontSize: '2rem',
+                    transform: 'translate(14px, -6px) scale(0.75)',
+                },
+                '&.MuiInputLabel-filled': {
+                    fontSize: '3rem'
                 },
             },
         },

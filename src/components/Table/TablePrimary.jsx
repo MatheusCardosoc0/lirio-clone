@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyledTable, TableContainer } from './styles/TableStyle1';
+import { StyledTable, TableContainer } from './TablePrimaryStyle';
 import { useNavigate } from 'react-router-dom';
+import { Skeleton } from '@mui/material';
 
 const TablePrimary = ({
     columns = [],
-    data = [],
+    data,
     navigateTo,
     setValueFunction,
     setValueObject
@@ -21,6 +22,28 @@ const TablePrimary = ({
             return value;
         }
     };
+
+    if (!data) {
+        return (
+            <>
+                <Skeleton
+                    variant='rectangular'
+                    height={40}
+                    width={"90%"}
+                    animation="pulse"
+                    style={{
+                        marginTop: '40px'
+                    }}
+                />
+                <Skeleton
+                    variant='rectangular'
+                    height={200}
+                    width={"90%"}
+                    animation="pulse"
+                />
+            </>
+        )
+    }
 
     return (
         <TableContainer>

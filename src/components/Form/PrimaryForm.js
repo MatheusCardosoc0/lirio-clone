@@ -1,6 +1,7 @@
 import React from 'react';
 import { ActionsContainer, PrimaryFormStyle } from './styles/PrimaryFormStyle';
 import { ButtonStyle1 } from '../Buttons';
+import { Button } from '@mui/material';
 
 const PrimaryForm = ({
     children,
@@ -12,20 +13,21 @@ const PrimaryForm = ({
         <PrimaryFormStyle onSubmit={onSubmit} >
             {children}
             <ActionsContainer>
-                <ButtonStyle1
-                    $color={"linear-gradient(to bottom, #85f100, #02830f)"}
+                <Button
+                    variant='contained'
                     type='submit'
                 >
                     Salvar
-                </ButtonStyle1>
+                </Button>
                 {removeFunction && (
-                    <ButtonStyle1
-                        $color={"linear-gradient(to bottom, #ff0000, #ff2f00)"}
+                    <Button
+                        variant='contained'
+                        color="error"
                         type='button'
                         onClick={removeFunction}
                     >
                         Remover
-                    </ButtonStyle1>
+                    </Button>
                 )}
             </ActionsContainer>
         </PrimaryFormStyle >
