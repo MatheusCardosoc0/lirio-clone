@@ -11,7 +11,7 @@ export const CustomToaster = () => {
                 style: {
                     fontSize: '24px',
                     fontWeight: 'bold',
-                    width: '200px',
+                    width: '244px',
                     backgroundColor: 'yellow',
                     color: 'black',
                 },

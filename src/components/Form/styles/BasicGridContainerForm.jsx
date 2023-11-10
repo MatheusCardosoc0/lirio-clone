@@ -7,6 +7,7 @@ export const BasicGridContainerForm = styled.div`
   padding: 6px;
   width: 100%;
   max-width: 720px;
+  flex-wrap: wrap;
 
   div {
     display: flex;

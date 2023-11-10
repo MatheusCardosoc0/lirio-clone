@@ -13,14 +13,21 @@ export const InputStyleConfig = {
                     }
                 },
                 '& .MuiOutlinedInput-root': {
-                    color: 'black',
+                    color: 'transparent',
                     fontWeight: 'bold',
                     fontSize: '2rem',
+                    minWidth: '100%',
                     '& fieldset': {
                         border: '4px solid black',
                     },
+                    '&.Mui-focused': {
+                        color: 'black'
+                    },
                     '&.Mui-focused fieldset': {
                         border: '4px solid #0B55FF',
+                    },
+                    '&:not(.Mui-focused)': {
+                        color: 'black',
                     },
                 },
                 borderRadius: '8px',
@@ -39,8 +46,9 @@ export const InputStyleConfig = {
         styleOverrides: {
             root: {
                 fontSize: '2rem',
+                transform: 'translate(14px, 2px) scale(0.75)',
                 fontWeight: 'bold',
-                color: 'black',
+                color: '#505050',
                 '&.Mui-focused': {
                     color: '#0B55FF',
                     fontSize: '2rem',
@@ -49,13 +57,19 @@ export const InputStyleConfig = {
                 '&.MuiInputLabel-filled': {
                     fontSize: '3rem'
                 },
+                '&.MuiInputLabel-shrink': {
+                },
             },
         },
     },
     MuiFormHelperText: {
         styleOverrides: {
             root: {
-                fontSize: '1rem'
+                fontSize: '1.2rem',
+                borderRadius: '8px',
+                padding: '4px',
+                fontWeight: 'bold',
+                minWidth: '100px'
             }
         }
     }

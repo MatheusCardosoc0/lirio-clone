@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BasicModalStyle } from './styles/BasicModalStyle';
+import { BasicModalStyle } from './BasicModalStyle';
 import { AiOutlineClose } from 'react-icons/ai';
 import { BasicFilterElement } from '../containers';
 import { TablePrimary } from '../Table';

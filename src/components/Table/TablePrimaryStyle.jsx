@@ -29,15 +29,16 @@ const StyledTable = styled.table`
   border-collapse: collapse;
   margin: 20px 0;
   border-radius: 4px;
+  font-weight: bold;
   font-size: 2rem;
   overflow: auto;
-  box-shadow: 1px 2px 2px rgb(0, 0, 0);
+  box-shadow: 1px 2px 1px rgb(0, 0, 0);
 
   th, td {
     padding: 10px 15px;
     text-align: left;
     white-space: nowrap;
-    box-shadow: inset -2px 2px 2px rgba(0, 0, 0, 0.282);
+    box-shadow: inset -2px 2px 2px rgb(0, 0, 0);
   }
 
   th {
@@ -46,7 +47,7 @@ const StyledTable = styled.table`
   }
 
   tr {
-    background-color: #ececec;
+    background-color: #e9e9e9;
   }
 
   tr:nth-child(even) {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { api } from '../libs/api';
 
-const useGetDataSpecific = (id, urlApi, setData = {}) => {
+const useGetDataSpecific = (id, urlApi, setData) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 

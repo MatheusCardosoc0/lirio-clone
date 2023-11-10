@@ -20,7 +20,7 @@ const Login = () => {
     const submitData = useSubmitDataPostOrPut("/api/SignIn/", "/Dashboard");
 
     const onSubmit = (data) => {
-        submitData(data, "Login feito com sucesso", "Ocorreu um erro ao fazer o login");
+        submitData(data, "Login feito com sucesso", "Senha ou usuário invalidos");
     };
 
     return (

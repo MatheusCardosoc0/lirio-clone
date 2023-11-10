@@ -6,9 +6,6 @@ const useSubmitDataPostOrPut = (urlApi, urlReturn, id) => {
     const navigate = useNavigate();
 
     async function handleSubmit(data, messageSuccess, messageError) {
-
-        console.log(data, id)
-
         try {
             let response
             if (id) {
@@ -25,7 +22,7 @@ const useSubmitDataPostOrPut = (urlApi, urlReturn, id) => {
 
             navigate(urlReturn);
         } catch (error) {
-            toast.error(messageError)
+            toast.error(messageError ?? 'Não foi possivel fazer o registro')
             console.log(error);
         }
     }

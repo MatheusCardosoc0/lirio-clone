@@ -8,6 +8,10 @@ import useSubmitDataPostOrPut from '../../../functions/useSubmitDataPostOrPut';
 import useDeleteData from '../../../functions/useDeleteData';
 import useGetDataSpecific from '../../../functions/useGetDataSpecific';
 import { Button, TextField } from '@mui/material';
+import { z } from 'zod';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import toast from 'react-hot-toast';
 
 const BasedFormPerson = ({
     id
@@ -17,36 +21,53 @@ const BasedFormPerson = ({
         setOpenModalGroup,
         setOptions,
         fetchDataCNPJ,
-        fetchDataCPF,
         openModalCity,
         openModalGroup,
         options,
         data,
-        setData,
         urlReturn,
         urlApi,
     } = useBasedFunctionPerson()
 
     const {
-        address,
-        age,
-        birthDate,
-        cep,
-        city,
-        cpf,
-        email,
-        group,
-        ibge,
-        inscricaoEstadual,
-        name,
-        phone,
-        razao
-    } = data
+        register,
+        handleSubmit,
+        control,
+        formState: { errors },
+        setValue,
+        getValues,
+    } = useForm({
+        values: {
+            age: 0
+        }
+    });
 
-    const handleSubmit = useSubmitDataPostOrPut(urlApi, urlReturn, id);
+    const submitData = useSubmitDataPostOrPut(urlApi, urlReturn, id);
     const DeletePerson = useDeleteData(`${urlApi}`, id, urlReturn)
 
-    useGetDataSpecific(id, `${urlApi}`, setData)
+    const group = getValues("group")
+    const city = getValues("city")
+
+    console.log(data)
+
+
+    const onSubmit = (data) => {
+        if (!data.group) {
+            toast("Informe o grupo da pessoa")
+        }
+        else if (!data.city) {
+            toast("Informe a cidade da pessoa")
+        }
+        submitData(data)
+    }
+
+    useGetDataSpecific(id, `${urlApi}`, (data) => {
+        if (data) {
+            Object.keys(data).forEach(key => {
+                setValue(key, data[key]);
+            });
+        }
+    })
 
     return (
         <>
@@ -54,7 +75,7 @@ const BasedFormPerson = ({
                 Title={id ? "Alterar pessoa" : "Cadastro de pessoas"}
                 urlCancel={urlReturn}
                 removeFunction={id ? () => DeletePerson() : null}
-                onSubmit={(e) => handleSubmit(e, { ...data, razao: razao || name })}
+                onSubmit={handleSubmit(onSubmit)}
             >
                 <BasicGridContainerForm>
                     <CheckInput
@@ -75,24 +96,25 @@ const BasedFormPerson = ({
                         </Button>
                     )}
                     <TextField
-                        label={"Nome"}
-                        $isLarge
-                        onChange={e => setData({ ...data, name: e.target.value })}
-                        value={name} />
+                        label="Nome"
+                        {...register("name")}
+                        helperText={errors.name ? errors.name.message : ''}
+                        required
+                    />
 
                     {options === 'PJ' && (
                         <div>
                             <TextField
-                                label={"Razão"}
-                                $isLarge
-                                onChange={e => setData({ ...data, razao: e.target.value })}
-                                value={razao || name} />
+                                label="Razão"
+                                {...register("razao")}
+                                helperText={errors.razao ? errors.razao.message : ''}
+                            />
 
                             <TextField
-                                label={"IBGE"}
-                                $isLarge
-                                onChange={e => setData({ ...data, ibge: e.target.value })}
-                                value={ibge} />
+                                label="IBGE"
+                                {...register("ibge")}
+                                helperText={errors.ibge ? errors.ibge.message : ''}
+                            />
                         </div>
                     )}
 
@@ -100,59 +122,62 @@ const BasedFormPerson = ({
                     <div>
                         <TextField
                             label={options === "PJ" ? "CNPJ" : "CPF"}
-                            $isLarge
-                            onChange={e => setData({ ...data, cpf: e.target.value })}
-                            value={cpf}
+                            {...register("cpf")}
+                            helperText={errors.cpf ? errors.cpf.message : ''}
+                            required
                         />
                         {options === 'PJ' && (
                             <TextField
-                                label={"Inscrição Estadual"}
-                                $isLarge
-                                onChange={e => setData({ ...data, inscricaoEstadual: e.target.value })}
-                                value={inscricaoEstadual}
+                                label="Inscrição Estadual"
+                                {...register("inscricaoEstadual")}
+                                helperText={errors.inscricaoEstadual ? errors.inscricaoEstadual.message : ''}
                             />
                         )}
                     </div>
                     <div>
                         <TextField
-                            label={"CEP"}
-                            $isLarge
-                            onChange={e => setData({ ...data, cep: e.target.value })}
-                            value={cep}
+                            label="CEP"
+                            {...register("cep")}
+                            helperText={errors.cep ? errors.cep.message : ''}
+                            required
                         />
+
                         <TextField
-                            label={"Endereço"}
-                            $isLarge
-                            onChange={e => setData({ ...data, address: e.target.value })}
-                            value={address}
+                            label="Endereço"
+                            {...register("address")}
+                            helperText={errors.address ? errors.address.message : ''}
+                            required
                         />
                     </div>
                     <div>
-                        <TextField label={"Telefone"} $isLarge
-                            onChange={e => setData({ ...data, phone: e.target.value })}
-                            value={phone}
-                        />
                         <TextField
-                            label={"Email"} $isLarge
-                            onChange={e => setData({ ...data, email: e.target.value })}
-                            value={email}
-
+                            label="Telefone"
+                            {...register("phone")}
+                            helperText={errors.phone ? errors.phone.message : ''}
+                            required
                         />
 
+                        <TextField
+                            label="Email"
+                            {...register("email")}
+                            helperText={errors.email ? errors.email.message : ''}
+                            required
+                        />
                     </div>
 
                     {options === "PF" && (
                         <div>
                             <TextField
-                                setDate={setData}
-                                onChange={e => setData({ ...data, age: e.target.value })}
+                                label={"Data de nascimento"}
+                                {...register("birthDate")}
                                 type='date'
+                                helperText={errors.birthDate ? errors.birthDate.message : ''}
                             />
 
                             <TextField
                                 label={"Idade"}
-                                onChange={e => setData({ ...data, age: e.target.value })}
-                                value={age}
+                                {...register("age")}
+                                helperText={errors.age ? errors.age.message : ''}
                                 type='number'
                             />
                         </div>
@@ -161,19 +186,19 @@ const BasedFormPerson = ({
                         <ConsultInput
                             $isLarge
                             label={"Cidade"}
-                            onChange={value => setData({ ...data, city: value })}
+                            onChange={value => setValue("city", value)}
                             openModal={() => setOpenModalCity(true)}
                             title={"Consultar cidades cadastradas"}
-                            value={city.name}
+                            value={city ? city.name : ''}
                         />
 
                         <ConsultInput
                             $isLarge
                             label={"Grupo"}
-                            onChange={value => setData({ ...data, group: value })}
+                            onChange={value => setValue("group", value)}
                             openModal={() => setOpenModalGroup(true)}
                             title={"Consultar grupos cadastrados"}
-                            value={group.name}
+                            value={group ? group.name : ''}
                         />
                     </div>
 
@@ -185,7 +210,7 @@ const BasedFormPerson = ({
                 <BasicModal
                     Url={'/api/city'}
                     closeModal={() => setOpenModalCity(false)}
-                    setObject={value => setData({ ...data, city: value })}
+                    setObject={value => setValue("city", value)}
                     isUseGetAllValue
                 />
             )}
@@ -194,7 +219,7 @@ const BasedFormPerson = ({
                 <BasicModal
                     Url={'/api/group'}
                     closeModal={() => setOpenModalGroup(false)}
-                    setObject={value => setData({ ...data, group: value })}
+                    setObject={value => setValue("group", value)}
                 />
             )}
         </>
