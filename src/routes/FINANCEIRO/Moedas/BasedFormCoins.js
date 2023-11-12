@@ -28,24 +28,20 @@ export const BasedFormCoins = ({
     const DeleteCoin = useDeleteData(`${urlApi}`, id, urlReturn)
 
     const handleSubmit = useSubmitDataPostOrPut(`${urlApi}`, urlReturn, id)
+
     return (
         <PrimaryForm
             Title={id ? 'Alterar Moeda' : 'Cadastrar Moeda'}
             urlCancel={urlReturn}
-            onSubmit={e => handleSubmit(e, {
-                id,
-                name,
-                isUseCreditLimit
-            })}
-            removeFunction={() => {
-                id && DeleteCoin()
-            }}
+            onSubmit={e => handleSubmit(data, e)}
+            removeFunction={id ? () => DeleteCoin() : null}
         >
             <BasicGridContainerForm>
                 <TextField
                     label={"Nome"}
                     onChange={e => setData({ ...data, name: e.target.value })}
                     value={name}
+                    required
                 />
                 <CheckInput
                     options={[

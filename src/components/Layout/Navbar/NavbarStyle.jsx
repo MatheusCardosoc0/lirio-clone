@@ -48,7 +48,7 @@ const OptionsForSectionContainer = styled.div`
   overflow-x: hidden;
   animation: flyingToLocal 0.5s ease-in-out;
   transition: all 1s;
-  left: 40%;
+  left: 30%;
   direction: rtl;
   transform: scale(1.5);
   box-shadow: 0px 0px 1px black;
@@ -89,6 +89,7 @@ const LogoutButton = styled.button`
   color: white;
   padding-inline: 20px;
   text-shadow: 1px 1px 1px black;
+  min-width: 10%;
 
   &:hover{
       color: white;

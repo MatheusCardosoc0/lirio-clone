@@ -1,6 +1,6 @@
 import React from 'react';
-import { OptionsForSectionContainer } from '../NavbarStyle';
-import { OptionsForSectionConstants, TopMenuSectionsTitles } from '../utils/TopMenuSectionsTitles';
+import { OptionsForSectionContainer } from './NavbarStyle';
+import { OptionsForSectionConstants } from './TopMenuSectionsTitles';
 import { Link } from 'react-router-dom';
 
 const OptionsForSection = ({ currentSection, setCurrentSection }) => {

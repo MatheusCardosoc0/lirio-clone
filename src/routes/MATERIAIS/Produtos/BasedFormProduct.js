@@ -1,37 +1,26 @@
 import React from 'react'
 import { BasicGridContainerForm, PrimaryForm } from '../../../components/Form';
-import { BasicInput, ConsultInput } from '../../../components/Inputs';
+import { ConsultInput } from '../../../components/Inputs';
 import { BasicModal } from '../../../components/Modals';
-import useSubmitDataPostOrPut from '../../../functions/useSubmitDataPostOrPut';
-import useDeleteData from '../../../functions/useDeleteData';
-import useGetDataSpecific from '../../../functions/useGetDataSpecific';
 import useBasedFunctionProduct from './basedFunctionsProduct';
+import { TextField } from '@mui/material';
 
 const BasedFormProduct = ({
     id
 }) => {
     const {
-        data,
         openModalProductGroups,
-        setData,
         setOpenModalProductGroups,
-        urlApi,
-        urlReturn
-    } = useBasedFunctionProduct()
-
-    const {
-        name,
-        description,
+        urlReturn,
+        DeleteProduct,
         group,
-        price
-    } = data
+        handleSubmit,
+        onSubmit,
+        register,
+        setValue
+    } = useBasedFunctionProduct(id)
 
-    console.log(group)
 
-    const handleSubmit = useSubmitDataPostOrPut(urlApi, urlReturn, id);
-    const DeleteProduct = useDeleteData(`${urlApi}`, id, urlReturn)
-
-    useGetDataSpecific(id, `${urlApi}`, setData)
 
     return (
         <>
@@ -39,39 +28,39 @@ const BasedFormProduct = ({
                 Title={id ? "Alterar produto" : "Cadastro de produtos"}
                 urlCancel={urlReturn}
                 removeFunction={id ? () => DeleteProduct() : null}
-                onSubmit={(e) => handleSubmit(e, data)}
+                onSubmit={handleSubmit(onSubmit)}
             >
                 <BasicGridContainerForm>
-                    <BasicInput
+                    <TextField
                         label={"Nome"}
-                        $isLarge
-                        onChange={e => setData({ ...data, name: e.target.value })}
-                        value={name} />
+                        {...register("name")}
+                        required
+                    />
 
 
 
                     <div>
-                        <BasicInput
+                        <TextField
                             label={"Preço"}
-                            $isLarge
-                            onChange={e => setData({ ...data, price: e.target.value })}
-                            value={price} />
+                            {...register("price")}
+                            type='number'
+                            required
+                        />
 
                         <ConsultInput
-                            $isLarge
                             label={"Grupo de produtos"}
-                            onChange={value => setData({ ...data, group: value })}
+                            onChange={value => setValue("group", value)}
                             openModal={() => setOpenModalProductGroups(true)}
                             title={"Consultar grupos de produtos cadastrados"}
-                            value={group.name}
+                            value={group ? group.name : ''}
                         />
                     </div>
 
-                    <BasicInput
+                    <TextField
                         label={"Descrição"}
-                        $isLarge
-                        onChange={e => setData({ ...data, description: e.target.value })}
-                        value={description} />
+                        {...register("description")}
+                        required
+                    />
 
 
                 </BasicGridContainerForm>
@@ -80,7 +69,7 @@ const BasedFormProduct = ({
                 <BasicModal
                     Url={'/api/group_product'}
                     closeModal={() => setOpenModalProductGroups(false)}
-                    setObject={value => setData({ ...data, group: value })}
+                    setObject={value => setValue("group", value)}
                 />
             )}
         </>

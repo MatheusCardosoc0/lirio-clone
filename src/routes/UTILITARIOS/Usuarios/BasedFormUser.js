@@ -1,67 +1,55 @@
 import React from 'react'
 import { BasicGridContainerForm, PrimaryForm } from '../../../components/Form';
-import { BasicInput, ConsultInput } from '../../../components/Inputs';
+import { ConsultInput } from '../../../components/Inputs';
 import { BasicModal } from '../../../components/Modals';
-import useSubmitDataPostOrPut from '../../../functions/useSubmitDataPostOrPut';
-import useDeleteData from '../../../functions/useDeleteData';
-import useGetDataSpecific from '../../../functions/useGetDataSpecific';
 import useBasedFunctionUsers from './basedFunctionsUsers';
+import { TextField } from '@mui/material';
 
 const BasedFormUser = ({
     id
 }) => {
     const {
-        data,
         openModalPerson,
         setOpenModalPerson,
-        setData,
-        urlApi,
-        urlReturn
-    } = useBasedFunctionUsers()
-
-    const {
-        name,
+        DeleteUser,
+        handleSubmit,
+        onSubmit,
+        urlReturn,
         person,
-        password
-    } = data
+        register,
+        setValue,
+    } = useBasedFunctionUsers(id)
 
-    const handleSubmit = useSubmitDataPostOrPut(urlApi, urlReturn, id);
-    const DeleteProduct = useDeleteData(`${urlApi}`, id, urlReturn)
-
-    useGetDataSpecific(id, `${urlApi}`, setData)
 
     return (
         <>
             <PrimaryForm
-                Title={id ? "Alterar usuário" : "Cadastro de usuários"}
                 urlCancel={urlReturn}
-                removeFunction={id ? () => DeleteProduct() : null}
-                onSubmit={(e) => handleSubmit(e, data)}
+                removeFunction={id ? () => DeleteUser() : null}
+                onSubmit={handleSubmit(onSubmit)}
             >
                 <BasicGridContainerForm>
-                    <BasicInput
+                    <TextField
                         label={"Nome"}
-                        $isLarge
-                        onChange={e => setData({ ...data, name: e.target.value })}
-                        value={name}
+                        {...register("name")}
+                        required
                     />
 
                     <div>
                         <ConsultInput
                             $isLarge
                             label={"Pessoas"}
-                            onChange={value => setData({ ...data, person: value })}
+                            onChange={value => setValue("person", value)}
                             openModal={() => setOpenModalPerson(true)}
                             title={"Consultar pessoas cadastradas"}
-                            value={person.name}
+                            value={person && person.name}
                         />
 
-                        <BasicInput
+                        <TextField
                             label={id ? "Alterar Senha" : "Senha"}
-                            $isLarge
-                            onChange={e => setData({ ...data, password: e.target.value })}
-                            value={password}
+                            {...register("password")}
                             type={"password"}
+                            required={!id}
                         />
 
                     </div>
@@ -72,7 +60,7 @@ const BasedFormUser = ({
                 <BasicModal
                     Url={'/api/person'}
                     closeModal={() => setOpenModalPerson(false)}
-                    setObject={value => setData({ ...data, person: value })}
+                    setObject={value => setValue("person", value)}
                 />
             )}
         </>

@@ -1,17 +1,9 @@
 import React from 'react'
 import { BasicGridContainerForm, PrimaryForm } from '../../../components/Form';
-import { BasicInput, CheckInput, ConsultInput, InputDate } from '../../../components/Inputs';
-import { ButtonStyle1 } from '../../../components/Buttons';
+import { CheckInput, ConsultInput } from '../../../components/Inputs';
 import { BasicModal } from '../../../components/Modals';
 import useBasedFunctionPerson from './basedFunctionPerson';
-import useSubmitDataPostOrPut from '../../../functions/useSubmitDataPostOrPut';
-import useDeleteData from '../../../functions/useDeleteData';
-import useGetDataSpecific from '../../../functions/useGetDataSpecific';
 import { Button, TextField } from '@mui/material';
-import { z } from 'zod';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import toast from 'react-hot-toast';
 
 const BasedFormPerson = ({
     id
@@ -24,56 +16,19 @@ const BasedFormPerson = ({
         openModalCity,
         openModalGroup,
         options,
-        data,
-        urlReturn,
-        urlApi,
-    } = useBasedFunctionPerson()
-
-    const {
-        register,
+        city,
+        group,
         handleSubmit,
-        control,
-        formState: { errors },
-        setValue,
-        getValues,
-    } = useForm({
-        values: {
-            age: 0
-        }
-    });
-
-    const submitData = useSubmitDataPostOrPut(urlApi, urlReturn, id);
-    const DeletePerson = useDeleteData(`${urlApi}`, id, urlReturn)
-
-    const group = getValues("group")
-    const city = getValues("city")
-
-    console.log(data)
-
-
-    const onSubmit = (data) => {
-        if (!data.group) {
-            toast("Informe o grupo da pessoa")
-        }
-        else if (!data.city) {
-            toast("Informe a cidade da pessoa")
-        }
-        submitData(data)
-    }
-
-    useGetDataSpecific(id, `${urlApi}`, (data) => {
-        if (data) {
-            Object.keys(data).forEach(key => {
-                setValue(key, data[key]);
-            });
-        }
-    })
+        onSubmit,
+        register,
+        DeletePerson,
+        setValue
+    } = useBasedFunctionPerson(id)
 
     return (
         <>
             <PrimaryForm
                 Title={id ? "Alterar pessoa" : "Cadastro de pessoas"}
-                urlCancel={urlReturn}
                 removeFunction={id ? () => DeletePerson() : null}
                 onSubmit={handleSubmit(onSubmit)}
             >
@@ -98,7 +53,6 @@ const BasedFormPerson = ({
                     <TextField
                         label="Nome"
                         {...register("name")}
-                        helperText={errors.name ? errors.name.message : ''}
                         required
                     />
 
@@ -107,13 +61,11 @@ const BasedFormPerson = ({
                             <TextField
                                 label="Razão"
                                 {...register("razao")}
-                                helperText={errors.razao ? errors.razao.message : ''}
                             />
 
                             <TextField
                                 label="IBGE"
                                 {...register("ibge")}
-                                helperText={errors.ibge ? errors.ibge.message : ''}
                             />
                         </div>
                     )}
@@ -123,14 +75,12 @@ const BasedFormPerson = ({
                         <TextField
                             label={options === "PJ" ? "CNPJ" : "CPF"}
                             {...register("cpf")}
-                            helperText={errors.cpf ? errors.cpf.message : ''}
                             required
                         />
                         {options === 'PJ' && (
                             <TextField
                                 label="Inscrição Estadual"
                                 {...register("inscricaoEstadual")}
-                                helperText={errors.inscricaoEstadual ? errors.inscricaoEstadual.message : ''}
                             />
                         )}
                     </div>
@@ -138,14 +88,12 @@ const BasedFormPerson = ({
                         <TextField
                             label="CEP"
                             {...register("cep")}
-                            helperText={errors.cep ? errors.cep.message : ''}
                             required
                         />
 
                         <TextField
                             label="Endereço"
                             {...register("address")}
-                            helperText={errors.address ? errors.address.message : ''}
                             required
                         />
                     </div>
@@ -153,14 +101,12 @@ const BasedFormPerson = ({
                         <TextField
                             label="Telefone"
                             {...register("phone")}
-                            helperText={errors.phone ? errors.phone.message : ''}
                             required
                         />
 
                         <TextField
                             label="Email"
                             {...register("email")}
-                            helperText={errors.email ? errors.email.message : ''}
                             required
                         />
                     </div>
@@ -171,13 +117,11 @@ const BasedFormPerson = ({
                                 label={"Data de nascimento"}
                                 {...register("birthDate")}
                                 type='date'
-                                helperText={errors.birthDate ? errors.birthDate.message : ''}
                             />
 
                             <TextField
                                 label={"Idade"}
                                 {...register("age")}
-                                helperText={errors.age ? errors.age.message : ''}
                                 type='number'
                             />
                         </div>
@@ -211,7 +155,6 @@ const BasedFormPerson = ({
                     Url={'/api/city'}
                     closeModal={() => setOpenModalCity(false)}
                     setObject={value => setValue("city", value)}
-                    isUseGetAllValue
                 />
             )}
 

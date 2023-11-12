@@ -18,7 +18,7 @@ export const CustomToaster = () => {
                 icon: false,
                 success: {
                     style: {
-                        backgroundColor: '#0BDC35',
+                        backgroundColor: 'green',
                         color: 'white',
                     }
                 },

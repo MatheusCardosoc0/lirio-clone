@@ -5,12 +5,15 @@ import toast from 'react-hot-toast';
 const useSubmitDataPostOrPut = (urlApi, urlReturn, id) => {
     const navigate = useNavigate();
 
-    async function handleSubmit(data, messageSuccess, messageError) {
+    async function handleSubmit(data, e = null, messageSuccess, messageError, messageSuccessChange) {
+        if (e) {
+            e.preventDefault()
+        }
         try {
             let response
             if (id) {
                 response = await api.put(`${urlApi}${id}`, data);
-                toast.success(messageSuccess ?? "Alterado")
+                toast.success(messageSuccessChange ?? "Alterado")
             } else {
                 response = await api.post(urlApi, data);
 

@@ -22,7 +22,7 @@ import Produtos from "./MATERIAIS/Produtos";
 import NewProduct from "./MATERIAIS/Produtos/NewProduct";
 import ChangeProduct from "./MATERIAIS/Produtos/ChangeProduct/inex";
 import Moedas from "./FINANCEIRO/Moedas";
-import MetodosPagamento from "./FINANCEIRO/Metodos de pagamento"
+import CondicaoPagamento from "./FINANCEIRO/Metodos de pagamento"
 import Usuarios from "./UTILITARIOS/Usuarios"
 import SearchUsers from "./UTILITARIOS/Usuarios/SearchUsers"
 import ChangeUser from "./UTILITARIOS/Usuarios/ChangeUser"
@@ -192,20 +192,20 @@ export const router = createBrowserRouter([
                 ]
             },
             {
-                path: '/financeiro/metodos de pagamento',
-                element: <MetodosPagamento />,
+                path: '/financeiro/condicoes de pagamento',
+                element: <CondicaoPagamento />,
                 children: [
                     {
-                        path: '/financeiro/metodos de pagamento',
+                        path: '/financeiro/condicoes de pagamento',
                         element: <SearchPaymentTerms />,
                         index: true
                     },
                     {
-                        path: '/financeiro/metodos de pagamento/new',
+                        path: '/financeiro/condicoes de pagamento/new',
                         element: <NewPaymentTerms />
                     },
                     {
-                        path: '/financeiro/metodos de pagamento/change/:id',
+                        path: '/financeiro/condicoes de pagamento/change/:id',
                         element: <ChangePaymentTerms />
                     }
                 ]

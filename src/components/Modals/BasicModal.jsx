@@ -23,34 +23,9 @@ const BasicModal = ({
 
     useGetDataList(setFilteredData, setData, Url);
 
-    function ThrowValues(id, name, value) {
+    function ThrowValues(value) {
         closeModal();
-
-        if (typeof setObject === "function") {
-            if (keys) {
-                let transformedObject = {
-                    [keys[0]]: value[primaryValue],
-                    [keys[1]]: value[secondValue]
-                };
-
-                setObject(prevValue => ({ ...prevValue, ...transformedObject }));
-            } else {
-                setObject(value)
-            }
-            return;
-        }
-
-        if (typeof setValue === "function") {
-            setValue(String(id), name);
-            return;
-        }
-
-        if (typeof setValueId === "function") {
-            setValueId(String(id));
-        }
-        if (typeof setValueName === "function") {
-            setValueName(name);
-        }
+        setObject(value)
     }
 
     return (

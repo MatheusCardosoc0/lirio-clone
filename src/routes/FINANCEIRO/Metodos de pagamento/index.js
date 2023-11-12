@@ -4,7 +4,7 @@ import BasicOptionsContainer from "../../../components/containers/BasicOptionsCo
 const Container = () => {
     return (
         <>
-            <BasicOptionsContainer url={"/financeiro/metodos de pagamento"} />
+            <BasicOptionsContainer url={"/financeiro/condicoes de pagamento"} />
             <Outlet />
         </>
     );

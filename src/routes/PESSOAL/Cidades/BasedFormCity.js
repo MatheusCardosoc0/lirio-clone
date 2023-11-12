@@ -7,76 +7,80 @@ import { BasicInput, BasicSelect, ConsultInput } from '../../../components/Input
 import useSubmitDataPostOrPut from '../../../functions/useSubmitDataPostOrPut'
 import { BasicModal } from '../../../components/Modals'
 import { UFBRStates } from '../../../utils/UFBRStates'
+import { Container, MenuItem, Select, TextField } from '@mui/material'
+import { Controller, useForm } from 'react-hook-form'
+import toast from 'react-hot-toast'
 
 const BasedFormCity = ({
     id
 }) => {
 
     const {
-        data,
-        CheckForOpenModal,
-        UpdateDataIdAndName,
         isOpenModal,
-        setData,
         setIsOpenModal,
-        urlApi,
-        urlReturn
-    } = useBasedFunctionCity()
-
-    const {
+        urlReturn,
+        CheckForOpenModal,
+        DeleteCity,
+        UpdateDataIdAndName,
+        control,
+        handleSubmit,
+        onSubmit,
+        register,
         ibgNumber,
-        name,
+        setValue,
         state
-    } = data
+    } = useBasedFunctionCity(id)
 
-    useGetDataSpecific(id, `${urlApi}`, setData)
 
-    const DeleteCity = useDeleteData(`${urlApi}`, id, urlReturn)
-
-    const handleSubmit = useSubmitDataPostOrPut(`${urlApi}`, urlReturn, id)
 
     return (
         <>
             <PrimaryForm
                 Title={id ? 'Alterar Cidade' : 'Cadastrar Cidade'}
                 urlCancel={urlReturn}
-                onSubmit={e => handleSubmit(e, { ...data, ibgNumber: ibgNumber.toString() })}
+                onSubmit={handleSubmit(onSubmit)}
                 removeFunction={id ? () => DeleteCity() : null}
             >
                 <BasicGridContainerForm>
-                    <BasicInput
+                    <TextField
                         label={"Nome"}
-                        $isLarge
-                        onChange={e => setData({ ...data, name: e.target.value })}
-                        value={name}
+                        {...register("name")}
+                        required
                     />
                     <div>
                         <ConsultInput
                             label={"№ IBGE"}
-                            $isLarge
                             openModal={CheckForOpenModal}
-                            onChange={e => setData({ ...data, ibgNumber: e.target.value })}
-                            value={ibgNumber}
+                            onChange={value => setValue("ibgNumber", value)}
+                            value={ibgNumber ? ibgNumber : ''}
                         />
-                        <BasicSelect
-                            label={"UF"}
-                            $isLarge
-                            onChange={e => setData({ ...data, state: e.target.value })}
-                            options={UFBRStates}
+                        <Controller
+                            name='state'
+                            control={control}
+                            render={({ field }) => (
+                                <Select
+                                    {...field}
+                                    variant='outlined'
+                                >
+                                    {UFBRStates.map((UF, i) => (
+                                        <MenuItem
+                                            key={i}
+                                            value={UF}
+                                        >
+                                            {UF}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            )}
                         />
                     </div>
                 </BasicGridContainerForm>
             </PrimaryForm >
             {isOpenModal && (
                 <BasicModal
-                    IDForUrl={state}
-                    setObject={setData}
-                    keys={["ibgNumber", "name"]}
-                    Url={`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${state}/municipios`}
+                    setObject={value => UpdateDataIdAndName(value)}
+                    Url={`/api/IbgeNumbersForCities/fetchData/${state}`}
                     closeModal={() => setIsOpenModal(false)}
-                    setValue={(id, name) => UpdateDataIdAndName(id, name)}
-                    primaryValue={"id"}
-                    secondValue={"nome"}
                 />
             )
             }

@@ -45,12 +45,12 @@ const ContentContainer = styled.div`
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #9dff00; 
+    background-color: #000000; 
     
   }
 
   &::-webkit-scrollbar-track {
-    background-color: #4000ff; 
+    background-color: #000000; 
   }
 
   scrollbar-width: thin;

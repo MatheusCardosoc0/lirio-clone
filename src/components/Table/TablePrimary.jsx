@@ -70,7 +70,7 @@ const TablePrimary = ({
                                     {setValueFunction && (
                                         <button
                                             onClick={() => {
-                                                setValueObject ? setValueFunction('', '', { ...row })
+                                                setValueObject ? setValueFunction({ ...row })
                                                     :
                                                     setValueFunction(row.id, row.nome || row.name)
                                             }}

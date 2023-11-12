@@ -1,10 +1,12 @@
 import React from 'react'
 import { BasicGridContainerForm, PrimaryForm } from '../../../components/Form'
 import useGetDataSpecific from '../../../functions/useGetDataSpecific'
-import { BasicInput, CheckInput } from '../../../components/Inputs'
+import { BasicInput } from '../../../components/Inputs'
 import useDeleteData from '../../../functions/useDeleteData'
 import useSubmitDataPostOrPut from '../../../functions/useSubmitDataPostOrPut'
 import useBasedFunctionPaymentTerms from './basedFunctionPaymentTerms'
+import { TextField } from '@mui/material'
+import toast from 'react-hot-toast'
 
 export const BasedFormPaymentTerms = ({
     id
@@ -24,29 +26,35 @@ export const BasedFormPaymentTerms = ({
 
     useGetDataSpecific(id, `${urlApi}`, setData)
 
-    const DeletePaymentTerm = useDeleteData(`${urlApi}`, id, urlReturn)
+    const DeletePaymentCondition = useDeleteData(`${urlApi}`, id, urlReturn)
 
     const handleSubmit = useSubmitDataPostOrPut(`${urlApi}`, urlReturn, id)
+
+    function validateData(e) {
+        e.preventDefault()
+        if (installments < 1) {
+            return toast("Parcelas não podem ser menores que 1")
+        }
+        handleSubmit(data)
+    }
+
     return (
         <PrimaryForm
             Title={id ? 'Alterar Metodo de pagamento' : 'Cadastrar Metodo de pagamento'}
             urlCancel={urlReturn}
-            onSubmit={e => handleSubmit(e, {
-                id,
-                name,
-                installments
-            })}
-            removeFunction={() => {
-                id && DeletePaymentTerm()
-            }}
+            onSubmit={e => validateData(e)}
+            removeFunction={id ? () => DeletePaymentCondition() : null}
         >
             <BasicGridContainerForm>
-                <BasicInput label={"Nome"} $isLarge
+                <TextField
+                    label={"Nome"}
                     onChange={e => setData({ ...data, name: e.target.value })}
                     value={name}
+                    required
                 />
 
-                <BasicInput label={"Parcelas"} $isLarge
+                <TextField
+                    label={"Parcelas"}
                     onChange={e => setData({ ...data, installments: e.target.value })}
                     value={installments}
                     type={"number"}

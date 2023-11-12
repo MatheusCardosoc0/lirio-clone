@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { HeaderContainer, LogoutButton, TitleSectionButton } from './NavbarStyle';
-import { TopMenuSectionsTitles } from './utils/TopMenuSectionsTitles';
-import OptionsForSection from './components/OptionsForSection';
+import { TopMenuSectionsTitles } from './TopMenuSectionsTitles';
+import OptionsForSection from './OptionsForSection';
 
 const Navbar = () => {
     const [currentSection, setCurrentSection] = useState('');

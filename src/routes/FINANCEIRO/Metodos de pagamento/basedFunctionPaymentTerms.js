@@ -8,7 +8,7 @@ const useBasedFunctionPaymentTerms = () => {
     })
 
     const urlApi = "/api/payment_terms/"
-    const urlReturn = "/financeiro/metodos de pagamento"
+    const urlReturn = "/financeiro/condicoes de pagamento"
 
     return {
         urlApi,

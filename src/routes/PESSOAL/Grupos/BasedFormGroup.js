@@ -5,6 +5,7 @@ import useBasedFunctionGroup from './basedFunctionGroup'
 import { BasicInput } from '../../../components/Inputs'
 import useDeleteData from '../../../functions/useDeleteData'
 import useSubmitDataPostOrPut from '../../../functions/useSubmitDataPostOrPut'
+import { TextField } from '@mui/material'
 
 export const BasedFormGroup = ({
     id
@@ -23,22 +24,27 @@ export const BasedFormGroup = ({
 
     useGetDataSpecific(id, `${urlApi}`, setData)
 
-    const DeleteGroup = useDeleteData(`${urlApi}`, id, urlReturn)
+    const DeletePersonGroup = useDeleteData(`${urlApi}`, id, urlReturn)
 
     const handleSubmit = useSubmitDataPostOrPut(`${urlApi}`, urlReturn, id)
     return (
         <PrimaryForm
             Title={id ? 'Alterar Grupo' : 'Cadastrar Grupo'}
             urlCancel={urlReturn}
-            onSubmit={e => handleSubmit(e, data)}
-            removeFunction={() => {
-                id && DeleteGroup()
-            }}
+            onSubmit={e => handleSubmit(
+                data,
+                e,
+                "Grupo de pessoas cadastrado com sucesso",
+                "Não foi possivel cadastrar o grupo de pessoas"
+            )}
+            removeFunction={id ? () => DeletePersonGroup() : null}
         >
             <BasicGridContainerForm>
-                <BasicInput label={"Nome"} $isLarge
+                <TextField
+                    label={"Nome"}
                     onChange={e => setData({ ...data, name: e.target.value })}
                     value={name}
+                    required
                 />
             </BasicGridContainerForm>
         </PrimaryForm>
