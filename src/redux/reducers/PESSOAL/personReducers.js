@@ -1,26 +1,33 @@
-import { SEARCH_TERM_PERSON_ID, SEARCH_TERM_PERSON_NAME, SET_DATA } from "../../actions/PESSOAL/personActions";
+import { SET_PERSON_DATA, UPDATE_PERSON_FIELD } from "../../actions/PESSOAL/personActions";
 
 const initialState = {
-    searchTermName: '',
-    searchTermId: ''
+    id: 0,
+    name: '',
+    email: '',
+    phone: '',
+    age: 0,
+    cpf: '',
+    address: '',
+    birthDate: '',
+    ibge: '',
+    razao: '',
+    inscricaoEstadual: '',
+    cep: '',
+    group: null,
+    city: null
 };
 
 const personReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SEARCH_TERM_PERSON_NAME:
+        case SET_PERSON_DATA:
             return {
                 ...state,
-                searchTermName: action.payload
+                ...action.payload,
             };
-        case SEARCH_TERM_PERSON_ID:
+        case UPDATE_PERSON_FIELD:
             return {
                 ...state,
-                searchTermId: action.payload
-            };
-        case SET_DATA:
-            return {
-                ...state,
-                data: action.payload,
+                [action.payload.fieldName]: action.payload.value,
             };
         default:
             return state;

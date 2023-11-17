@@ -24,8 +24,9 @@ const CheckInput = ({
 
     return (
         <CheckInputStyle>
-            {options.map((option) => (
+            {options.map((option, i) => (
                 <button
+                    key={i}
                     type='button'
                     onClick={() => handleClick(option)}
                 >

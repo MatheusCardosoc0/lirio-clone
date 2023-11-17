@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { InputContainer } from './styles/InputContainer';
-import { BasicInput } from '../Inputs';
-import { ButtonStyle1 } from '../Buttons';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { Button, TextField } from '@mui/material';
 

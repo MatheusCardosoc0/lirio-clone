@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import useSubmitDataPostOrPut from '../../../functions/useSubmitDataPostOrPut'
 import useDeleteData from '../../../functions/useDeleteData'
-import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 import useGetDataSpecific from '../../../functions/useGetDataSpecific'
+import { useDispatch, useSelector } from 'react-redux'
+import { updatePersonData, updatePersonField } from '../../../redux/actions/PESSOAL/personActions'
 
 const useBasedFunctionPerson = (id) => {
 
-    console.log(id)
+    const dispatch = useDispatch();
+    const personData = useSelector(state => state.person);
 
     const [options, setOptions] = useState('PF')
 
@@ -17,39 +19,39 @@ const useBasedFunctionPerson = (id) => {
     const urlApi = "/api/person/"
     const urlReturn = "/pessoal/pessoas"
 
-    const {
-        register,
-        handleSubmit,
-        setValue,
-        getValues,
-    } = useForm({
-        values: {
-            age: 0
+    const handleChange = (eventOrFieldName, value) => {
+        let fieldName, fieldValue;
+
+        if (eventOrFieldName && eventOrFieldName.target) {
+            fieldName = eventOrFieldName.target.name;
+            fieldValue = eventOrFieldName.target.value;
+        } else {
+            fieldName = eventOrFieldName;
+            fieldValue = value;
         }
-    });
+
+        dispatch(updatePersonField(fieldName, fieldValue));
+    };
 
     const submitData = useSubmitDataPostOrPut(urlApi, urlReturn, id);
     const DeletePerson = useDeleteData(`${urlApi}`, id, urlReturn)
 
-    const group = getValues("group")
-    const city = getValues("city")
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
 
-    const onSubmit = (data) => {
-        if (!data.group) {
+        if (!personData.group) {
             return toast("Informe o grupo da pessoa")
         }
-        else if (!data.city) {
+        else if (!personData.city) {
             return toast("Informe a cidade da pessoa")
         }
-        submitData(data)
+        submitData(personData)
     }
 
     useGetDataSpecific(id, `${urlApi}`, (data) => {
         if (data) {
-            Object.keys(data).forEach(key => {
-                setValue(key, data[key]);
-            });
+            dispatch(updatePersonData(data));
         }
     })
 
@@ -60,13 +62,10 @@ const useBasedFunctionPerson = (id) => {
         setOpenModalGroup,
         openModalCity,
         openModalGroup,
-        onSubmit,
-        group,
-        city,
-        register,
         handleSubmit,
         DeletePerson,
-        setValue
+        personData,
+        handleChange
     }
 }
 

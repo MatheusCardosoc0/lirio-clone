@@ -1,20 +1,23 @@
-export const SEARCH_TERM_PERSON_NAME = 'SEARCH_TERM_PERSON_NAME'
-export const SEARCH_TERM_PERSON_ID = 'SEARCH_TERM_PERSON_ID'
-export const SET_DATA = 'SET_DATA';
-
-export const SearchTermPersonName = (term) => ({
-    type: SEARCH_TERM_PERSON_NAME,
-    payload: term
-})
-
-export const SearchTermPersonId = (term) => ({
-    type: SEARCH_TERM_PERSON_ID,
-    payload: term
-})
+export const SET_PERSON_DATA = 'SET_PERSON_DATA';
+export const UPDATE_PERSON_FIELD = 'UPDATE_PERSON_FIELD'
 
 export const setData = (data) => {
     return {
-        type: SET_DATA,
+        type: SET_PERSON_DATA,
         payload: data,
+    };
+};
+
+export const updatePersonField = (fieldName, value) => {
+    return {
+        type: UPDATE_PERSON_FIELD,
+        payload: { fieldName, value }
+    };
+};
+
+export const updatePersonData = (personData) => {
+    return {
+        type: SET_PERSON_DATA,
+        payload: personData
     };
 };

@@ -16,21 +16,21 @@ const BasedFormPerson = ({
         openModalCity,
         openModalGroup,
         options,
-        city,
-        group,
         handleSubmit,
         onSubmit,
-        register,
         DeletePerson,
-        setValue
+        personData,
+        handleChange
     } = useBasedFunctionPerson(id)
+
+    console.log(personData)
 
     return (
         <>
             <PrimaryForm
                 Title={id ? "Alterar pessoa" : "Cadastro de pessoas"}
                 removeFunction={id ? () => DeletePerson() : null}
-                onSubmit={handleSubmit(onSubmit)}
+                onSubmit={e => handleSubmit(e)}
             >
                 <BasicGridContainerForm>
                     <CheckInput
@@ -52,7 +52,9 @@ const BasedFormPerson = ({
                     )}
                     <TextField
                         label="Nome"
-                        {...register("name")}
+                        name='name'
+                        onChange={handleChange}
+                        value={personData.name}
                         required
                     />
 
@@ -60,12 +62,16 @@ const BasedFormPerson = ({
                         <div>
                             <TextField
                                 label="Razão"
-                                {...register("razao")}
+                                name='razao'
+                                onChange={handleChange}
+                                value={personData.razao}
                             />
 
                             <TextField
                                 label="IBGE"
-                                {...register("ibge")}
+                                name='ibge'
+                                onChange={handleChange}
+                                value={personData.ibge}
                             />
                         </div>
                     )}
@@ -74,39 +80,51 @@ const BasedFormPerson = ({
                     <div>
                         <TextField
                             label={options === "PJ" ? "CNPJ" : "CPF"}
-                            {...register("cpf")}
+                            name='cpf'
+                            onChange={handleChange}
+                            value={personData.cpf}
                             required
                         />
                         {options === 'PJ' && (
                             <TextField
                                 label="Inscrição Estadual"
-                                {...register("inscricaoEstadual")}
+                                name='inscricaoEstadual'
+                                onChange={handleChange}
+                                value={personData.inscricaoEstadual}
                             />
                         )}
                     </div>
                     <div>
                         <TextField
                             label="CEP"
-                            {...register("cep")}
+                            name='cep'
+                            onChange={handleChange}
+                            value={personData.cep}
                             required
                         />
 
                         <TextField
                             label="Endereço"
-                            {...register("address")}
+                            name='address'
+                            onChange={handleChange}
+                            value={personData.address}
                             required
                         />
                     </div>
                     <div>
                         <TextField
                             label="Telefone"
-                            {...register("phone")}
+                            name='phone'
+                            onChange={handleChange}
+                            value={personData.phone}
                             required
                         />
 
                         <TextField
                             label="Email"
-                            {...register("email")}
+                            name='email'
+                            onChange={handleChange}
+                            value={personData.email}
                             required
                         />
                     </div>
@@ -115,13 +133,17 @@ const BasedFormPerson = ({
                         <div>
                             <TextField
                                 label={"Data de nascimento"}
-                                {...register("birthDate")}
+                                name='birthDate'
+                                onChange={handleChange}
+                                value={personData.birthDate}
                                 type='date'
                             />
 
                             <TextField
                                 label={"Idade"}
-                                {...register("age")}
+                                name='age'
+                                onChange={handleChange}
+                                value={personData.age}
                                 type='number'
                             />
                         </div>
@@ -130,19 +152,19 @@ const BasedFormPerson = ({
                         <ConsultInput
                             $isLarge
                             label={"Cidade"}
-                            onChange={value => setValue("city", value)}
+                            onChange={(value) => handleChange('city', value)}
                             openModal={() => setOpenModalCity(true)}
                             title={"Consultar cidades cadastradas"}
-                            value={city ? city.name : ''}
+                            value={personData.city ? personData.city.name : ''}
                         />
 
                         <ConsultInput
                             $isLarge
                             label={"Grupo"}
-                            onChange={value => setValue("group", value)}
+                            onChange={value => handleChange("group", value)}
                             openModal={() => setOpenModalGroup(true)}
                             title={"Consultar grupos cadastrados"}
-                            value={group ? group.name : ''}
+                            value={personData.group ? personData.group.name : ''}
                         />
                     </div>
 
@@ -154,7 +176,7 @@ const BasedFormPerson = ({
                 <BasicModal
                     Url={'/api/city'}
                     closeModal={() => setOpenModalCity(false)}
-                    setObject={value => setValue("city", value)}
+                    setObject={((value) => handleChange('city', value))}
                 />
             )}
 
@@ -162,7 +184,7 @@ const BasedFormPerson = ({
                 <BasicModal
                     Url={'/api/group'}
                     closeModal={() => setOpenModalGroup(false)}
-                    setObject={value => setValue("group", value)}
+                    setObject={((value) => handleChange('group', value))}
                 />
             )}
         </>
