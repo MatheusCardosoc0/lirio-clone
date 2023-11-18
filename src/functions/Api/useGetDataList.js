@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { api } from '../libs/api';
+import { api } from '../../libs/api';
 
 export const useGetDataList = (setDataFilter, setData, url) => {
 

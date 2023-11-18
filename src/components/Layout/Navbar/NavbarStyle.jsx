@@ -54,7 +54,7 @@ const OptionsForSectionContainer = styled.div`
   box-shadow: 0px 0px 1px black;
   
 
-  a{
+  button{
     padding-bottom: 4px;
     width: 100%;
     text-decoration: none;

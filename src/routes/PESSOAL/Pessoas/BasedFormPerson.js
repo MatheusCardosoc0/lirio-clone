@@ -17,13 +17,10 @@ const BasedFormPerson = ({
         openModalGroup,
         options,
         handleSubmit,
-        onSubmit,
         DeletePerson,
         personData,
         handleChange
     } = useBasedFunctionPerson(id)
-
-    console.log(personData)
 
     return (
         <>
@@ -167,7 +164,6 @@ const BasedFormPerson = ({
                             value={personData.group ? personData.group.name : ''}
                         />
                     </div>
-
 
 
                 </BasicGridContainerForm>

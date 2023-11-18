@@ -1,18 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BoxLoginContainer, LoginContainer, LoginForm, LogoContainer } from './components/Auth'
-import useSubmitDataPostOrPut from './functions/useSubmitDataPostOrPut'
+import useSubmitDataPostOrPut from './functions/Api/useSubmitDataPostOrPut'
 import { Button, TextField } from '@mui/material'
 import { CgShapeTriangle } from 'react-icons/cg'
 import { useForm } from 'react-hook-form'
 
 const Login = () => {
-    const { register, handleSubmit } = useForm({
-    });
+    const [loginData, setLoginData] = useState({
+        username: '',
+        password: ''
+    })
 
     const submitData = useSubmitDataPostOrPut("/api/SignIn/", "/Dashboard");
 
-    const onSubmit = (data) => {
-        submitData(data, null, "Login feito com sucesso", "Senha ou usuário invalidos");
+    const onSubmit = (e) => {
+        e.preventDefault()
+
+        submitData(loginData, null, "Login feito com sucesso", "Senha ou usuário invalidos");
     };
 
     return (
@@ -22,20 +26,22 @@ const Login = () => {
                     <CgShapeTriangle />
                 </LogoContainer>
                 <LoginForm
-                    onSubmit={handleSubmit(onSubmit)}
+                    onSubmit={e => onSubmit(e)}
                 >
                     <h3>
                         Faça seu Login
                     </h3>
                     <TextField
                         label="Usuário"
-                        {...register("username")}
+                        onChange={e => setLoginData({ ...loginData, username: e.target.value })}
+                        value={loginData.username}
                         required
                     />
                     <TextField
                         label="Senha"
                         type="password"
-                        {...register("password")}
+                        onChange={e => setLoginData({ ...loginData, password: e.target.value })}
+                        value={loginData.password}
                         required
                     />
 

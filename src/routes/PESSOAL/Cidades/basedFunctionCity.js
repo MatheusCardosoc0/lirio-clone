@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import toast from 'react-hot-toast'
-import useDeleteData from '../../../functions/useDeleteData'
-import useSubmitDataPostOrPut from '../../../functions/useSubmitDataPostOrPut'
+import useDeleteData from '../../../functions/Api/useDeleteData'
+import useSubmitDataPostOrPut from '../../../functions/Api/useSubmitDataPostOrPut'
 import { useForm } from 'react-hook-form'
-import useGetDataSpecific from '../../../functions/useGetDataSpecific'
+import useGetDataSpecific from '../../../functions/Api/useGetDataSpecific'
 
 const useBasedFunctionCity = (id) => {
 

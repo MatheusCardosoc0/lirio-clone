@@ -1,5 +1,6 @@
 export const SET_PERSON_DATA = 'SET_PERSON_DATA';
 export const UPDATE_PERSON_FIELD = 'UPDATE_PERSON_FIELD'
+export const CLEAR_PERSON_DATA = 'CLEAR_PERSON_DATA'
 
 export const setData = (data) => {
     return {
@@ -21,3 +22,9 @@ export const updatePersonData = (personData) => {
         payload: personData
     };
 };
+
+export const clearPersonData = () => {
+    return {
+        type: CLEAR_PERSON_DATA
+    }
+}

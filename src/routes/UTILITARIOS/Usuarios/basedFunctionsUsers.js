@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import useGetDataSpecific from '../../../functions/useGetDataSpecific';
-import useDeleteData from '../../../functions/useDeleteData';
-import useSubmitDataPostOrPut from '../../../functions/useSubmitDataPostOrPut';
+import useGetDataSpecific from '../../../functions/Api/useGetDataSpecific';
+import useDeleteData from '../../../functions/Api/useDeleteData';
+import useSubmitDataPostOrPut from '../../../functions/Api/useSubmitDataPostOrPut';
 
 const useBasedFunctionUsers = (id) => {
 

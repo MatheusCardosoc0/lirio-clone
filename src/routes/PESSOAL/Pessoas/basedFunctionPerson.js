@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import useSubmitDataPostOrPut from '../../../functions/useSubmitDataPostOrPut'
-import useDeleteData from '../../../functions/useDeleteData'
+import useSubmitDataPostOrPut from '../../../functions/Api/useSubmitDataPostOrPut'
+import useDeleteData from '../../../functions/Api/useDeleteData'
 import toast from 'react-hot-toast'
-import useGetDataSpecific from '../../../functions/useGetDataSpecific'
+import useGetDataSpecific from '../../../functions/Api/useGetDataSpecific'
 import { useDispatch, useSelector } from 'react-redux'
 import { updatePersonData, updatePersonField } from '../../../redux/actions/PESSOAL/personActions'
 

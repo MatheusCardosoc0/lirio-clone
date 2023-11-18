@@ -13,7 +13,6 @@ const GuardedRoutes = ({ children, redirectTo }) => {
     const fetchUserData = (token) => async (dispatch) => {
         try {
             const response = await api.get(`/api/SignIn/${token}`);
-            console.log(response.data)
             dispatch(setCurrentUser(response.data.userName));
         } catch (error) {
             localStorage.removeItem("authToken")

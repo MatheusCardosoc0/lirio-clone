@@ -1,4 +1,4 @@
-import { SET_PERSON_DATA, UPDATE_PERSON_FIELD } from "../../actions/PESSOAL/personActions";
+import { CLEAR_PERSON_DATA, SET_PERSON_DATA, UPDATE_PERSON_FIELD } from "../../actions/PESSOAL/personActions";
 
 const initialState = {
     id: 0,
@@ -29,6 +29,8 @@ const personReducer = (state = initialState, action) => {
                 ...state,
                 [action.payload.fieldName]: action.payload.value,
             };
+        case CLEAR_PERSON_DATA:
+            return initialState
         default:
             return state;
     }

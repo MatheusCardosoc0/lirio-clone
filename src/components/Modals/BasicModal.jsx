@@ -3,7 +3,7 @@ import { BasicModalStyle } from './BasicModalStyle';
 import { AiOutlineClose } from 'react-icons/ai';
 import { BasicFilterElement } from '../containers';
 import { TablePrimary } from '../Table';
-import { useGetDataList } from '../../functions/useGetDataList';
+import { useGetDataList } from '../../functions/Api/useGetDataList';
 import { CloseButton } from '../Buttons';
 
 const BasicModal = ({

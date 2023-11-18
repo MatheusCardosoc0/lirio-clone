@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TablePrimary } from '../../../../components/Table';
 import { BasicFilterElement, BasicSearchContainer } from '../../../../components/containers';
-import { useGetDataList } from '../../../../functions/useGetDataList';
+import { useGetDataList } from '../../../../functions/Api/useGetDataList';
 
 const SearchGroups = () => {
 

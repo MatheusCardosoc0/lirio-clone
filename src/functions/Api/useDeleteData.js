@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { api } from '../libs/api';
+import { api } from '../../libs/api';
 import toast from 'react-hot-toast';
 
 const useDeleteData = (urlApi, id, urlReturn) => {

@@ -15,7 +15,28 @@ const LateralMenuContainer = styled.section`
   }
 `
 
+const ShortcutsContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+
+  a{
+    padding-block: 6px;
+    font-weight: bold;
+    width: 100%;
+    max-width: 90%;
+    font-size: 2rem;
+    background-color: green;
+    padding-inline: 4px;
+    color: white;
+    text-align: center;
+  }
+`
+
 
 export {
-  LateralMenuContainer
+  LateralMenuContainer,
+  ShortcutsContainer
 }

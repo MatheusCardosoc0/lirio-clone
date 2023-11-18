@@ -1,9 +1,9 @@
 import React from 'react'
 import { BasicGridContainerForm, PrimaryForm } from '../../../components/Form'
-import useGetDataSpecific from '../../../functions/useGetDataSpecific'
+import useGetDataSpecific from '../../../functions/Api/useGetDataSpecific'
 import { BasicInput, CheckInput } from '../../../components/Inputs'
-import useDeleteData from '../../../functions/useDeleteData'
-import useSubmitDataPostOrPut from '../../../functions/useSubmitDataPostOrPut'
+import useDeleteData from '../../../functions/Api/useDeleteData'
+import useSubmitDataPostOrPut from '../../../functions/Api/useSubmitDataPostOrPut'
 import useBasedFunctionCoin from './basedFunctionCoins'
 import { TextField } from '@mui/material'
 
