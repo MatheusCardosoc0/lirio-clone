@@ -7,18 +7,27 @@ const initialState = {
 const shortcutReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_NAV_SHORTCUT:
-            const exists = state.shortcuts.some(
+            const shortcutIndex = state.shortcuts.findIndex(
                 shortcut => shortcut.name === action.payload.name
             );
 
-            if (exists) {
-                return state;
-            } else {
-                return {
-                    ...state,
-                    shortcuts: [...state.shortcuts, action.payload]
-                };
+            let updatedShortcuts = [...state.shortcuts];
+
+            if (shortcutIndex !== -1) {
+                updatedShortcuts.splice(shortcutIndex, 1);
             }
+
+            updatedShortcuts.unshift(action.payload);
+
+            if (updatedShortcuts.length > 7) {
+                updatedShortcuts = updatedShortcuts.slice(0, 7);
+            }
+
+            return {
+                ...state,
+                shortcuts: updatedShortcuts
+            };
+
         default:
             return state;
     }

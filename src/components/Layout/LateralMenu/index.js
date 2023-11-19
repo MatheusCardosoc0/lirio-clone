@@ -1,26 +1,35 @@
 import React from 'react';
 import { LateralMenuContainer, ShortcutsContainer } from './LateralMenuStyles';
 import { CgShapeTriangle } from 'react-icons/cg';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { AddNewShortcut } from '../../../redux/actions/ShortCutsNavActions';
 
 const LateralMenu = () => {
 
     const currentShortcuts = useSelector(state => state.shortcutsManagement.shortcuts)
+    const dispatch = useDispatch()
+
+    const navigate = useNavigate()
 
     console.log(currentShortcuts)
+
+    function NavigateToSession(item) {
+        dispatch(AddNewShortcut({ name: item.name, link: item.link }))
+        navigate(item.link)
+    }
 
     return (
         <LateralMenuContainer>
             <CgShapeTriangle />
             <ShortcutsContainer>
-                {currentShortcuts.map((item, i) => (
-                    <Link
-                        key={i}
-                        to={item.link}
+                {currentShortcuts.map((item) => (
+                    <button
+                        key={item.name}
+                        onClick={() => NavigateToSession(item)}
                     >
                         {item.name}
-                    </Link>
+                    </button>
                 ))}
             </ShortcutsContainer>
         </LateralMenuContainer>

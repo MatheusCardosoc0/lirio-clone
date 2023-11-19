@@ -39,7 +39,7 @@ const BasicOptionsContainer = ({
         navigation(fullPath);
 
         const sessionName = extractNameFromUrl(fullPath);
-        const name = subSession ? sessionName + ` ${subSession}` : sessionName
+        const name = subSession ? sessionName + ` ${subSession.replace("/", "")}` : sessionName
         dispatch(AddNewShortcut({ name, link: fullPath }));
     }
 

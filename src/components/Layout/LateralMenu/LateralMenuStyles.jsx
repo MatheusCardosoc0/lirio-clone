@@ -22,16 +22,20 @@ const ShortcutsContainer = styled.div`
   gap: 6px;
   align-items: center;
 
-  a{
-    padding-block: 6px;
+  button{
+    padding-block: 8px;
     font-weight: bold;
     width: 100%;
     max-width: 90%;
     font-size: 2rem;
-    background-color: green;
+    background: #ffffff;
     padding-inline: 4px;
-    color: white;
+    color: #000000;
     text-align: center;
+
+    &:hover{
+      filter: brightness(80%);
+    }
   }
 `
 
