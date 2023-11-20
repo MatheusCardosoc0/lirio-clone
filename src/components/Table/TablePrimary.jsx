@@ -2,16 +2,22 @@ import React from 'react';
 import { StyledTable, TableContainer } from './TablePrimaryStyle';
 import { useNavigate } from 'react-router-dom';
 import { Skeleton } from '@mui/material';
+import { capitalizeFirstLetter } from '../../functions/util/capitalizeFirstLetter';
+import { useDispatch } from 'react-redux';
+import { AddNewShortcut } from '../../redux/actions/ShortCutsNavActions';
+import { extractNameFromUrl } from '../../functions/util/extractNameFromUrl';
 
 const TablePrimary = ({
     columns = [],
     data,
     navigateTo,
     setValueFunction,
-    setValueObject
+    setValueObject,
+    loading
 }) => {
 
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const formatCellValue = (value) => {
         if (typeof value === 'boolean') {
@@ -23,7 +29,7 @@ const TablePrimary = ({
         }
     };
 
-    if (!data) {
+    if (loading) {
         return (
             <>
                 <Skeleton
@@ -45,6 +51,14 @@ const TablePrimary = ({
         )
     }
 
+    function NavigateAndSetShortCutUrl(id) {
+        const path = window.location.pathname
+        const link = `${path}/${navigateTo}/${id}`
+        const name = extractNameFromUrl(path) + ` ${id}`
+        dispatch(AddNewShortcut({ name, link }))
+        navigate(`${navigateTo}/${id}`)
+    }
+
     return (
         <TableContainer>
             <StyledTable>
@@ -59,7 +73,7 @@ const TablePrimary = ({
                     {data.map((row, rowIndex) => (
                         <tr key={rowIndex}
                             onClick={() => {
-                                !setValueFunction && navigate(`${navigateTo}/${row.id}`)
+                                !setValueFunction && NavigateAndSetShortCutUrl(row.id)
                             }}
                         >
                             {columns.map((column, colIndex) => (

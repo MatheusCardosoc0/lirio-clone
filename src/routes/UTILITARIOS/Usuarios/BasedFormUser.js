@@ -9,15 +9,13 @@ const BasedFormUser = ({
     id
 }) => {
     const {
+        DeleteUser,
+        onSubmit,
         openModalPerson,
         setOpenModalPerson,
-        DeleteUser,
-        handleSubmit,
-        onSubmit,
         urlReturn,
-        person,
-        register,
-        setValue,
+        userData,
+        setUserData
     } = useBasedFunctionUsers(id)
 
 
@@ -26,12 +24,13 @@ const BasedFormUser = ({
             <PrimaryForm
                 urlCancel={urlReturn}
                 removeFunction={id ? () => DeleteUser() : null}
-                onSubmit={handleSubmit(onSubmit)}
+                onSubmit={e => onSubmit(e)}
             >
                 <BasicGridContainerForm>
                     <TextField
                         label={"Nome"}
-                        {...register("name")}
+                        onChange={e => setUserData({ ...userData, name: e.target.value })}
+                        value={userData.name}
                         required
                     />
 
@@ -39,17 +38,18 @@ const BasedFormUser = ({
                         <ConsultInput
                             $isLarge
                             label={"Pessoas"}
-                            onChange={value => setValue("person", value)}
+                            onChange={value => setUserData({ ...userData, person: value })}
                             openModal={() => setOpenModalPerson(true)}
                             title={"Consultar pessoas cadastradas"}
-                            value={person && person.name}
+                            value={userData.person && userData.person.name}
                         />
 
                         <TextField
                             label={id ? "Alterar Senha" : "Senha"}
-                            {...register("password")}
+                            onChange={e => setUserData({ ...userData, password: e.target.value })}
                             type={"password"}
                             required={!id}
+                            value={userData.password}
                         />
 
                     </div>
@@ -60,7 +60,7 @@ const BasedFormUser = ({
                 <BasicModal
                     Url={'/api/person'}
                     closeModal={() => setOpenModalPerson(false)}
-                    setObject={value => setValue("person", value)}
+                    setObject={value => setUserData({ ...userData, person: value })}
                 />
             )}
         </>

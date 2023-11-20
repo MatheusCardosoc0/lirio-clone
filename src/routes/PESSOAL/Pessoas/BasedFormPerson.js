@@ -25,7 +25,6 @@ const BasedFormPerson = ({
     return (
         <>
             <PrimaryForm
-                Title={id ? "Alterar pessoa" : "Cadastro de pessoas"}
                 removeFunction={id ? () => DeletePerson() : null}
                 onSubmit={e => handleSubmit(e)}
             >

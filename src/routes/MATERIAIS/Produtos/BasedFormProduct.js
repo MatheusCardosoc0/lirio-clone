@@ -9,15 +9,12 @@ const BasedFormProduct = ({
     id
 }) => {
     const {
-        openModalProductGroups,
-        setOpenModalProductGroups,
-        urlReturn,
         DeleteProduct,
-        group,
+        handleChange,
         handleSubmit,
-        onSubmit,
-        register,
-        setValue
+        openModalGroup,
+        productData,
+        setOpenModalGroup
     } = useBasedFunctionProduct(id)
 
 
@@ -25,16 +22,15 @@ const BasedFormProduct = ({
     return (
         <>
             <PrimaryForm
-                Title={id ? "Alterar produto" : "Cadastro de produtos"}
-                urlCancel={urlReturn}
                 removeFunction={id ? () => DeleteProduct() : null}
-                onSubmit={handleSubmit(onSubmit)}
+                onSubmit={e => handleSubmit(e)}
             >
                 <BasicGridContainerForm>
                     <TextField
                         label={"Nome"}
-                        {...register("name")}
                         required
+                        value={productData.name}
+                        onChange={e => handleChange("name", e.target.value)}
                     />
 
 
@@ -42,34 +38,36 @@ const BasedFormProduct = ({
                     <div>
                         <TextField
                             label={"Preço"}
-                            {...register("price")}
                             type='number'
+                            onChange={e => handleChange("price", e.target.value)}
                             required
+                            value={productData.price}
                         />
 
                         <ConsultInput
                             label={"Grupo de produtos"}
-                            onChange={value => setValue("group", value)}
-                            openModal={() => setOpenModalProductGroups(true)}
+                            onChange={value => handleChange("group", value)}
+                            openModal={() => setOpenModalGroup(true)}
                             title={"Consultar grupos de produtos cadastrados"}
-                            value={group ? group.name : ''}
+                            value={productData.group ? productData.group.name : ''}
                         />
                     </div>
 
                     <TextField
                         label={"Descrição"}
-                        {...register("description")}
                         required
+                        value={productData.description}
+                        onChange={e => handleChange("description", e.target.value)}
                     />
 
 
                 </BasicGridContainerForm>
             </PrimaryForm>
-            {openModalProductGroups && (
+            {openModalGroup && (
                 <BasicModal
                     Url={'/api/group_product'}
-                    closeModal={() => setOpenModalProductGroups(false)}
-                    setObject={value => setValue("group", value)}
+                    closeModal={() => setOpenModalGroup(false)}
+                    setObject={value => handleChange("group", value)}
                 />
             )}
         </>

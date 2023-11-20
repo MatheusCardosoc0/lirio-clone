@@ -4,7 +4,7 @@ import { AiOutlinePlus, AiOutlineSearch } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { AddNewShortcut } from '../../redux/actions/ShortCutsNavActions'
-import { capitalizeFirstLetter } from '../../functions/util/capitalizeFirstLetter'
+import { extractNameFromUrl } from '../../functions/util/extractNameFromUrl'
 
 const BasicOptionsContainer = ({
     children,
@@ -15,18 +15,7 @@ const BasicOptionsContainer = ({
     const navigation = useNavigate()
     const dispatch = useDispatch()
 
-    const extractNameFromUrl = (url) => {
-        const segments = url.split('/').filter(segment => segment);
 
-        let name;
-        if (segments.length > 2 && (segments[segments.length - 1] === 'new' || segments[segments.length - 1] === 'change')) {
-            name = segments[segments.length - 2];
-        } else {
-            name = segments[segments.length - 1] || '';
-        }
-
-        return capitalizeFirstLetter(name);
-    };
 
     // eslint-disable-next-line no-restricted-globals
     let currentUrlInApp = location.pathname

@@ -12,8 +12,6 @@ const LateralMenu = () => {
 
     const navigate = useNavigate()
 
-    console.log(currentShortcuts)
-
     function NavigateToSession(item) {
         dispatch(AddNewShortcut({ name: item.name, link: item.link }))
         navigate(item.link)

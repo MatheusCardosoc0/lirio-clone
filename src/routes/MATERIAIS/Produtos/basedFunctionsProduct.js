@@ -1,70 +1,63 @@
 import { useState } from 'react'
+import useSubmitDataPostOrPut from '../../../functions/Api/useSubmitDataPostOrPut'
+import useDeleteData from '../../../functions/Api/useDeleteData'
 import toast from 'react-hot-toast'
 import useGetDataSpecific from '../../../functions/Api/useGetDataSpecific'
-import useDeleteData from '../../../functions/Api/useDeleteData'
-import useSubmitDataPostOrPut from '../../../functions/Api/useSubmitDataPostOrPut'
-import { useForm } from 'react-hook-form'
+import { useDispatch, useSelector } from 'react-redux'
+import { clearProductData, updateProductData, updateProductField } from '../../../redux/actions/MATERIAIS/productAction'
+
 
 const useBasedFunctionProduct = (id) => {
 
-    const [data, setData] = useState({
-        name: '',
-        description: '',
-        price: '',
-        group: {}
-    })
+    const dispatch = useDispatch();
+    const productData = useSelector(state => state.product);
 
-    const [openModalProductGroups, setOpenModalProductGroups] = useState(false)
-
+    const [openModalGroup, setOpenModalGroup] = useState(false)
 
     const urlApi = "/api/product/"
     const urlReturn = "/materiais/produtos"
 
-    const {
-        register,
-        handleSubmit,
-        setValue,
-        getValues
-    } = useForm({
-        defaultValues: {
-            name: '',
-            description: '',
-            price: '',
-            group: null
-        }
-    })
+    const handleChange = (eventOrFieldName, value) => {
+        let fieldName, fieldValue;
 
-    const group = getValues("group")
+        if (eventOrFieldName && eventOrFieldName.target) {
+            fieldName = eventOrFieldName.target.name;
+            fieldValue = eventOrFieldName.target.value;
+        } else {
+            fieldName = eventOrFieldName;
+            fieldValue = value;
+        }
+
+        dispatch(updateProductField(fieldName, fieldValue));
+    };
 
     const submitData = useSubmitDataPostOrPut(urlApi, urlReturn, id);
     const DeleteProduct = useDeleteData(`${urlApi}`, id, urlReturn)
 
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        if (!productData.group) {
+            return toast("Informe o grupo do produto")
+        }
+        submitData(productData)
+        dispatch(clearProductData())
+    }
+
     useGetDataSpecific(id, `${urlApi}`, (data) => {
         if (data) {
-            Object.keys(data).forEach(key => {
-                setValue(key, data[key]);
-            });
+            dispatch(updateProductData(data));
         }
     })
 
-    const onSubmit = (data) => {
-        if (!data.group) {
-            return toast("Informe o grupo do produto")
-        }
-        submitData(data)
-    }
-
     return {
-        data,
-        setData,
-        setOpenModalProductGroups,
-        openModalProductGroups,
-        register,
+        setOpenModalGroup,
+        openModalGroup,
         handleSubmit,
-        setValue,
-        onSubmit,
         DeleteProduct,
-        group
+        productData,
+        handleChange
     }
 }
 

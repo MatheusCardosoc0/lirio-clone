@@ -7,11 +7,7 @@ import { useGetDataList } from '../../functions/Api/useGetDataList';
 import { CloseButton } from '../Buttons';
 
 const BasicModal = ({
-    setValue,
-    keys = null,
     setObject,
-    setValueId,
-    setValueName,
     closeModal,
     Url,
     primaryValue = "id",
