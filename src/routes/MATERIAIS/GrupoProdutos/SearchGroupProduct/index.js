@@ -7,8 +7,9 @@ const SearchGroupProducts = () => {
 
     const [allProductGroups, setAllProductGroups] = useState([]);
     const [filteredProductsGroup, setFilteredProductsGroup] = useState([]);
+    const [loading, setLoading] = useState(false)
 
-    useGetDataList(setFilteredProductsGroup, setAllProductGroups, '/api/group_product');
+    useGetDataList(setFilteredProductsGroup, setAllProductGroups, '/api/group_product', setLoading);
 
     return (
         <BasicSearchContainer>
@@ -19,6 +20,7 @@ const SearchGroupProducts = () => {
             <TablePrimary
                 data={filteredProductsGroup}
                 navigateTo={"change"}
+                loading={loading}
                 columns={[
                     { label: "ID", filed: "id" },
                     { label: "Nome", filed: "name" }

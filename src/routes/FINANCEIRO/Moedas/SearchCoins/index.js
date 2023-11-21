@@ -7,8 +7,9 @@ const SearchCoins = () => {
 
     const [allCoins, setAllCoins] = useState([]);
     const [filteredGroups, setFilteredGroups] = useState([]);
+    const [loading, setLoading] = useState(false)
 
-    useGetDataList(setFilteredGroups, setAllCoins, '/api/coins');
+    useGetDataList(setFilteredGroups, setAllCoins, '/api/coins', setLoading);
 
     return (
         <BasicSearchContainer>
@@ -19,6 +20,7 @@ const SearchCoins = () => {
             <TablePrimary
                 data={filteredGroups}
                 navigateTo={"change"}
+                loading={loading}
                 columns={[
                     { label: "ID", filed: "id" },
                     { label: "Nome", filed: "name" },

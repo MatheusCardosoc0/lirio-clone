@@ -7,8 +7,9 @@ const SearchPaymentTerms = () => {
 
     const [allCoins, setAllCoins] = useState([]);
     const [filteredGroups, setFilteredGroups] = useState([]);
+    const [loading, setLoading] = useState(false)
 
-    useGetDataList(setFilteredGroups, setAllCoins, '/api/payment_terms');
+    useGetDataList(setFilteredGroups, setAllCoins, '/api/payment_terms', setLoading);
 
     return (
         <BasicSearchContainer>
@@ -19,6 +20,7 @@ const SearchPaymentTerms = () => {
             <TablePrimary
                 data={filteredGroups}
                 navigateTo={"change"}
+                loading={loading}
                 columns={[
                     { label: "ID", filed: "id" },
                     { label: "Nome", filed: "name" },

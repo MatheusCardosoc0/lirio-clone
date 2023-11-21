@@ -24,12 +24,11 @@ export const theme = createTheme({
                             backgroundColor: '#1244B9',
                         },
                     },
-                    '&.MuiButton-outlinedPrimary': {
-                        border: '4px solid black',
-                        backgroundColor: '#F7FF00',
-                        color: '#000',
+                    '&.MuiButton-containedSuccess': {
+                        backgroundColor: '#CE00BA',
+                        color: '#fff',
                         '&:hover': {
-                            backgroundColor: '#B7BD03',
+                            backgroundColor: '#A20092',
                         },
                     },
                 }

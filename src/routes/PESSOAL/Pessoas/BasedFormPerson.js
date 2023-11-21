@@ -4,6 +4,7 @@ import { CheckInput, ConsultInput } from '../../../components/Inputs';
 import { BasicModal } from '../../../components/Modals';
 import useBasedFunctionPerson from './basedFunctionPerson';
 import { Button, TextField } from '@mui/material';
+import { clearPersonData } from '../../../redux/actions/PESSOAL/personActions';
 
 const BasedFormPerson = ({
     id
@@ -26,6 +27,7 @@ const BasedFormPerson = ({
         <>
             <PrimaryForm
                 removeFunction={id ? () => DeletePerson() : null}
+                resetFunction={!id ? clearPersonData : null}
                 onSubmit={e => handleSubmit(e)}
             >
                 <BasicGridContainerForm>

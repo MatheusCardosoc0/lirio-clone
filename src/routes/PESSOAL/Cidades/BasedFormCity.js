@@ -5,77 +5,67 @@ import { ConsultInput } from '../../../components/Inputs'
 import { BasicModal } from '../../../components/Modals'
 import { UFBRStates } from '../../../utils/UFBRStates'
 import { MenuItem, Select, TextField } from '@mui/material'
-import { Controller } from 'react-hook-form'
 
 const BasedFormCity = ({
     id
 }) => {
 
     const {
-        isOpenModal,
-        setIsOpenModal,
-        urlReturn,
         CheckForOpenModal,
         DeleteCity,
         UpdateDataIdAndName,
-        control,
-        handleSubmit,
+        cityData,
+        isOpenModal,
         onSubmit,
-        register,
-        ibgNumber,
-        setValue,
-        state
+        setCityData,
+        setIsOpenModal,
+        urlReturn
     } = useBasedFunctionCity(id)
-
-
 
     return (
         <>
             <PrimaryForm
                 Title={id ? 'Alterar Cidade' : 'Cadastrar Cidade'}
                 urlCancel={urlReturn}
-                onSubmit={handleSubmit(onSubmit)}
+                onSubmit={e => onSubmit(e)}
                 removeFunction={id ? () => DeleteCity() : null}
             >
                 <BasicGridContainerForm>
                     <TextField
                         label={"Nome"}
-                        {...register("name")}
+                        onChange={e => setCityData({ ...cityData, name: e.target.value })}
+                        value={cityData.name ? cityData.name : ''}
                         required
                     />
                     <div>
                         <ConsultInput
                             label={"№ IBGE"}
                             openModal={CheckForOpenModal}
-                            onChange={value => setValue("ibgNumber", value)}
-                            value={ibgNumber ? ibgNumber : ''}
+                            value={cityData.ibgNumber ? cityData.ibgNumber : ''}
                         />
-                        <Controller
-                            name='state'
-                            control={control}
-                            render={({ field }) => (
-                                <Select
-                                    {...field}
-                                    variant='outlined'
+
+                        <Select
+                            onChange={e => setCityData({ ...cityData, state: e.target.value })}
+                            value={cityData.state}
+                            variant='outlined'
+                        >
+                            {UFBRStates.map((UF, i) => (
+                                <MenuItem
+                                    key={i}
+                                    value={UF}
                                 >
-                                    {UFBRStates.map((UF, i) => (
-                                        <MenuItem
-                                            key={i}
-                                            value={UF}
-                                        >
-                                            {UF}
-                                        </MenuItem>
-                                    ))}
-                                </Select>
-                            )}
-                        />
+                                    {UF}
+                                </MenuItem>
+                            ))}
+                        </Select>
+
                     </div>
                 </BasicGridContainerForm>
             </PrimaryForm >
             {isOpenModal && (
                 <BasicModal
                     setObject={value => UpdateDataIdAndName(value)}
-                    Url={`/api/IbgeNumbersForCities/fetchData/${state}`}
+                    Url={`/api/IbgeNumbersForCities/fetchData/${cityData.state}`}
                     closeModal={() => setIsOpenModal(false)}
                 />
             )

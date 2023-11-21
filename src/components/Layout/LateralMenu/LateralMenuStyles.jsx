@@ -12,6 +12,13 @@ const LateralMenuContainer = styled.section`
   svg{
     font-size: 16rem;
     color: white;
+    cursor: pointer;
+    transition: all 1s;
+
+    &:hover{
+      transform: scale(120%);
+      color: #55ff00;
+    }
   }
 `
 

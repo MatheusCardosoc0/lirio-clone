@@ -7,8 +7,9 @@ const SearchCities = () => {
 
     const [allCities, setAllCities] = useState([]);
     const [filteredCities, setFilteredCities] = useState([]);
+    const [loading, setLoading] = useState(false)
 
-    useGetDataList(setFilteredCities, setAllCities, '/api/city');
+    useGetDataList(setFilteredCities, setAllCities, '/api/city', setLoading);
 
     return (
         <BasicSearchContainer>
@@ -19,6 +20,7 @@ const SearchCities = () => {
             <TablePrimary
                 data={filteredCities}
                 navigateTo={"change"}
+                loading={loading}
                 columns={[
                     { label: "ID", filed: "id" },
                     { label: "Nome", filed: "name" },

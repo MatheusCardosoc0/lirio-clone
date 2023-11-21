@@ -7,8 +7,9 @@ const SearchUsers = () => {
 
     const [allPersons, setAllPersons] = useState([]);
     const [filteredPersons, setFilteredPersons] = useState([]);
+    const [loading, setLoading] = useState(false)
 
-    useGetDataList(setFilteredPersons, setAllPersons, '/api/users_system');
+    useGetDataList(setFilteredPersons, setAllPersons, '/api/users_system', setLoading);
 
     return (
         <BasicSearchContainer>
@@ -19,6 +20,7 @@ const SearchUsers = () => {
             <TablePrimary
                 data={filteredPersons}
                 navigateTo={"change"}
+                loading={loading}
                 columns={[
                     { label: "ID", filed: "id" },
                     { label: "Nome", filed: "name" },

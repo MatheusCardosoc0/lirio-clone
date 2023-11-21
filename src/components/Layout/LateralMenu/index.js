@@ -19,7 +19,9 @@ const LateralMenu = () => {
 
     return (
         <LateralMenuContainer>
-            <CgShapeTriangle />
+            <CgShapeTriangle
+                onClick={() => navigate("/")}
+            />
             <ShortcutsContainer>
                 {currentShortcuts.map((item) => (
                     <button

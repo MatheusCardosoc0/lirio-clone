@@ -4,6 +4,7 @@ import { ConsultInput } from '../../../components/Inputs';
 import { BasicModal } from '../../../components/Modals';
 import useBasedFunctionProduct from './basedFunctionsProduct';
 import { TextField } from '@mui/material';
+import { clearProductData } from '../../../redux/actions/MATERIAIS/productAction';
 
 const BasedFormProduct = ({
     id
@@ -23,6 +24,7 @@ const BasedFormProduct = ({
         <>
             <PrimaryForm
                 removeFunction={id ? () => DeleteProduct() : null}
+                resetFunction={!id ? clearProductData : null}
                 onSubmit={e => handleSubmit(e)}
             >
                 <BasicGridContainerForm>

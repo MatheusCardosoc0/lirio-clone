@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import toast from 'react-hot-toast'
 import useDeleteData from '../../../functions/Api/useDeleteData'
 import useSubmitDataPostOrPut from '../../../functions/Api/useSubmitDataPostOrPut'
-import { useForm } from 'react-hook-form'
 import useGetDataSpecific from '../../../functions/Api/useGetDataSpecific'
+import { setData } from '../../../redux/actions/PESSOAL/personActions'
 
 const useBasedFunctionCity = (id) => {
 
@@ -12,41 +12,29 @@ const useBasedFunctionCity = (id) => {
     const urlApi = "/api/city/"
     const urlReturn = "/pessoal/cidades"
 
-    const {
-        register,
-        handleSubmit,
-        setValue,
-        getValues,
-        control
-    } = useForm({
-        defaultValues: {
-            state: 'SP',
-            ibgNumber: '',
-            name: ''
-        }
+    const [cityData, setCityData] = useState({
+        state: 'SP',
+        ibgNumber: '',
+        name: ''
     })
-
-    const state = getValues("state")
-    const ibgNumber = getValues("ibgNumber")
-
-    console.log(ibgNumber)
 
     const DeleteCity = useDeleteData(`${urlApi}`, id, urlReturn)
 
     const submitData = useSubmitDataPostOrPut(`${urlApi}`, urlReturn, id)
 
-    const onSubmit = (data) => {
-        if (!data.ibgNumber) {
+    const onSubmit = (e) => {
+        e.preventDefault()
+        if (!cityData.ibgNumber) {
             return toast("Informe o número do ibge da cidade")
         }
-        if (!data.ibgNumber) {
+        if (!cityData.ibgNumber) {
             return toast("Informe número IBGE")
         }
-        submitData(data)
+        submitData(cityData)
     }
 
     const CheckForOpenModal = () => {
-        if (state === 'nenhum' || state === '') {
+        if (cityData.state === 'nenhum' || cityData.state === '') {
             return toast("Preencha o campo estado")
         }
 
@@ -54,34 +42,23 @@ const useBasedFunctionCity = (id) => {
     }
 
     const UpdateDataIdAndName = (data) => {
-        setValue("name", data.name)
-        setValue("ibgNumber", data.id)
+        console.log(data)
+        setCityData({ ...cityData, ibgNumber: data.id, name: data.name })
     }
 
-    useGetDataSpecific(id, `${urlApi}`, (data) => {
-        if (data) {
-            Object.keys(data).forEach(key => {
-                setValue(key, data[key]);
-            });
-        }
-    })
+    useGetDataSpecific(id, `${urlApi}`, setData)
 
 
     return {
-
-        setValue,
         urlReturn,
         UpdateDataIdAndName,
         CheckForOpenModal,
         isOpenModal,
         setIsOpenModal,
         DeleteCity,
-        register,
-        handleSubmit,
         onSubmit,
-        control,
-        ibgNumber,
-        state
+        cityData,
+        setCityData
     }
 }
 

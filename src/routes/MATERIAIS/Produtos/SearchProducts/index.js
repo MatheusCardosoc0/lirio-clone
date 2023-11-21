@@ -7,9 +7,9 @@ const SearchProducts = () => {
 
     const [allProducts, setAllProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
-    const [isLoading, setIsLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
 
-    useGetDataList(setFilteredProducts, setAllProducts, '/api/product', setIsLoading);
+    useGetDataList(setFilteredProducts, setAllProducts, '/api/product', setLoading);
 
     return (
         <BasicSearchContainer>
@@ -20,7 +20,7 @@ const SearchProducts = () => {
             <TablePrimary
                 data={filteredProducts}
                 navigateTo={"change"}
-                loading={isLoading}
+                loading={loading}
                 columns={[
                     { label: "ID", filed: "id" },
                     { label: "Nome", filed: "name" },
