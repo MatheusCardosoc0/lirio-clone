@@ -34,6 +34,24 @@ export const theme = createTheme({
                 }
             },
         },
+        MuiTypography: {
+            styleOverrides: {
+                root: {
+                    fontSize: '2rem',
+                },
+                h6: {
+                    fontSize: '3rem',
+                    fontWeight: 'bold'
+                },
+            },
+        },
+        MuiDialogContent: {
+            fontSize: '8rem',
+            color: 'white'
+        },
+        MuiDialog: {
+            fontSize: '2rem',
+        },
         MuiSkeleton: {
             styleOverrides: {
                 root: {
