@@ -16,8 +16,9 @@ const BasicModal = ({
 
     const [data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
+    const [loading, setLoading] = useState(false)
 
-    useGetDataList(setFilteredData, setData, Url);
+    useGetDataList(setFilteredData, setData, Url, setLoading);
 
     function ThrowValues(value) {
         closeModal();
@@ -38,6 +39,7 @@ const BasicModal = ({
                 <TablePrimary
                     data={filteredData}
                     setValueFunction={ThrowValues}
+                    loading={loading}
                     setValueObject={setObject !== null}
                     columns={[
                         { label: "ID", filed: primaryValue },

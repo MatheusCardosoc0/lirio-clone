@@ -23,7 +23,25 @@ const ActionsContainer = styled.div`
   justify-content: start;
 `
 
+const OptionsForSectionsFormContainer = styled.ul`
+  width: 164px;
+
+  li{
+    text-decoration: none;
+    background: linear-gradient(to top, #737373, black);
+    color: white;
+    font-size: 2rem;
+    padding: 6px;
+    cursor: pointer;
+
+    &:hover{
+      background: #000980;
+    }
+  }
+`
+
 export {
   ActionsContainer,
-  PrimaryFormStyle
+  PrimaryFormStyle,
+  OptionsForSectionsFormContainer
 }

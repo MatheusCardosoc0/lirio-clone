@@ -4,7 +4,7 @@ import useBasedFunctionCity from './basedFunctionCity'
 import { ConsultInput } from '../../../components/Inputs'
 import { BasicModal } from '../../../components/Modals'
 import { UFBRStates } from '../../../utils/UFBRStates'
-import { MenuItem, Select, TextField } from '@mui/material'
+import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
 
 const BasedFormCity = ({
     id
@@ -44,20 +44,27 @@ const BasedFormCity = ({
                             value={cityData.ibgNumber ? cityData.ibgNumber : ''}
                         />
 
-                        <Select
-                            onChange={e => setCityData({ ...cityData, state: e.target.value })}
-                            value={cityData.state}
-                            variant='outlined'
-                        >
-                            {UFBRStates.map((UF, i) => (
-                                <MenuItem
-                                    key={i}
-                                    value={UF}
-                                >
-                                    {UF}
-                                </MenuItem>
-                            ))}
-                        </Select>
+                        <FormControl fullWidth>
+                            <InputLabel id="demo-simple-select-label">
+                                UF do estado
+                            </InputLabel>
+                            <Select
+                                labelId='demo-simple-select-label'
+                                onChange={e => setCityData({ ...cityData, state: e.target.value })}
+                                value={cityData.state}
+                                variant='outlined'
+                                label="aaaaaaaaaaaaaaaaaaaaa"
+                            >
+                                {UFBRStates.map((UF, i) => (
+                                    <MenuItem
+                                        key={i}
+                                        value={UF}
+                                    >
+                                        {UF}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl>
 
                     </div>
                 </BasicGridContainerForm>

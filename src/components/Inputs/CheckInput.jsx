@@ -1,11 +1,12 @@
 import { BsCheckLg, BsFillCircleFill } from 'react-icons/bs';
-import { CheckInputStyle } from './style/CheckInputStyle'
+import { CheckButtonStyle, CheckInputStyle } from './style/CheckInputStyle'
 
 const CheckInput = ({
     options = [],
     setData,
     data,
-    name = null
+    name = null,
+    column = false
 }) => {
 
     function handleClick(option) {
@@ -23,11 +24,15 @@ const CheckInput = ({
     }
 
     return (
-        <CheckInputStyle>
+        <CheckInputStyle
+            $column={column}
+        >
             {options.map((option, i) => (
-                <button
+                <CheckButtonStyle
                     key={i}
                     type='button'
+                    $isColumn={column}
+                    $isSelected={(data === option.value || (typeof data === 'object' && data[name] === option.value))}
                     onClick={() => handleClick(option)}
                 >
                     <label>{option.title}</label>
@@ -38,7 +43,7 @@ const CheckInput = ({
                             <BsFillCircleFill />
                         )}
                     </span>
-                </button>
+                </CheckButtonStyle>
             ))}
         </CheckInputStyle>
     );

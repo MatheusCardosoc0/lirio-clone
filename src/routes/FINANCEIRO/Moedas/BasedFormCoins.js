@@ -19,8 +19,7 @@ export const BasedFormCoins = ({
     } = useBasedFunctionCoin()
 
     const {
-        name,
-        isUseCreditLimit
+        name
     } = data
 
     useGetDataSpecific(id, `${urlApi}`, setData)

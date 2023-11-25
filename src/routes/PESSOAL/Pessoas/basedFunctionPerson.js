@@ -16,6 +16,13 @@ const useBasedFunctionPerson = (id) => {
     const [openModalCity, setOpenModalCity] = useState(false)
     const [openModalGroup, setOpenModalGroup] = useState(false)
 
+    const [currentSection, setCurrentSection] = useState("Dados principais")
+
+    const sections = [
+        { title: "Dados Principais", value: "Dados principais" },
+        { title: "Dados extras", value: "Dados complementares" }
+    ]
+
     const urlApi = "/api/person/"
     const urlReturn = "/pessoal/pessoas"
 
@@ -65,7 +72,10 @@ const useBasedFunctionPerson = (id) => {
         handleSubmit,
         DeletePerson,
         personData,
-        handleChange
+        handleChange,
+        sections,
+        setCurrentSection,
+        currentSection
     }
 }
 

@@ -2,6 +2,8 @@ import { CURRENT_USER } from '../actions/CurrentUserAction'
 
 const initialState = {
     userName: '',
+    password: '',
+    person: {}
 };
 
 const currentUserReducer = (state = initialState, action) => {

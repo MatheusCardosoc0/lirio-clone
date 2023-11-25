@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
-import { ActionsContainer, PrimaryFormStyle } from './styles/PrimaryFormStyle';
+import { ActionsContainer, OptionsForSectionsFormContainer, PrimaryFormStyle } from './styles/PrimaryFormStyle';
 import { ButtonStyle1 } from '../Buttons';
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Slide } from '@mui/material';
 import { useDispatch } from 'react-redux';
+import { CheckInput } from '../Inputs';
 
 const PrimaryForm = ({
     children,
     onSubmit,
     removeFunction,
-    resetFunction
+    resetFunction,
+    sectionOptions,
+    setCurrentSection,
+    currentSection
 }) => {
 
     const dispatch = useDispatch()
@@ -32,6 +36,16 @@ const PrimaryForm = ({
 
     return (
         <PrimaryFormStyle onSubmit={onSubmit} >
+            {setCurrentSection && (
+                <OptionsForSectionsFormContainer>
+                    <CheckInput
+                        column={true}
+                        options={sectionOptions}
+                        setData={setCurrentSection}
+                        data={currentSection}
+                    />
+                </OptionsForSectionsFormContainer>
+            )}
             {children}
             <ActionsContainer>
                 <Button

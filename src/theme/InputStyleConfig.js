@@ -3,6 +3,7 @@ export const InputStyleConfig = {
         styleOverrides: {
             root: {
                 height: 'auto',
+                maxHeight: '80px',
                 backgroundColor: '#fff',
                 '& .MuiFilledInput-root': {
                     backgroundColor: '#fff',
@@ -46,7 +47,7 @@ export const InputStyleConfig = {
         styleOverrides: {
             root: {
                 fontSize: '2rem',
-                transform: 'translate(14px, 2px) scale(0.75)',
+                transform: 'translate(14px, 4px) scale(0.75)',
                 fontWeight: 'bold',
                 color: '#505050',
                 '&.Mui-focused': {
@@ -61,6 +62,20 @@ export const InputStyleConfig = {
                 },
             },
         },
+    },
+    MuiSelect: {
+        styleOverrides: {
+            select: {
+                fontSize: '2rem',
+                textAlign: 'center',
+                display: 'flex',
+                alignItems: 'center',
+                borderRight: '4px solid ',
+                borderLeft: '4px solid',
+                borderBottom: '4px solid',
+                borderColor: 'black',
+            },
+        }
     },
     MuiFormHelperText: {
         styleOverrides: {

@@ -1,4 +1,4 @@
-import { CLEAR_PERSON_DATA, SET_PERSON_DATA, UPDATE_PERSON_FIELD } from "../../actions/PESSOAL/personActions";
+import { CLEAR_PERSON_DATA, SET_PERSON_DATA, UPDATE_PERSON_FIELD } from "../../actions/PESSOAL/personActions"
 
 const initialState = {
     id: 0,
@@ -13,6 +13,11 @@ const initialState = {
     razao: '',
     inscricaoEstadual: '',
     cep: '',
+    urlImage: '',
+    isBlocked: false,
+    maritalStatus: '',
+    habilities: '',
+    description: '',
     group: null,
     city: null
 };
