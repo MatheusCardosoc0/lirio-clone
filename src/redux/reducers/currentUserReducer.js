@@ -2,8 +2,7 @@ import { CURRENT_USER } from '../actions/CurrentUserAction'
 
 const initialState = {
     userName: '',
-    password: '',
-    person: {}
+    urlImage: ''
 };
 
 const currentUserReducer = (state = initialState, action) => {
@@ -11,7 +10,7 @@ const currentUserReducer = (state = initialState, action) => {
         case CURRENT_USER:
             return {
                 ...state,
-                userName: action.payload
+                ...action.payload
             };
         default:
             return state;

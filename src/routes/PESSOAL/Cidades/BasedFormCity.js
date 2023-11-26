@@ -25,7 +25,6 @@ const BasedFormCity = ({
     return (
         <>
             <PrimaryForm
-                Title={id ? 'Alterar Cidade' : 'Cadastrar Cidade'}
                 urlCancel={urlReturn}
                 onSubmit={e => onSubmit(e)}
                 removeFunction={id ? () => DeleteCity() : null}

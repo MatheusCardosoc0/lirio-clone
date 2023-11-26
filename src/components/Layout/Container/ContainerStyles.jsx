@@ -67,7 +67,7 @@ const UserBox = styled.span`
     color: color;
   }
 
-  div{
+  img{
     width: 60px;
     height: 60px;
     border-radius: 100%;

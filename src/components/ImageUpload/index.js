@@ -35,7 +35,9 @@ const ImageUpload = ({
       <FileLabel htmlFor="file-upload">
         Selecionar a imagem da pessoa
       </FileLabel>
-      <ImageView src={image && image} alt='' />
+      {image && (
+        <ImageView src={image && image} alt='' />
+      )}
     </ImageUploadContainer>
   );
 };

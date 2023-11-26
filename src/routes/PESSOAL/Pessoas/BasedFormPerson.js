@@ -213,18 +213,18 @@ const BasedFormPerson = ({
                                 label={"Descrição"}
                                 name='description'
                                 onChange={handleChange}
-                                value={personData.description}
+                                value={personData.description ?? 'a'}
                             />
                             <div>
                                 <ImageUpload
                                     setImage={value => handleChange("urlImage", value)}
-                                    image={personData.urlImage}
+                                    image={personData.urlImage ?? null}
                                 />
                                 <TextField
                                     label={"Habilidades"}
                                     name='habilities'
                                     onChange={handleChange}
-                                    value={personData.habilities}
+                                    value={personData.habilities ?? 'a'}
                                 />
                             </div>
                         </>

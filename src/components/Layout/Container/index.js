@@ -32,7 +32,7 @@ const Container = ({ children }) => {
 
     const location = useLocation()
 
-    const userName = useSelector(state => state.user.userName)
+    const user = useSelector(state => state.user)
 
     return (
         <SeparateContainer>
@@ -43,8 +43,11 @@ const Container = ({ children }) => {
                         {transformUrl(location.pathname)}
                     </h2>
                     <UserBox>
-                        <h3>{userName}</h3>
-                        <div />
+                        <h3>{user.userName}</h3>
+                        <img
+                            src={user.urlImage}
+                            alt=''
+                        />
                     </UserBox>
                 </NamePage>
                 <ContentContainer>
