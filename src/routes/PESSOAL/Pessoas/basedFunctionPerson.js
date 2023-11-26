@@ -5,6 +5,7 @@ import toast from 'react-hot-toast'
 import useGetDataSpecific from '../../../functions/Api/useGetDataSpecific'
 import { useDispatch, useSelector } from 'react-redux'
 import { updatePersonData, updatePersonField } from '../../../redux/actions/PESSOAL/personActions'
+import { api } from '../../../libs/api'
 
 const useBasedFunctionPerson = (id) => {
 
@@ -39,6 +40,26 @@ const useBasedFunctionPerson = (id) => {
 
         dispatch(updatePersonField(fieldName, fieldValue));
     };
+
+    async function fetchDataCNPJ() {
+        if (personData.cpf) {
+            try {
+                const response = await api.get(`https://erpwebapitest.azurewebsites.net/api/request_cnpj/fetchData/${personData.cpf}`)
+                const data = response.data
+                console.log(data)
+                handleChange("nome", data.nome || data.razao);
+                handleChange("cep", data.cep)
+                handleChange("email", data.email)
+                handleChange("ibge", data.ibge)
+                handleChange("razao", data.razao)
+                handleChange("phone", data.phone)
+                handleChange("endereco", data.endereco)
+                handleChange("phone", data.ddd + data.telcon)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
 
     const submitData = useSubmitDataPostOrPut(urlApi, urlReturn, id);
     const DeletePerson = useDeleteData(`${urlApi}`, id, urlReturn)
@@ -75,7 +96,8 @@ const useBasedFunctionPerson = (id) => {
         handleChange,
         sections,
         setCurrentSection,
-        currentSection
+        currentSection,
+        fetchDataCNPJ
     }
 }
 
